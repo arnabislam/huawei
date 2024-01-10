@@ -17,6 +17,7 @@ dependencies:
   intl: ^0.18.1
   dio: ^5.4.0
   shared_preferences: ^2.2.2
+  streaming_shared_preferences: ^2.0.0
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
