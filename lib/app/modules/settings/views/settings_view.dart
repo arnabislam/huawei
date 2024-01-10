@@ -14,11 +14,32 @@ class SettingsView extends StatefulWidget {
 }
 
 class _SettingsViewState extends State<SettingsView> {
+  final TextEditingController _printerFontSizeController =
+  TextEditingController();
+  final TextEditingController _printerLanguageController =
+  TextEditingController();
+  final TextEditingController _betMethodController =
+  TextEditingController();
+  final TextEditingController _receiptDateController =
+  TextEditingController();
+  final TextEditingController _betOrderController =
+  TextEditingController();
+  final TextEditingController _bettingCommandController =
+  TextEditingController();
+  final TextEditingController _receiptRejectController =
+  TextEditingController();
 
+
+
+
+
+  bool? _isChecked=false;
+  bool? isSingaporDollar=false;
+  bool? isLongPress=false;
   @override
   Widget build(BuildContext context) {
     String selectedFontSize = '';
-    bool? _isChecked=false;
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -251,7 +272,7 @@ class _SettingsViewState extends State<SettingsView> {
                           children: [
                             Checkbox(
                               value: _isChecked,
-                              tristate: true,
+
                               activeColor: Colors.red,
                               checkColor: Colors.green,
                               onChanged: (newBool) {
@@ -267,14 +288,14 @@ class _SettingsViewState extends State<SettingsView> {
                         Row(
                           children: [
                             Checkbox(
-                              value: _isChecked,
-                              tristate: true,
+                              value: isSingaporDollar,
+
                               activeColor: Colors.red,
                               checkColor: Colors.green,
                               onChanged: (newBool) {
                                 setState(() {
-                                  _isChecked = newBool ; // Set to false if newBool is null
-                                  print(_isChecked);
+                                  isSingaporDollar = newBool ; // Set to false if newBool is null
+                                  print(isSingaporDollar);
                                 });
                               },
                             ),
@@ -733,14 +754,14 @@ class _SettingsViewState extends State<SettingsView> {
                   Expanded(
                     flex: 3,
                     child:   Checkbox(
-                      value: _isChecked,
-                      tristate: true,
+                      value: isLongPress,
+
                       activeColor: Colors.red,
                       checkColor: Colors.green,
                       onChanged: (newBool) {
                         setState(() {
-                          _isChecked = newBool ; // Set to false if newBool is null
-                          print(_isChecked);
+                          isLongPress = newBool ; // Set to false if newBool is null
+                          print(isLongPress);
                         });
                       },
                     ),

@@ -6,16 +6,23 @@ import 'package:intl/intl.dart';
 import 'draw_result_view.dart';
 
 class JackpotView extends StatefulWidget {
-  const JackpotView({Key? key}) : super(key: key);
+   JackpotView({Key? key}) : super(key: key);
+
+
+
 
   @override
   State<JackpotView> createState() => _JackpotViewState();
 }
 
 class _JackpotViewState extends State<JackpotView> {
+  final TextEditingController _jackpotPageIdController =
+  TextEditingController();
+
+  bool? _isChecked=false;
   @override
   Widget build(BuildContext context) {
-    bool? _isChecked=false;
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -50,7 +57,7 @@ class _JackpotViewState extends State<JackpotView> {
                         child: Text("Date from",style: TextStyle(fontSize: 17,),),
                       ),
                     ),
-                    Expanded(
+                    const Expanded(
                         flex: 1,
                         child: Text(":")),
                     Expanded(
@@ -128,6 +135,7 @@ class _JackpotViewState extends State<JackpotView> {
 
                                 hintStyle: TextStyle(color: Colors.grey, fontSize: 19),
                               ),
+                              controller: _jackpotPageIdController,
                             ),
                             Row(
                               children: [

@@ -17,6 +17,7 @@ import 'package:huawei_new/app/modules/report/views/win_number_view.dart';
 import 'package:huawei_new/app/modules/settings/views/printer_view.dart';
 import 'package:huawei_new/app/modules/settings/views/settings_view.dart';
 
+
 class AllView extends GetView {
   const AllView({Key? key}) : super(key: key);
   @override
@@ -31,7 +32,7 @@ class AllView extends GetView {
             children: [
               InkWell(
                 onTap: (){
-                  Get.to(const BetmobileView());
+                  Get.to( BetmobileView());
 
                 },
                 child: Container(
@@ -116,7 +117,7 @@ class AllView extends GetView {
               ),
               InkWell(
                 onTap: (){
-                  Get.to(const JackpotView());
+                  Get.to( JackpotView());
                 },
                 child: Container(
                   decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(7)),

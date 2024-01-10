@@ -15,30 +15,23 @@ class WinLoseView extends StatefulWidget {
 }
 
 class _WinLoseViewState extends State<WinLoseView> {
+  bool? _isChecked=false;
+  bool? isMagnum=false;
+  bool? isPmp=false;
+  bool? isToto=false;
+  bool? isSingapore=false;
+  bool? isSabah=false;
+  bool? isSandakan=false;
+  bool? isSarwak=false;
+  bool? isGdLotto=false;
+  bool? isNineLotto=false;
   @override
   Widget build(BuildContext context) {
     String _selectedBet = 'Show All';
-    bool? _isChecked=false;
+
     final authctrl = Get.put(AuthController());
 
-//birthday date
-//     Future<void> _selectDate() async {
-//       final DateTime? picked = await showDatePicker(
-//         context: context,
-//         initialDate: selectedDate ?? DateTime.now(),
-//         firstDate: DateTime(2000),
-//         lastDate: DateTime(2100),
-//       );
-//
-//       if (picked != null && picked != selectedDate) {
-//         setState(() {
-//           selectedDate = picked;
-//           // profileUpdateController.updateBirthday(
-//           //     birthDay:
-//           DateFormat("dd-MM-yyyy").format(selectedDate!).toString();
-//         });
-//       }
-//     }
+
 
     return Scaffold(
       appBar: AppBar(
@@ -63,7 +56,7 @@ class _WinLoseViewState extends State<WinLoseView> {
                   color: Colors.red,
                   child: const Center(child: Text("Win Lose",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 21),)),
                 ),
-                SizedBox(height: 18,),
+                const SizedBox(height: 18,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -74,7 +67,7 @@ class _WinLoseViewState extends State<WinLoseView> {
                         child: Text("Date From",style: TextStyle(fontSize: 17,),),
                       ),
                     ),
-                    Expanded(
+                    const Expanded(
                         flex: 1,
                         child: Text(":")),
                     Expanded(
@@ -222,7 +215,7 @@ color: Color(0xff48486e),
                             Text("Draw Type ",style: TextStyle(color: Colors.white,fontSize: 17,fontWeight: FontWeight.w500),),
                             Checkbox(
                               value: _isChecked,
-                              tristate: true,
+
                               activeColor: Colors.red,
                               checkColor: Colors.green,
                               onChanged: (newBool) {
@@ -246,14 +239,14 @@ color: Color(0xff48486e),
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isMagnum,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isMagnum = newBool; // Set to false if newBool is null
+
                                         });
                                       },
                                     ),
@@ -266,14 +259,14 @@ color: Color(0xff48486e),
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isPmp,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isPmp = newBool ; // Set to false if newBool is null
+                                          print(isPmp);
                                         });
                                       },
                                     ),
@@ -293,14 +286,14 @@ color: Color(0xff48486e),
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isToto,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isToto = newBool ; // Set to false if newBool is null
+                                          print(isToto);
                                         });
                                       },
                                     ),
@@ -313,14 +306,14 @@ color: Color(0xff48486e),
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isSingapore,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isSingapore = newBool ; // Set to false if newBool is null
+                                          print(isSingapore);
                                         });
                                       },
                                     ),
@@ -340,14 +333,14 @@ color: Color(0xff48486e),
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isSabah,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isSabah = newBool ; // Set to false if newBool is null
+                                          print(isSabah);
                                         });
                                       },
                                     ),
@@ -360,14 +353,14 @@ color: Color(0xff48486e),
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isSandakan,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isSandakan = newBool ; // Set to false if newBool is null
+                                          print(isSandakan);
                                         });
                                       },
                                     ),
@@ -387,14 +380,14 @@ color: Color(0xff48486e),
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isSarwak,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isSarwak = newBool ; // Set to false if newBool is null
+                                          print(isSarwak);
                                         });
                                       },
                                     ),
@@ -407,14 +400,14 @@ color: Color(0xff48486e),
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isGdLotto,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isGdLotto = newBool ; // Set to false if newBool is null
+                                          print(isGdLotto);
                                         });
                                       },
                                     ),
@@ -434,14 +427,14 @@ color: Color(0xff48486e),
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isNineLotto,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isNineLotto = newBool ; // Set to false if newBool is null
+                                          print(isNineLotto);
                                         });
                                       },
                                     ),

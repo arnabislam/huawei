@@ -2,8 +2,38 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-class BetmobileView extends GetView {
-  const BetmobileView({Key? key}) : super(key: key);
+class BetmobileView extends StatefulWidget {
+   BetmobileView({Key? key}) : super(key: key);
+
+  @override
+  State<BetmobileView> createState() => _BetmobileViewState();
+}
+
+class _BetmobileViewState extends State<BetmobileView> {
+  final TextEditingController _betMobileMyrController =
+  TextEditingController();
+
+  final TextEditingController _betMobileMyrController2 =
+  TextEditingController();
+
+  final TextEditingController _betMobileMyrController3 =
+  TextEditingController();
+
+   final TextEditingController buttonTextController =
+   TextEditingController();
+
+
+  @override
+  void dispose() {
+    _betMobileMyrController.dispose();
+    super.dispose();
+  }
+
+  void updateTextField(int buttonNumber) {
+    setState(() {
+      _betMobileMyrController.text = '$buttonNumber';
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +41,7 @@ class BetmobileView extends GetView {
       body:SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
-          margin: const EdgeInsets.only(top: 25),
+          margin:  EdgeInsets.only(top: 25),
           width: MediaQuery.of(context).size.width, // or set a specific width
           child: Column(
             children: [
@@ -20,7 +50,8 @@ class BetmobileView extends GetView {
                   Container(
                     padding: EdgeInsets.only(left: 5,right: 3),
                     width: MediaQuery.of(context).size.width*0.85,
-                    child: const TextField(
+                    child:  TextField(
+                      controller: _betMobileMyrController,
                       decoration: InputDecoration(
                         hintText: 'Remark',
                         hintStyle: TextStyle(color: Colors.grey, fontSize: 19),
@@ -30,7 +61,8 @@ class BetmobileView extends GetView {
                   Icon(Icons.error_outline,color: Colors.blue,size: 32,),
                 ],
               ),
-              const TextField(
+               TextField(
+                controller: _betMobileMyrController2,
                 decoration: InputDecoration(
 
 
@@ -41,9 +73,9 @@ class BetmobileView extends GetView {
                 ),
               ),
 
-              const TextField(
-
-                decoration: InputDecoration(
+               TextField(
+controller: _betMobileMyrController3,
+                decoration: const InputDecoration(
 
 
                   border: OutlineInputBorder(
@@ -54,21 +86,36 @@ class BetmobileView extends GetView {
                 ),
               ),
               SizedBox(height:MediaQuery.of(context).size.height*0.43,),
-              const Padding(
+               Padding(
                 padding: EdgeInsets.only(left: 12.0,right: 12),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.all(2.0),
-                      child: buttonContainer(button: 'M',),
+                    InkWell(
+                      onTap: (){
+                        updateTextField(1);
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: buttonContainer(button: 'M',),
+                      ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(2.0),
-                      child: buttonContainer(button: 'P',),
-                    ),  Padding(
-                      padding: EdgeInsets.all(2.0),
-                      child: buttonContainer(button: 'T',),
+                    InkWell(
+                      onTap: (){
+                        updateTextField(2);
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: buttonContainer(button: 'P',),
+                      ),
+                    ),  InkWell(
+                      onTap: (){
+                        updateTextField(3);
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: buttonContainer(button: 'T',),
+                      ),
                     ),  Padding(
                       padding: EdgeInsets.all(2.0),
                       child: buttonContainer(button: 'S',),

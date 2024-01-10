@@ -9,13 +9,14 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/member/bindings/member_binding.dart';
 import '../modules/member/views/member_view.dart';
+import '../modules/model/bindings/model_binding.dart';
+import '../modules/model/views/model_view.dart';
 import '../modules/report/bindings/report_binding.dart';
 import '../modules/report/views/report_view.dart';
 import '../modules/select_target/bindings/select_target_binding.dart';
 import '../modules/select_target/views/select_target_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/settings/views/settings_view.dart';
-
 
 part 'app_routes.dart';
 
@@ -27,7 +28,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => const LoginView(),
+      page: () => LoginView(),
       binding: HomeBinding(),
     ),
     GetPage(
@@ -60,6 +61,10 @@ class AppPages {
       page: () => const SelectTargetView(),
       binding: SelectTargetBinding(),
     ),
-
+    GetPage(
+      name: _Paths.MODEL,
+      page: () => const ModelView(),
+      binding: ModelBinding(),
+    ),
   ];
 }

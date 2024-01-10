@@ -5,7 +5,16 @@ import 'package:get/get.dart';
 import 'betmobile_view.dart';
 
 class BetMobileSgdView extends GetView {
-  const BetMobileSgdView({Key? key}) : super(key: key);
+   BetMobileSgdView({Key? key}) : super(key: key);
+
+  final TextEditingController _betMobileSgdController =
+  TextEditingController();
+   final TextEditingController _betMobileSgdController2=
+   TextEditingController();
+
+   final TextEditingController _betMobileSgdController3=
+   TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,20 +39,22 @@ class BetMobileSgdView extends GetView {
                 Row(
                   children: [
                     Container(
-                      padding: EdgeInsets.only(left: 5,right: 3),
+                      padding: const EdgeInsets.only(left: 5,right: 3),
                       width: MediaQuery.of(context).size.width*0.85,
-                      child: const TextField(
-                        decoration: InputDecoration(
+                      child:  TextField(
+                        controller: _betMobileSgdController,
+                        decoration: const InputDecoration(
                           hintText: 'Remark',
                           hintStyle: TextStyle(color: Colors.grey, fontSize: 19),
                         ),
                       ),
                     ),
-                    Icon(Icons.error_outline,color: Colors.blue,size: 32,),
+                    const Icon(Icons.error_outline,color: Colors.blue,size: 32,),
                   ],
                 ),
-                const TextField(
-                  decoration: InputDecoration(
+                 TextField(
+                  controller: _betMobileSgdController2,
+                  decoration: const InputDecoration(
 
 
                     border: OutlineInputBorder(
@@ -53,9 +64,10 @@ class BetMobileSgdView extends GetView {
                   ),
                 ),
 
-                const TextField(
+                 TextField(
+                  controller: _betMobileSgdController3,
 
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
 
 
                     border: OutlineInputBorder(
@@ -104,9 +116,9 @@ class BetMobileSgdView extends GetView {
                   ),
                 ),
                 SizedBox(height:MediaQuery.of(context).size.height*0.004,),
-                Padding(
-                  padding: const EdgeInsets.only(left: 12.0,right: 12),
-                  child: const Row(
+                const Padding(
+                  padding: EdgeInsets.only(left: 12.0,right: 12),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       numberContainer(number: '1',),
@@ -132,9 +144,9 @@ class BetMobileSgdView extends GetView {
                   ),
                 ),
                 SizedBox(height:MediaQuery.of(context).size.height*0.010,),
-                Padding(
-                  padding: const EdgeInsets.only(left: 12.0,right: 12),
-                  child: const Row(
+                const Padding(
+                  padding: EdgeInsets.only(left: 12.0,right: 12),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       numberContainer(number: '7',),
@@ -151,14 +163,14 @@ class BetMobileSgdView extends GetView {
                   child:  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      numberContainer(number: '*',),
-                      numberContainer(number: '0',),
-                      numberContainer(number: '#',),
+                      const numberContainer(number: '*',),
+                      const numberContainer(number: '0',),
+                      const numberContainer(number: '#',),
                       Container(
                         height:MediaQuery.of(context).size.height*0.044 ,
                         width:MediaQuery.of(context).size.width*0.368,
                         color: Colors.grey,
-                        child: Center(child: Text("Enter",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500),)),
+                        child: const Center(child: Text("Enter",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500),)),
                       ),
 
 
@@ -167,8 +179,8 @@ class BetMobileSgdView extends GetView {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 28,right: 28,top: 5),
-                  child: ElevatedButton(onPressed: (){}, child: Center(child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(onPressed: (){}, child: const Center(child: Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text("Submit",style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),),
                   ))),
                 )

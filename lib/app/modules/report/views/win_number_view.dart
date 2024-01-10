@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../../auth/controllers/auth_controller.dart';
 import 'draw_result_view.dart';
 
 class WinNumberView extends StatefulWidget {
@@ -13,10 +14,25 @@ class WinNumberView extends StatefulWidget {
 }
 
 class _WinNumberViewState extends State<WinNumberView> {
+  bool? _isChecked=false;
+  bool? isMagnum=false;
+  bool? isPmp=false;
+  bool? isToto=false;
+  bool? isSingapore=false;
+  bool? isSabah=false;
+  bool? isSandakan=false;
+  bool? isSarwak=false;
+  bool? isGdLotto=false;
+  bool? isNineLotto=false;
+  String _selectedBet = '';
+
   @override
   Widget build(BuildContext context) {
-    String _selectedBet = 'MYR';
-    bool? _isChecked=false;
+
+
+    final authctrl = Get.put(AuthController());
+
+
 
     return Scaffold(
       appBar: AppBar(
@@ -39,35 +55,31 @@ class _WinNumberViewState extends State<WinNumberView> {
                 Container(
                   height: 45,
                   color: Colors.red,
-                  child: const Center(child: Text("Win Number",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 21),)),
+                  child: const Center(child: Text("Win Lose",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 21),)),
                 ),
-                SizedBox(height: 18,),
+                const SizedBox(height: 18,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     const Expanded(
-                      flex: 4,
+                      flex: 2,
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text("Betting Date from",style: TextStyle(fontSize: 17,),),
+                        child: Text("Date From",style: TextStyle(fontSize: 17,),),
                       ),
                     ),
-                    Expanded(
+                    const Expanded(
                         flex: 1,
                         child: Text(":")),
                     Expanded(
                       flex: 3,
-                      child: Row(
-
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      child: Column(
                         children: [
                           MyDatePicker(),
-
-                          Container(
-                              height: 16,
-                              width: 16,
-                              decoration: BoxDecoration(color: Colors.black,shape: BoxShape.circle),
-                              child: Icon(Icons.close,color: Colors.white,size: 14,)),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10.0),
+                            child: Divider(height: 25,color: Colors.blue,),
+                          )
                         ],
                       ),
                     ),
@@ -77,10 +89,10 @@ class _WinNumberViewState extends State<WinNumberView> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     const Expanded(
-                      flex: 4,
+                      flex: 2,
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text("Betting Date from",style: TextStyle(fontSize: 17,),),
+                        child: Text("Date To",style: TextStyle(fontSize: 17,),),
                       ),
                     ),
                     const Expanded(
@@ -88,17 +100,13 @@ class _WinNumberViewState extends State<WinNumberView> {
                         child: Text(":")),
                     Expanded(
                       flex: 3,
-                      child: Row(
-
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      child: Column(
                         children: [
                           MyDatePicker(),
-
-                          Container(
-                              height: 16,
-                              width: 16,
-                              decoration: BoxDecoration(color: Colors.black,shape: BoxShape.circle),
-                              child: Icon(Icons.close,color: Colors.white,size: 14,)),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10.0),
+                            child: Divider(height: 25,color: Colors.blue,),
+                          )
                         ],
                       ),
                     ),
@@ -108,7 +116,7 @@ class _WinNumberViewState extends State<WinNumberView> {
                 Row(
                   children: [
                     const Expanded(
-                      flex: 4,
+                      flex: 2,
                       child: Padding(
                         padding: EdgeInsets.only(left: 8.0,right: 8,top:8,bottom: 14),
                         child: Text("Currency",style: TextStyle(fontSize: 17,),),
@@ -164,21 +172,38 @@ class _WinNumberViewState extends State<WinNumberView> {
                                             });
                                           },
                                         ),
+
+
                                         // You can add more RadioListTile widgets for additional genders
                                       ],
                                     );
                                   },
                                 ),
+                                actions: [
+                                  ElevatedButton(
+                                    child: const Text('Cancel'),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                  ElevatedButton(
+                                    child: const Text('Save'),
+                                    onPressed: () {
+
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+
                               );
                             },
                           );
                         },
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('    $_selectedBet'),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 10.0),
+                            Text('$_selectedBet'),
+                            const Padding(
+                              padding: EdgeInsets.only(right: 10.0),
                               child: Divider(height: 25,color: Colors.blue,),
                             )
                           ],
@@ -206,7 +231,7 @@ class _WinNumberViewState extends State<WinNumberView> {
                             Text("Draw Type ",style: TextStyle(color: Colors.white,fontSize: 17,fontWeight: FontWeight.w500),),
                             Checkbox(
                               value: _isChecked,
-                              tristate: true,
+
                               activeColor: Colors.red,
                               checkColor: Colors.green,
                               onChanged: (newBool) {
@@ -230,14 +255,14 @@ class _WinNumberViewState extends State<WinNumberView> {
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isMagnum,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isMagnum = newBool; // Set to false if newBool is null
+
                                         });
                                       },
                                     ),
@@ -250,14 +275,14 @@ class _WinNumberViewState extends State<WinNumberView> {
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isPmp,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isPmp = newBool ; // Set to false if newBool is null
+                                          print(isPmp);
                                         });
                                       },
                                     ),
@@ -277,14 +302,14 @@ class _WinNumberViewState extends State<WinNumberView> {
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isToto,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isToto = newBool ; // Set to false if newBool is null
+                                          print(isToto);
                                         });
                                       },
                                     ),
@@ -297,14 +322,14 @@ class _WinNumberViewState extends State<WinNumberView> {
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isSingapore,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isSingapore = newBool ; // Set to false if newBool is null
+                                          print(isSingapore);
                                         });
                                       },
                                     ),
@@ -324,14 +349,14 @@ class _WinNumberViewState extends State<WinNumberView> {
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isSabah,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isSabah = newBool ; // Set to false if newBool is null
+                                          print(isSabah);
                                         });
                                       },
                                     ),
@@ -344,14 +369,14 @@ class _WinNumberViewState extends State<WinNumberView> {
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isSandakan,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isSandakan = newBool ; // Set to false if newBool is null
+                                          print(isSandakan);
                                         });
                                       },
                                     ),
@@ -371,14 +396,14 @@ class _WinNumberViewState extends State<WinNumberView> {
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isSarwak,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isSarwak = newBool ; // Set to false if newBool is null
+                                          print(isSarwak);
                                         });
                                       },
                                     ),
@@ -391,14 +416,14 @@ class _WinNumberViewState extends State<WinNumberView> {
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isGdLotto,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isGdLotto = newBool ; // Set to false if newBool is null
+                                          print(isGdLotto);
                                         });
                                       },
                                     ),
@@ -418,14 +443,14 @@ class _WinNumberViewState extends State<WinNumberView> {
                                 child: Row(
                                   children: [
                                     Checkbox(
-                                      value: _isChecked,
-                                      tristate: true,
+                                      value: isNineLotto,
+
                                       activeColor: Colors.red,
                                       checkColor: Colors.green,
                                       onChanged: (newBool) {
                                         setState(() {
-                                          _isChecked = newBool ; // Set to false if newBool is null
-                                          print(_isChecked);
+                                          isNineLotto = newBool ; // Set to false if newBool is null
+                                          print(isNineLotto);
                                         });
                                       },
                                     ),
@@ -455,6 +480,7 @@ class _WinNumberViewState extends State<WinNumberView> {
     );
   }
 }
+
 //Date Picker
 class MyDatePicker extends StatefulWidget {
   @override

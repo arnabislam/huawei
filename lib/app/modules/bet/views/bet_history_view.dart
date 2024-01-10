@@ -5,7 +5,14 @@ import 'package:huawei_new/app/modules/report/views/draw_result_view.dart';
 import 'package:intl/intl.dart';
 
 class BetHistoryView extends GetView {
-  const BetHistoryView({Key? key}) : super(key: key);
+   BetHistoryView({Key? key}) : super(key: key);
+
+
+  final TextEditingController _betHistoryPageIdController =
+  TextEditingController();
+  final TextEditingController _betHistoryNumberController =
+  TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +49,7 @@ class BetHistoryView extends GetView {
                         child: Text("Betting Date from",style: TextStyle(fontSize: 17,),),
                       ),
                     ),
-                    Expanded(
+                    const Expanded(
                         flex: 1,
                         child: Text(":")),
                     Expanded(
@@ -62,8 +69,8 @@ class BetHistoryView extends GetView {
                                   child: Icon(Icons.close,color: Colors.white,size: 14,)),
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 6.0),
+                          const Padding(
+                            padding: EdgeInsets.only(right: 6.0),
                             child: Divider(height: 25,color: Colors.blue,),
                           )
                         ],
@@ -81,7 +88,7 @@ class BetHistoryView extends GetView {
                         child: Text("Betting Date to",style: TextStyle(fontSize: 17,),),
                       ),
                     ),
-                    Expanded(
+                    const Expanded(
                         flex: 1,
                         child: Text(":")),
                     Expanded(
@@ -101,8 +108,8 @@ class BetHistoryView extends GetView {
                                   child: Icon(Icons.close,color: Colors.white,size: 14,)),
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 6.0),
+                          const Padding(
+                            padding: EdgeInsets.only(right: 6.0),
                             child: Divider(height: 25,color: Colors.blue,),
                           )
                         ],
@@ -176,12 +183,12 @@ class BetHistoryView extends GetView {
                               Container(
                                   height: 16,
                                   width: 16,
-                                  decoration: BoxDecoration(color: Colors.black,shape: BoxShape.circle),
-                                  child: Icon(Icons.close,color: Colors.white,size: 14,)),
+                                  decoration: const BoxDecoration(color: Colors.black,shape: BoxShape.circle),
+                                  child: const Icon(Icons.close,color: Colors.white,size: 14,)),
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 6.0),
+                          const Padding(
+                            padding: EdgeInsets.only(right: 6.0),
                             child: Divider(height: 25,color: Colors.blue,),
                           )
                         ],
@@ -192,25 +199,26 @@ class BetHistoryView extends GetView {
                     ),
                   ],
                 ),
-                 const Row(
+                  Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       flex: 4,
                       child: Padding(
                         padding: EdgeInsets.only(left: 8.0,right: 8,top:8,bottom: 14),
                         child: Text("Page ID ",style: TextStyle(fontSize: 17,),),
                       ),
                     ),
-                    Expanded(
+                    const Expanded(
                         flex: 1,
                         child: Text(":")),
                     Expanded(
                       flex: 3,
                       child: Padding(
-                        padding: EdgeInsets.only(right:24.0,left: 8,bottom: 24),
+                        padding: const EdgeInsets.only(right:24.0,left: 8,bottom: 24),
                         child: TextField(
+                          controller: _betHistoryPageIdController,
 
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
 
 
 
@@ -221,25 +229,25 @@ class BetHistoryView extends GetView {
                     ),
                   ],
                 ),
-                 const Row(
+                  Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       flex: 4,
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Text("Number",style: TextStyle(fontSize: 17,),),
                       ),
                     ),
-                    Expanded(
+                    const Expanded(
                         flex: 1,
                         child: Text(":")),
                     Expanded(
                       flex: 3,
                       child: Padding(
-                        padding: EdgeInsets.only(right:24.0,left: 8,bottom: 34),
+                        padding: const EdgeInsets.only(right:24.0,left: 8,bottom: 34),
                         child: TextField(
-
-                          decoration: InputDecoration(
+                              controller: _betHistoryNumberController,
+                          decoration: const InputDecoration(
 
 
                             hintStyle: TextStyle(color: Colors.grey, fontSize: 19),
@@ -252,13 +260,16 @@ class BetHistoryView extends GetView {
 
               ],
             ),
-            rsubmitButton(buttonName: "Submit")
+            const rsubmitButton(buttonName: "Submit")
           ],
         ),
       ),
     );
   }
 }
+
+
+
 //Date Picker
 class MyDatePicker extends StatefulWidget {
   @override

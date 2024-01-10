@@ -5,7 +5,14 @@ import 'package:get/get.dart';
 import '../../report/views/draw_result_view.dart';
 
 class PasswordView extends GetView {
-  const PasswordView({Key? key}) : super(key: key);
+   PasswordView({Key? key}) : super(key: key);
+  final TextEditingController _oldPasswordController =
+  TextEditingController();
+   final TextEditingController _newPasswordController =
+   TextEditingController();
+   final TextEditingController _rePasswordController =
+   TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,9 +37,9 @@ class PasswordView extends GetView {
                 child: const Center(child: Text("Password",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 21),)),
               ),
 
-              const Row(
+               Row(
                 children: [
-                  Expanded(
+                  const Expanded(
                     flex: 3,
                     child: Padding(
                       padding: EdgeInsets.only(left: 4.0),
@@ -47,7 +54,7 @@ class PasswordView extends GetView {
                     child: Padding(
                       padding: EdgeInsets.only(right: 6.0),
                       child: TextField(
-
+controller: _oldPasswordController,
                         decoration: InputDecoration(
                           hintText: "Old Password",
 
@@ -59,16 +66,16 @@ class PasswordView extends GetView {
                   ),
                 ],
               ),
-              const Row(
+               Row(
                 children: [
-                  Expanded(
+                  const Expanded(
                     flex: 3,
                     child: Padding(
                       padding: EdgeInsets.only(left: 4.0),
                       child: Text("New Password ",style: TextStyle(fontSize: 17,),),
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                       flex: 1,
                       child: Text(":")),
                   Expanded(
@@ -76,8 +83,9 @@ class PasswordView extends GetView {
                     child: Padding(
                       padding: EdgeInsets.only(right: 6.0),
                       child: TextField(
+                        controller: _newPasswordController,
 
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
 hintText:"New Password",
 
                           hintStyle: TextStyle(color: Colors.grey, fontSize: 15),
@@ -87,16 +95,16 @@ hintText:"New Password",
                   ),
                 ],
               ),
-              const Row(
+               Row(
                 children: [
-                  Expanded(
+                  const Expanded(
                     flex: 3,
                     child: Padding(
                       padding: EdgeInsets.only(left: 4.0),
                       child: Text("Retype Password ",style: TextStyle(fontSize: 17,),),
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                       flex: 1,
                       child: Text(":")),
                   Expanded(
@@ -104,8 +112,8 @@ hintText:"New Password",
                     child: Padding(
                       padding: EdgeInsets.only(right: 6.0),
                       child: TextField(
-
-                        decoration: InputDecoration(
+controller: _rePasswordController,
+                        decoration: const InputDecoration(
                           hintText: "Retype Password ",
 
 
@@ -119,7 +127,7 @@ hintText:"New Password",
               ),
             ],
           ),
-          rsubmitButton(buttonName: "Submit")
+          const rsubmitButton(buttonName: "Submit")
         ],
       ),
     );
