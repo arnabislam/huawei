@@ -30,7 +30,7 @@ class _WinNumberViewState extends State<WinNumberView> {
   Widget build(BuildContext context) {
 
 
-    final authctrl = Get.put(AuthController());
+ //   final authctrl = Get.put(AuthController());
 
 
 

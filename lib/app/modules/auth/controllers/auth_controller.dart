@@ -1,12 +1,16 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:huawei_new/app/modules/model/views/profile_model_view.dart';
+import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 
 class AuthController extends GetxController {
   final authLoading = false.obs;
   final loadingChangePassword = false.obs;
   final loadingResetPassword = false.obs;
-  //final profile = Profile().obs;
+  final profile = Profile().obs;
   final token = ''.obs;
 
   late StreamingSharedPreferences preferences;
@@ -49,7 +53,7 @@ class AuthController extends GetxController {
     var dio = Dio();
     try {
       final response = await dio.post(
-        kLoginUrl,
+        "kLoginUrl",
         data: data,
       );
       int? statusCode = response.statusCode;
@@ -68,7 +72,7 @@ class AuthController extends GetxController {
           snackPosition: SnackPosition.BOTTOM,
         );
 
-        Get.offAllNamed(HomeScreen.id);
+       // Get.offAllNamed(HomeScreen.id);
       } else {
         Get.snackbar(
           'Failed',
@@ -110,7 +114,7 @@ class AuthController extends GetxController {
     var dio = Dio();
     try {
       final response = await dio.post(
-        kRegisterWithProfileUrl,
+        "kRegisterWithProfileUrl",
         data: data,
       );
       int? statusCode = response.statusCode;
@@ -129,7 +133,7 @@ class AuthController extends GetxController {
           snackPosition: SnackPosition.BOTTOM,
         );
 
-        Get.offAllNamed(HomeScreen.id);
+        //Get.offAllNamed(HomeScreen.id);
       } else {
         Get.snackbar(
           'Failed',
@@ -157,7 +161,7 @@ class AuthController extends GetxController {
     var dio = Dio();
     try {
       final response = await dio.post(
-        kLogoutUrl,
+      " www.bfg.com",
         options: Options(
           headers: {
             'accept': '*/*',
@@ -170,7 +174,7 @@ class AuthController extends GetxController {
 
       if (statusCode == 201) {
         preferences.clear();
-        Get.offAllNamed(WelcomeScreen.id);
+       // Get.offAllNamed(WelcomeScreen.id);
         token.value = '';
         // profile.value = Profile();
       } else {
@@ -192,7 +196,7 @@ class AuthController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
       preferences.clear();
-      Get.offAllNamed(WelcomeScreen.id);
+      //Get.offAllNamed(WelcomeScreen.id);
       token.value = '';
       // profile.value = Profile();
     }
@@ -220,7 +224,7 @@ class AuthController extends GetxController {
     };
     try {
       final response = await dio.put(
-        kChangePasswordUpdateUrl,
+        "kChangePasswordUpdateUrl",
         data: data,
         options: Options(headers: {
           'accept': '*/*',
@@ -280,7 +284,7 @@ class AuthController extends GetxController {
     };
     try {
       final response = await dio.post(
-        kPasswordResetOtpGenerateCreateUrl,
+       " kPasswordResetOtpGenerateCreateUrl",
         data: data,
         options: Options(headers: {
           'accept': '*/*',
@@ -334,7 +338,7 @@ class AuthController extends GetxController {
     };
     try {
       final response = await dio.put(
-        kResetPasswordWithOtpUpdateUrl,
+        "kResetPasswordWithOtpUpdateUrl",
         data: data,
         options: Options(headers: {
           'accept': '*/*',
@@ -351,7 +355,7 @@ class AuthController extends GetxController {
           snackPosition: SnackPosition.BOTTOM,
           duration: const Duration(seconds: 6),
         );
-        Get.offAllNamed(WelcomeScreen.id);
+        // Get.offAllNamed(WelcomeScreen.id);
         // return true;
       } else {
         Get.snackbar(
