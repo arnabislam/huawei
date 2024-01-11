@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -21,19 +23,43 @@ class _BetmobileViewState extends State<BetmobileView> {
 
    final TextEditingController buttonTextController =
    TextEditingController();
+    bool mChecked=false;
+    bool pChecked=false;
+    bool tChecked=false;
+    bool sChecked=false;
+    bool bChecked=false;
+    bool kChecked=false;
+    bool wChecked=false;
+    bool gChecked=false;
+    bool eChecked=false;
+    bool oneChecked=false;
+
+
+  bool twoChecked=false;
+  bool threeChecked=false;
+  bool fourChecked=false;
+  bool fiveChecked=false;
+  bool sixChecked=false;
+  bool sevenChecked=false;
+  bool eightChecked=false;
+  bool nineChecked=false;
+  bool zeroChecked=false;
+
+
 
 
   @override
   void dispose() {
-    _betMobileMyrController.dispose();
+    _betMobileMyrController2.dispose();
     super.dispose();
   }
 
   void updateTextField(int buttonNumber) {
     setState(() {
-      _betMobileMyrController.text = '$buttonNumber';
+      _betMobileMyrController2.text += '$buttonNumber';
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +77,8 @@ class _BetmobileViewState extends State<BetmobileView> {
                     padding: EdgeInsets.only(left: 5,right: 3),
                     width: MediaQuery.of(context).size.width*0.85,
                     child:  TextField(
+
+
                       controller: _betMobileMyrController,
                       decoration: InputDecoration(
                         hintText: 'Remark',
@@ -62,6 +90,7 @@ class _BetmobileViewState extends State<BetmobileView> {
                 ],
               ),
                TextField(
+                 keyboardType: TextInputType.none,
                 controller: _betMobileMyrController2,
                 decoration: InputDecoration(
 
@@ -74,6 +103,7 @@ class _BetmobileViewState extends State<BetmobileView> {
               ),
 
                TextField(
+                 keyboardType: TextInputType.none,
 controller: _betMobileMyrController3,
                 decoration: const InputDecoration(
 
@@ -93,88 +123,261 @@ controller: _betMobileMyrController3,
                   children: [
                     InkWell(
                       onTap: (){
-                        updateTextField(1);
+                        setState(() {
+                          mChecked=!mChecked;
+                          if(mChecked!=false){
+                            updateTextField(1);
+
+                          }else if(mChecked==false){
+                            updateTextField(1);
+                          }
+                        });
+                        // if(mChecked=false){
+                        //   updateTextField(1);
+                        //
+                        // }
+                        print("bangladesh");
+                        print(mChecked);
+                       //  _betMobileMyrController.text="1";
+                       //  setState(() {
+                       //    mChecked = !mChecked;
+                       //  });
                       },
-                      child: Padding(
+                      child:
+                      Padding(
                         padding: EdgeInsets.all(2.0),
                         child: buttonContainer(button: 'M',),
                       ),
                     ),
                     InkWell(
                       onTap: (){
-                        updateTextField(2);
+                        setState(() {
+                          pChecked=!pChecked;
+                          if(pChecked!=false){
+                            updateTextField(2);
+
+                          }
+                        });
+
                       },
-                      child: Padding(
+                      child:  Padding(
                         padding: EdgeInsets.all(2.0),
                         child: buttonContainer(button: 'P',),
                       ),
-                    ),  InkWell(
+                    ),
+                    InkWell(
                       onTap: (){
-                        updateTextField(3);
+                        setState(() {
+                          tChecked=!tChecked;
+                          if(tChecked!=false){
+                            updateTextField(3);
+
+                          }
+                        });
+
                       },
                       child: Padding(
                         padding: EdgeInsets.all(2.0),
                         child: buttonContainer(button: 'T',),
                       ),
-                    ),  Padding(
-                      padding: EdgeInsets.all(2.0),
-                      child: buttonContainer(button: 'S',),
-                    ),  Padding(
-                      padding: EdgeInsets.all(2.0),
-                      child: buttonContainer(button: 'B',),
-                    ),  Padding(
-                      padding: EdgeInsets.all(2.0),
-                      child: buttonContainer(button: 'K',),
-                    ),  Padding(
-                      padding: EdgeInsets.all(2.0),
-                      child: buttonContainer(button: 'W',),
-                    ),  Padding(
-                      padding: EdgeInsets.all(2.0),
-                      child: buttonContainer(button: 'G',),
-                    ),  Padding(
-                      padding: EdgeInsets.all(2.0),
-                      child: buttonContainer(button: 'E',),
                     ),
+                    InkWell(
+                      onTap: (){
+                        setState(() {
+                          sChecked=!sChecked;
+                          if(sChecked!=false){
+                            updateTextField(4);
+
+                          }
+                        });
+
+                      },
+                      child:  Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: buttonContainer(button: 'S',),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: (){
+                        setState(() {
+                          bChecked=!bChecked;
+                          if(bChecked!=false){
+                            updateTextField(5);
+
+                          }
+                        });
+
+                      },
+                      child:  Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: buttonContainer(button: 'B',),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: (){
+                        setState(() {
+                          kChecked=!kChecked;
+                          if(kChecked!=false){
+                            updateTextField(6);
+
+                          }
+                        });
+
+                      },
+                      child:  Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: buttonContainer(button: 'K',),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: (){
+                        setState(() {
+                          wChecked=!wChecked;
+                          if(wChecked!=false){
+                            updateTextField(7);
+
+                          }
+                        });
+
+                      },
+                      child:  Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: buttonContainer(button: 'W',),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: (){
+                        setState(() {
+                          gChecked=!gChecked;
+                          if(gChecked!=false){
+                            updateTextField(8);
+
+                          }
+                        });
+
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: buttonContainer(button: 'G',),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: (){
+                        setState(() {
+                          eChecked=!eChecked;
+                          if(eChecked!=false){
+                            updateTextField(9);
+
+                          }
+                        });
+
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: buttonContainer(button: 'E',),
+                      ),
+                    ),
+
+
+
                   ],
                 ),
               ),
               SizedBox(height:MediaQuery.of(context).size.height*0.004,),
-              const Padding(
+               Padding(
                 padding: EdgeInsets.only(left: 12.0,right: 12),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    numberContainer(number: '1',),
-                    numberContainer(number: '2',),
-                    numberContainer(number: '3',),
+                    InkWell(
+                        onTap: (){
+                          updateTextField(1);
+
+                        },
+
+                        child: numberContainer(number: '1',)),
+                    InkWell(
+
+
+                        onTap: (){
+                          updateTextField(2);
+
+                        },
+                        child: numberContainer(number: '2',)),
+                    InkWell(
+
+                        onTap: (){
+                          updateTextField(3);
+
+                        },
+                        child: numberContainer(number: '3',)),
                     numberContainer(number: 'BOX',),
                     numberContainer(number: 'D',),
                   ],
                 ),
               ),
               SizedBox(height:MediaQuery.of(context).size.height*0.010,),
-              const Padding(
+               Padding(
                 padding: EdgeInsets.only(left: 12.0,right: 12),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    numberContainer(number: '4',),
-                    numberContainer(number: '5',),
-                    numberContainer(number: '6',),
+                    InkWell(
+                        onTap: (){
+                          updateTextField(4);
+
+                        },
+                        child: numberContainer(number: '4',)),
+                    InkWell(
+
+                        onTap: (){
+                          updateTextField(5);
+
+                        },
+                        child: numberContainer(number: '5',)),
+                    InkWell(
+
+                        onTap: (){
+                          updateTextField(6);
+
+                        },
+                        child: numberContainer(number: '6',)),
                     numberContainer(number: 'iBOX',),
-                    numberContainer(number: 'C',),
+                    InkWell(
+
+                        onTap: (){
+                          _betMobileMyrController2.clear();
+
+                        },
+                        child: numberContainer(number: 'C',)),
                   ],
                 ),
               ),
               SizedBox(height:MediaQuery.of(context).size.height*0.010,),
               Padding(
                 padding: const EdgeInsets.only(left: 12.0,right: 12),
-                child: const Row(
+                child:  Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    numberContainer(number: '7',),
-                    numberContainer(number: '8',),
-                    numberContainer(number: '9',),
+                    InkWell(
+                        onTap: (){
+                          updateTextField(7);
+
+                        },
+                        child: numberContainer(number: '7',)),
+                    InkWell(
+                        onTap: (){
+                          updateTextField(8);
+
+                        },
+                        child: numberContainer(number: '8',)),
+                    InkWell(
+                        onTap: (){
+                          updateTextField(9);
+
+                        },
+
+                        child: numberContainer(number: '9',)),
                     numberContainer(number: 'REV',),
                     numberContainer(number: '.',),
                   ],
@@ -187,7 +390,10 @@ controller: _betMobileMyrController3,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     numberContainer(number: '*',),
-                    numberContainer(number: '0',),
+                    InkWell( onTap: (){
+                      updateTextField(0);
+
+                    },child: numberContainer(number: '0',)),
                     numberContainer(number: '#',),
                     Container(
                       height:MediaQuery.of(context).size.height*0.044 ,
@@ -248,8 +454,8 @@ class buttonContainer extends StatelessWidget {
     return Container(
      height:MediaQuery.of(context).size.height*0.054 ,
       width:MediaQuery.of(context).size.width*0.092,
-      color: Colors.grey,
-      child: Center(child: Text(button,style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500),)),
+      color:Colors.grey,
+      child: Center(child: Text(button,style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500,),)),
     );
   }
 }
