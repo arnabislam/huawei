@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:huawei_new/app/modules/bet/views/bet_history_result_view.dart';
 import 'package:huawei_new/app/modules/report/views/draw_result_view.dart';
 import 'package:intl/intl.dart';
+
+import 'betmobile_view.dart';
 
 class BetHistoryView extends GetView {
    BetHistoryView({Key? key}) : super(key: key);
@@ -260,7 +263,12 @@ class BetHistoryView extends GetView {
 
               ],
             ),
-            const rsubmitButton(buttonName: "Submit")
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(onPressed: (){
+                Get.to(BetHistoryResultView());
+              }, child: Center(child: Text("Submit",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),))),
+            )
           ],
         ),
       ),
