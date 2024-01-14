@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 class BetController extends GetxController {
   //TODO: Implement BetController
 
+  final _selectedLottery = [].obs;
+
   final count = 0.obs;
   @override
   void onInit() {
