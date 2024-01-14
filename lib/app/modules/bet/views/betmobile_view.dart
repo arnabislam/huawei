@@ -1,6 +1,9 @@
 import 'dart:core';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../controllers/bet_controller.dart';
 
 class BetmobileView extends StatefulWidget {
   BetmobileView({Key? key}) : super(key: key);
@@ -10,43 +13,13 @@ class BetmobileView extends StatefulWidget {
 }
 
 class _BetmobileViewState extends State<BetmobileView> {
-  final TextEditingController _dController = TextEditingController(text: 'D');
-  final TextEditingController _remarkBetMobileMyrController =
-      TextEditingController();
-
-  final TextEditingController _companyBetMobileMyrController2 =
-      TextEditingController(text: '#');
-
-  final TextEditingController _lotteryBetMobileMyrController3 =
-      TextEditingController();
-
-  final TextEditingController buttonTextController = TextEditingController();
-  bool mChecked = false;
-  bool pChecked = false;
-  bool tChecked = false;
-  bool sChecked = false;
-  bool bChecked = false;
-  bool kChecked = false;
-  bool wChecked = false;
-  bool gChecked = false;
-  bool eChecked = false;
-  bool oneChecked = false;
-
-  bool twoChecked = false;
-  bool threeChecked = false;
-  bool fourChecked = false;
-  bool fiveChecked = false;
-  bool sixChecked = false;
-  bool sevenChecked = false;
-  bool eightChecked = false;
-  bool nineChecked = false;
-  bool zeroChecked = false;
-
-  bool greatChecked = false;
-
+  final betController = Get.put(BetController());
+  FocusNode _firstFocusNode = FocusNode();
+  FocusNode _secondFocusNode = FocusNode();
   @override
   void dispose() {
-    // _betMobileMyrController2.dispose();
+    _firstFocusNode.dispose();
+    _secondFocusNode.dispose();
     super.dispose();
   }
 
@@ -66,7 +39,7 @@ class _BetmobileViewState extends State<BetmobileView> {
                   padding: const EdgeInsets.only(left: 5, right: 3),
                   width: MediaQuery.of(context).size.width * 0.85,
                   child: TextField(
-                    controller: _remarkBetMobileMyrController,
+                    controller: betController.remarkBetMobileMyrController,
                     decoration: const InputDecoration(
                       hintText: 'Remark',
                       hintStyle: TextStyle(color: Colors.grey, fontSize: 19),
@@ -82,12 +55,8 @@ class _BetmobileViewState extends State<BetmobileView> {
             ),
             TextField(
               keyboardType: TextInputType.none,
-              controller: _dController,
-              onTap: () {
-                setState(() {
-                  greatChecked = true;
-                });
-              },
+              controller: betController.dController,
+              onTap: () {},
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
                   borderSide: BorderSide.none,
@@ -95,26 +64,33 @@ class _BetmobileViewState extends State<BetmobileView> {
               ),
             ),
             TextField(
+              focusNode: _firstFocusNode,
               keyboardType: TextInputType.none,
-              controller: _companyBetMobileMyrController2,
+              controller: betController.companyBetMobileMyrController,
               onTap: () {
-                setState(() {
-                  greatChecked = true;
-                });
+                betController.isLottery.value = false;
               },
+              style: const TextStyle(
+                color: Colors.red, // You can set text color here
+                fontSize: 16.0, // You can set font size here
+                fontWeight: FontWeight.bold, // You can set font weight here
+              ),
               decoration: const InputDecoration(
+                labelStyle: TextStyle(
+                  color: Colors.red, // You can set label text color here
+                ),
                 border: OutlineInputBorder(
                   borderSide: BorderSide.none,
                 ),
               ),
             ),
             TextField(
+              focusNode: _secondFocusNode,
               keyboardType: TextInputType.none,
-              controller: _lotteryBetMobileMyrController3,
+              controller: betController.lotteryBetMobileMyrController,
               onTap: () {
-                setState(() {
-                  greatChecked = false;
-                });
+                betController.isLottery.value = true;
+                print(betController.isLottery);
               },
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
@@ -125,589 +101,824 @@ class _BetmobileViewState extends State<BetmobileView> {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.3,
             ),
-            if (greatChecked)
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12.0, right: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+            Obx(
+              () => betController.isLottery.value == false
+                  ? Column(
                       children: [
-                        InkWell(
-                          onTap: () {
-                            // setState(() {
-                            //   mChecked = !mChecked;
-                            //   if (mChecked != false) {
-                            //     // updateTextField(1);
-                            //   } else if (mChecked == false) {
-                            //     updateTextField(1);
-                            //   }
-                            // });
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'M',
-                            ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12.0, right: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  if (betController
+                                      .companyBetMobileMyrController.text
+                                      .contains('1')) {
+                                    betController.companyBetMobileMyrController
+                                            .text =
+                                        betController
+                                            .companyBetMobileMyrController.text
+                                            .replaceAll('1', '');
+                                  } else {
+                                    betController.companyBetMobileMyrController
+                                        .text += '1';
+                                  }
+                                  setState(() {});
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: buttonContainer(
+                                    button: 'M',
+                                    isSelected: betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('1'),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  if (betController
+                                      .companyBetMobileMyrController.text
+                                      .contains('2')) {
+                                    betController.companyBetMobileMyrController
+                                            .text =
+                                        betController
+                                            .companyBetMobileMyrController.text
+                                            .replaceAll('2', '');
+                                  } else {
+                                    betController.companyBetMobileMyrController
+                                        .text += '2';
+                                  }
+                                  setState(() {});
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: buttonContainer(
+                                    isSelected: betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('2'),
+                                    button: 'P',
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  if (betController
+                                      .companyBetMobileMyrController.text
+                                      .contains('3')) {
+                                    betController.companyBetMobileMyrController
+                                            .text =
+                                        betController
+                                            .companyBetMobileMyrController.text
+                                            .replaceAll('3', '');
+                                  } else {
+                                    betController.companyBetMobileMyrController
+                                        .text += '3';
+                                  }
+                                  setState(() {});
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: buttonContainer(
+                                    button: 'T',
+                                    isSelected: betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('3'),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  if (betController
+                                      .companyBetMobileMyrController.text
+                                      .contains('4')) {
+                                    betController.companyBetMobileMyrController
+                                            .text =
+                                        betController
+                                            .companyBetMobileMyrController.text
+                                            .replaceAll('4', '');
+                                  } else {
+                                    betController.companyBetMobileMyrController
+                                        .text += '4';
+                                  }
+                                  setState(() {});
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: buttonContainer(
+                                    button: 'S',
+                                    isSelected: betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('4'),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  if (betController
+                                      .companyBetMobileMyrController.text
+                                      .contains('5')) {
+                                    betController.companyBetMobileMyrController
+                                            .text =
+                                        betController
+                                            .companyBetMobileMyrController.text
+                                            .replaceAll('5', '');
+                                  } else {
+                                    betController.companyBetMobileMyrController
+                                        .text += '5';
+                                  }
+                                  setState(() {});
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: buttonContainer(
+                                    isSelected: betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('5'),
+                                    button: 'B',
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  if (betController
+                                      .companyBetMobileMyrController.text
+                                      .contains('6')) {
+                                    betController.companyBetMobileMyrController
+                                            .text =
+                                        betController
+                                            .companyBetMobileMyrController.text
+                                            .replaceAll('6', '');
+                                  } else {
+                                    betController.companyBetMobileMyrController
+                                        .text += '6';
+                                  }
+                                  setState(() {});
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: buttonContainer(
+                                    button: 'K',
+                                    isSelected: betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('6'),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  if (betController
+                                      .companyBetMobileMyrController.text
+                                      .contains('7')) {
+                                    betController.companyBetMobileMyrController
+                                            .text =
+                                        betController
+                                            .companyBetMobileMyrController.text
+                                            .replaceAll('7', '');
+                                  } else {
+                                    betController.companyBetMobileMyrController
+                                        .text += '7';
+                                  }
+                                  setState(() {});
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: buttonContainer(
+                                    button: 'W',
+                                    isSelected: betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('7'),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  if (betController
+                                      .companyBetMobileMyrController.text
+                                      .contains('8')) {
+                                    betController.companyBetMobileMyrController
+                                            .text =
+                                        betController
+                                            .companyBetMobileMyrController.text
+                                            .replaceAll('8', '');
+                                  } else {
+                                    betController.companyBetMobileMyrController
+                                        .text += '8';
+                                  }
+                                  setState(() {});
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: buttonContainer(
+                                    button: 'G',
+                                    isSelected: betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('8'),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  if (betController
+                                      .companyBetMobileMyrController.text
+                                      .contains('9')) {
+                                    betController.companyBetMobileMyrController
+                                            .text =
+                                        betController
+                                            .companyBetMobileMyrController.text
+                                            .replaceAll('9', '');
+                                  } else {
+                                    betController.companyBetMobileMyrController
+                                        .text += '9';
+                                  }
+                                  setState(() {});
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: buttonContainer(
+                                    button: 'E',
+                                    isSelected: betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('9'),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        InkWell(
-                          onTap: () {
-                            // setState(() {
-                            //   pChecked = !pChecked;
-                            //   if (pChecked != false) {
-                            //     updateTextField(2);
-                            //   }
-                            // });
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'P',
-                            ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.004,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12.0, right: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              InkWell(
+                                  onTap: () {
+                                    if (betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('1')) {
+                                      betController
+                                              .companyBetMobileMyrController
+                                              .text =
+                                          betController
+                                              .companyBetMobileMyrController
+                                              .text
+                                              .replaceAll('1', '');
+                                    } else {
+                                      betController
+                                          .companyBetMobileMyrController
+                                          .text += '1';
+                                    }
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '1',
+                                  )),
+                              InkWell(
+                                  onTap: () {
+                                    if (betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('2')) {
+                                      betController
+                                              .companyBetMobileMyrController
+                                              .text =
+                                          betController
+                                              .companyBetMobileMyrController
+                                              .text
+                                              .replaceAll('2', '');
+                                    } else {
+                                      betController
+                                          .companyBetMobileMyrController
+                                          .text += '2';
+                                    }
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '2',
+                                  )),
+                              InkWell(
+                                  onTap: () {
+                                    if (betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('3')) {
+                                      betController
+                                              .companyBetMobileMyrController
+                                              .text =
+                                          betController
+                                              .companyBetMobileMyrController
+                                              .text
+                                              .replaceAll('3', '');
+                                    } else {
+                                      betController
+                                          .companyBetMobileMyrController
+                                          .text += '3';
+                                    }
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '3',
+                                  )),
+                              const numberContainer(
+                                number: 'BOX',
+                              ),
+                              const numberContainer(
+                                number: 'D',
+                              ),
+                            ],
                           ),
                         ),
-                        InkWell(
-                          onTap: () {
-                            // setState(() {
-                            //   tChecked = !tChecked;
-                            //   if (tChecked != false) {
-                            //     updateTextField(3);
-                            //   }
-                            // });
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'T',
-                            ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.010,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12.0, right: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              InkWell(
+                                  onTap: () {
+                                    if (betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('4')) {
+                                      betController
+                                              .companyBetMobileMyrController
+                                              .text =
+                                          betController
+                                              .companyBetMobileMyrController
+                                              .text
+                                              .replaceAll('4', '');
+                                    } else {
+                                      betController
+                                          .companyBetMobileMyrController
+                                          .text += '4';
+                                    }
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '4',
+                                  )),
+                              InkWell(
+                                  onTap: () {
+                                    if (betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('5')) {
+                                      betController
+                                              .companyBetMobileMyrController
+                                              .text =
+                                          betController
+                                              .companyBetMobileMyrController
+                                              .text
+                                              .replaceAll('5', '');
+                                    } else {
+                                      betController
+                                          .companyBetMobileMyrController
+                                          .text += '5';
+                                    }
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '5',
+                                  )),
+                              InkWell(
+                                onTap: () {
+                                  if (betController
+                                      .companyBetMobileMyrController.text
+                                      .contains('6')) {
+                                    betController.companyBetMobileMyrController
+                                            .text =
+                                        betController
+                                            .companyBetMobileMyrController.text
+                                            .replaceAll('6', '');
+                                  } else {
+                                    betController.companyBetMobileMyrController
+                                        .text += '6';
+                                  }
+                                  setState(() {});
+                                },
+                                child: const numberContainer(
+                                  number: '6',
+                                ),
+                              ),
+                              const numberContainer(
+                                number: 'iBOX',
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  if (betController
+                                      .companyBetMobileMyrController
+                                      .text
+                                      .isNotEmpty) {
+                                    setState(() {
+                                      betController
+                                              .companyBetMobileMyrController
+                                              .text =
+                                          betController
+                                              .companyBetMobileMyrController
+                                              .text
+                                              .substring(
+                                        0,
+                                        betController
+                                                .companyBetMobileMyrController
+                                                .text
+                                                .length -
+                                            1,
+                                      );
+                                    });
+                                  }
+                                },
+                                child: const numberContainer(
+                                  number: 'C',
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        InkWell(
-                          onTap: () {
-                            // setState(() {
-                            //   sChecked = !sChecked;
-                            //   if (sChecked != false) {
-                            //     updateTextField(4);
-                            //   }
-                            // });
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'S',
-                            ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.010,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12.0, right: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              InkWell(
+                                  onTap: () {
+                                    if (betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('7')) {
+                                      betController
+                                              .companyBetMobileMyrController
+                                              .text =
+                                          betController
+                                              .companyBetMobileMyrController
+                                              .text
+                                              .replaceAll('7', '');
+                                    } else {
+                                      betController
+                                          .companyBetMobileMyrController
+                                          .text += '7';
+                                    }
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '7',
+                                  )),
+                              InkWell(
+                                  onTap: () {
+                                    if (betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('8')) {
+                                      betController
+                                              .companyBetMobileMyrController
+                                              .text =
+                                          betController
+                                              .companyBetMobileMyrController
+                                              .text
+                                              .replaceAll('8', '');
+                                    } else {
+                                      betController
+                                          .companyBetMobileMyrController
+                                          .text += '8';
+                                    }
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '8',
+                                  )),
+                              InkWell(
+                                  onTap: () {
+                                    if (betController
+                                        .companyBetMobileMyrController.text
+                                        .contains('9')) {
+                                      betController
+                                              .companyBetMobileMyrController
+                                              .text =
+                                          betController
+                                              .companyBetMobileMyrController
+                                              .text
+                                              .replaceAll('9', '');
+                                    } else {
+                                      betController
+                                          .companyBetMobileMyrController
+                                          .text += '9';
+                                    }
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '9',
+                                  )),
+                              const numberContainer(
+                                number: 'REV',
+                              ),
+                              const numberContainer(
+                                number: '.',
+                              ),
+                            ],
                           ),
                         ),
-                        InkWell(
-                          onTap: () {
-                            // setState(() {
-                            //   bChecked = !bChecked;
-                            //   if (bChecked != false) {
-                            //     updateTextField(5);
-                            //   }
-                            // });
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'B',
-                            ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.010,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12.0, right: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              const numberContainer(
+                                number: '*',
+                              ),
+                              InkWell(
+                                onTap: () {},
+                                child: const numberContainer(
+                                  number: '0',
+                                ),
+                              ),
+                              const numberContainer(
+                                number: '#',
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  betController.isLottery.value = true;
+                                  FocusScope.of(context)
+                                      .requestFocus(_secondFocusNode);
+                                },
+                                child: Container(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.044,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.368,
+                                  color: Colors.grey,
+                                  child: const Center(
+                                      child: Text(
+                                    "Enter",
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w500),
+                                  )),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        InkWell(
-                          onTap: () {
-                            // setState(() {
-                            //   kChecked = !kChecked;
-                            //   if (kChecked != false) {
-                            //     updateTextField(6);
-                            //   }
-                            // });
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'K',
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 28, right: 28, top: 5, bottom: 11),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Submit",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            // setState(() {
-                            //   wChecked = !wChecked;
-                            //   if (wChecked != false) {
-                            //     updateTextField(7);
-                            //   }
-                            // });
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'W',
-                            ),
+                        )
+                      ],
+                    )
+                  : Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12.0, right: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              InkWell(
+                                  onTap: () {
+                                    betController.lotteryBetMobileMyrController
+                                        .text += '1';
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '1',
+                                  )),
+                              InkWell(
+                                  onTap: () {
+                                    betController.lotteryBetMobileMyrController
+                                        .text += '2';
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '2',
+                                  )),
+                              InkWell(
+                                  onTap: () {
+                                    betController.lotteryBetMobileMyrController
+                                        .text += '3';
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '3',
+                                  )),
+                              const numberContainer(
+                                number: 'BOX',
+                              ),
+                              const numberContainer(
+                                number: 'D',
+                              ),
+                            ],
                           ),
                         ),
-                        InkWell(
-                          onTap: () {
-                            // setState(() {
-                            //   gChecked = !gChecked;
-                            //   if (gChecked != false) {
-                            //     updateTextField(8);
-                            //   }
-                            // });
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'G',
-                            ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.010,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12.0, right: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              InkWell(
+                                  onTap: () {
+                                    betController.lotteryBetMobileMyrController
+                                        .text += '4';
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '4',
+                                  )),
+                              InkWell(
+                                  onTap: () {
+                                    betController.lotteryBetMobileMyrController
+                                        .text += '5';
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '5',
+                                  )),
+                              InkWell(
+                                onTap: () {
+                                  betController.lotteryBetMobileMyrController
+                                      .text += '6';
+                                  setState(() {});
+                                },
+                                child: const numberContainer(
+                                  number: '6',
+                                ),
+                              ),
+                              const numberContainer(
+                                number: 'iBOX',
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  if (betController
+                                      .lotteryBetMobileMyrController
+                                      .text
+                                      .isNotEmpty) {
+                                    setState(() {
+                                      betController
+                                              .lotteryBetMobileMyrController
+                                              .text =
+                                          betController
+                                              .lotteryBetMobileMyrController
+                                              .text
+                                              .substring(
+                                                  0,
+                                                  betController
+                                                          .lotteryBetMobileMyrController
+                                                          .text
+                                                          .length -
+                                                      1);
+                                    });
+                                  }
+                                },
+                                child: const numberContainer(
+                                  number: 'C',
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        InkWell(
-                          onTap: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'E',
-                            ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.010,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12.0, right: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              InkWell(
+                                  onTap: () {
+                                    betController.lotteryBetMobileMyrController
+                                        .text += '7';
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '7',
+                                  )),
+                              InkWell(
+                                  onTap: () {
+                                    betController.lotteryBetMobileMyrController
+                                        .text += '8';
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '8',
+                                  )),
+                              InkWell(
+                                  onTap: () {
+                                    betController.lotteryBetMobileMyrController
+                                        .text += '9';
+                                    setState(() {});
+                                  },
+                                  child: const numberContainer(
+                                    number: '9',
+                                  )),
+                              const numberContainer(
+                                number: 'REV',
+                              ),
+                              const numberContainer(
+                                number: '.',
+                              ),
+                            ],
                           ),
                         ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.010,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12.0, right: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              const numberContainer(
+                                number: '*',
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  betController.lotteryBetMobileMyrController
+                                      .text += '0';
+                                  setState(() {});
+                                },
+                                child: const numberContainer(
+                                  number: '0',
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  betController.lotteryBetMobileMyrController
+                                      .text += '#';
+                                  setState(() {});
+                                },
+                                child: const numberContainer(
+                                  number: '#',
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  betController.isLottery.value = true;
+                                  FocusScope.of(context)
+                                      .requestFocus(_secondFocusNode);
+                                },
+                                child: Container(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.044,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.368,
+                                  color: Colors.grey,
+                                  child: const Center(
+                                      child: Text(
+                                    "Enter",
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w500),
+                                  )),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 28, right: 28, top: 5, bottom: 11),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              betController.tryToMakeOrder();
+                            },
+                            child: const Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Submit",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.004,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12.0, right: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        InkWell(
-                            onTap: () {
-                              // updateTextField(1);
-                            },
-                            child: const numberContainer(
-                              number: '1',
-                            )),
-                        InkWell(
-                          onTap: () {
-                            // updateTextField(2);
-                          },
-                          child: const numberContainer(
-                            number: '2',
-                          ),
-                        ),
-                        InkWell(
-                            onTap: () {
-                              // updateTextField(3);
-                            },
-                            child: const numberContainer(
-                              number: '3',
-                            )),
-                        const numberContainer(
-                          number: 'BOX',
-                        ),
-                        const numberContainer(
-                          number: 'D',
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.010,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12.0, right: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        InkWell(
-                            onTap: () {
-                              // updateTextField(4);
-                            },
-                            child: const numberContainer(
-                              number: '4',
-                            )),
-                        InkWell(
-                            onTap: () {
-                              // updateTextField(5);
-                            },
-                            child: const numberContainer(
-                              number: '5',
-                            )),
-                        InkWell(
-                            onTap: () {
-                              // updateTextField(6);
-                            },
-                            child: const numberContainer(
-                              number: '6',
-                            )),
-                        const numberContainer(
-                          number: 'iBOX',
-                        ),
-                        InkWell(
-                            onTap: () {
-                              // _betMobileMyrController2.clear();
-                            },
-                            child: const numberContainer(
-                              number: 'C',
-                            )),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.010,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12.0, right: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        InkWell(
-                            onTap: () {
-                              // updateTextField(7);
-                            },
-                            child: const numberContainer(
-                              number: '7',
-                            )),
-                        InkWell(
-                            onTap: () {
-                              // updateTextField(8);
-                            },
-                            child: const numberContainer(
-                              number: '8',
-                            )),
-                        InkWell(
-                            onTap: () {
-                              // updateTextField(9);
-                            },
-                            child: const numberContainer(
-                              number: '9',
-                            )),
-                        const numberContainer(
-                          number: 'REV',
-                        ),
-                        const numberContainer(
-                          number: '.',
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.010,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12.0, right: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        const numberContainer(
-                          number: '*',
-                        ),
-                        InkWell(
-                          onTap: () {
-                            // updateTextField(0);
-                          },
-                          child: const numberContainer(
-                            number: '0',
-                          ),
-                        ),
-                        const numberContainer(
-                          number: '#',
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.044,
-                          width: MediaQuery.of(context).size.width * 0.368,
-                          color: Colors.grey,
-                          child: const Center(
-                            child: Text(
-                              "Enter",
-                              style: TextStyle(
-                                  fontSize: 17, fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 28, right: 28, top: 5, bottom: 11),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Center(
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            "Submit",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              )
-            else
-              Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 12.0, right: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        InkWell(
-                          onTap: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'M',
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'P',
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'T',
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'S',
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'B',
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'K',
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'W',
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'G',
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.all(2.0),
-                            child: buttonContainer(
-                              button: 'E',
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.004,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12.0, right: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        InkWell(
-                            onTap: () {
-                              // updateTextField2(1);
-                            },
-                            child: const numberContainer(
-                              number: '1',
-                            )),
-                        InkWell(
-                            onTap: () {
-                              // updateTextField2(2);
-                            },
-                            child: const numberContainer(
-                              number: '2',
-                            )),
-                        InkWell(
-                            onTap: () {
-                              // updateTextField2(3);
-                            },
-                            child: const numberContainer(
-                              number: '3',
-                            )),
-                        const numberContainer(
-                          number: 'BOX',
-                        ),
-                        const numberContainer(
-                          number: 'D',
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.010,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12.0, right: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        InkWell(
-                            onTap: () {
-                              // updateTextField2(4);
-                            },
-                            child: const numberContainer(
-                              number: '4',
-                            )),
-                        InkWell(
-                            onTap: () {
-                              // updateTextField2(5);
-                            },
-                            child: const numberContainer(
-                              number: '5',
-                            )),
-                        InkWell(
-                            onTap: () {
-                              // updateTextField2(6);
-                            },
-                            child: const numberContainer(
-                              number: '6',
-                            )),
-                        const numberContainer(
-                          number: 'iBOX',
-                        ),
-                        InkWell(
-                            onTap: () {
-                              // _betMobileMyrController3.clear();
-                            },
-                            child: const numberContainer(
-                              number: 'C',
-                            )),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.010,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12.0, right: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        InkWell(
-                            onTap: () {},
-                            child: const numberContainer(
-                              number: '7',
-                            )),
-                        InkWell(
-                            onTap: () {},
-                            child: const numberContainer(
-                              number: '8',
-                            )),
-                        InkWell(
-                            onTap: () {},
-                            child: const numberContainer(
-                              number: '9',
-                            )),
-                        const numberContainer(
-                          number: 'REV',
-                        ),
-                        const numberContainer(
-                          number: '.',
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.010,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12.0, right: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        const numberContainer(
-                          number: '*',
-                        ),
-                        InkWell(
-                            onTap: () {},
-                            child: const numberContainer(
-                              number: '0',
-                            )),
-                        const numberContainer(
-                          number: '#',
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.044,
-                          width: MediaQuery.of(context).size.width * 0.368,
-                          color: Colors.grey,
-                          child: const Center(
-                              child: Text(
-                            "Enter",
-                            style: TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.w500),
-                          )),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 28, right: 28, top: 5, bottom: 11),
-                    child: ElevatedButton(
-                        onPressed: () {},
-                        child: const Center(
-                            child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            "Submit",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ))),
-                  )
-                ],
-              )
+            ),
           ],
         ),
       ),
@@ -737,9 +948,11 @@ class numberContainer extends StatelessWidget {
 
 class buttonContainer extends StatelessWidget {
   final String button;
+  final bool isSelected;
   const buttonContainer({
     super.key,
     required this.button,
+    required this.isSelected,
   });
 
   @override
@@ -747,7 +960,7 @@ class buttonContainer extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height * 0.054,
       width: MediaQuery.of(context).size.width * 0.092,
-      color: Colors.grey,
+      color: isSelected ? Colors.red : Colors.grey,
       child: Center(
           child: Text(
         button,

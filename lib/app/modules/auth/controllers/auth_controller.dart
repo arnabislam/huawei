@@ -1,16 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:huawei_new/app/modules/auth/UserProfile.dart';
 import 'package:huawei_new/app/modules/auth/views/login_view.dart';
 import 'package:huawei_new/app/modules/bet/views/bet_view.dart';
-import 'package:huawei_new/app/modules/model/views/profile_model_view.dart';
 import 'package:huawei_new/utils/api_endpoints/api_endpoints.dart';
 
 class AuthController extends GetxController {
   final authLoading = false.obs;
   final loadingChangePassword = false.obs;
   final loadingResetPassword = false.obs;
-  final profile = Profile().obs;
+  final profile = UserProfile().obs;
   final token = ''.obs;
 
   void tryToSignIn({required String userName, required String password}) async {
@@ -29,8 +29,10 @@ class AuthController extends GetxController {
       int? statusCode = response.statusCode;
       authLoading.value = false;
       if (statusCode == 200) {
-        profile.value = Profile.fromJson(response.data);
-
+        profile.value = UserProfile.fromJson(response.data);
+        token.value = profile.value.token!;
+        print(profile.value.user!.username);
+        print(token);
         Get.snackbar(
           'Success',
           "You are Logged In now.",

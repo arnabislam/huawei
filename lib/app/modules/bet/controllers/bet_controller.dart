@@ -1,25 +1,78 @@
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:huawei_new/app/modules/auth/controllers/auth_controller.dart';
+import 'package:huawei_new/utils/api_endpoints/api_endpoints.dart';
 
 class BetController extends GetxController {
   //TODO: Implement BetController
 
-  final _selectedLottery = [].obs;
+  final isLottery = false.obs;
+  AuthController authController = Get.find();
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  final TextEditingController dController = TextEditingController(text: 'D');
+  final TextEditingController remarkBetMobileMyrController =
+      TextEditingController();
+
+  final TextEditingController companyBetMobileMyrController =
+      TextEditingController(text: '#');
+
+  final TextEditingController lotteryBetMobileMyrController =
+      TextEditingController();
+  final isLoading = false.obs;
+  final _dio = Dio();
+
+  void tryToMakeOrder() async {
+    isLoading.value = true;
+    try {
+      final data = {
+        'company_names': companyBetMobileMyrController.text,
+        'lottery_code': lotteryBetMobileMyrController.text,
+      };
+      print(data);
+      print(kMakeOrder);
+      print(authController.token.value);
+      final response = await _dio.post(
+        kMakeOrder,
+        data: data,
+        options: Options(
+          headers: {
+            // Set any required headers
+            'accept': '*/*',
+            'Authorization': 'Bearer ${authController.token.value}',
+          },
+        ),
+      );
+
+      isLoading.value = false;
+      print(response.data);
+      if (response.statusCode == 201) {
+        Get.snackbar(
+          'Success',
+          "You are Logged In now.",
+          backgroundColor: Colors.green,
+          colorText: Colors.white,
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      } else {
+        Get.snackbar(
+          'Failed',
+          "Something is wrong. Please try again.",
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      }
+    } catch (e) {
+      isLoading.value = false;
+      print(e);
+      Get.snackbar(
+        'Failed',
+        "Something is wrong. Please try again.",
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

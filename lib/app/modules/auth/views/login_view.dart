@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:huawei_new/app/modules/auth/controllers/auth_controller.dart';
 import 'package:huawei_new/app/modules/auth/views/server_view.dart';
-import 'package:huawei_new/app/modules/bet/views/bet_view.dart';
 
 class LoginView extends GetView {
   LoginView({Key? key}) : super(key: key);
@@ -89,11 +88,11 @@ class LoginView extends GetView {
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.blue),
                             onPressed: () {
-                              Get.to(const BetView());
-                              // authController.tryToSignIn(
-                              //   userName: _userNameController.text,
-                              //   password: _passWordController.text,
-                              // );
+                              // Get.to(const BetView());
+                              authController.tryToSignIn(
+                                userName: _userNameController.text,
+                                password: _passWordController.text,
+                              );
                             },
                             child: const Center(
                                 child: Text("Login",

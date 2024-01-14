@@ -4,3 +4,5 @@ const String basUrl = "$kDomain/api";
 const String kLoginUlr = "$basUrl/login";
 
 const String kLogoutUlr = "$basUrl/logout";
+
+const String kMakeOrder = "$basUrl/order-place";

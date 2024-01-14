@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-/// user : {"id":1,"full_name":"user","email":"user@gmail.com","phone_number":"3645+65465","balance":"6546541645","profile_image":"sgfds","created_at":null,"updated_at":null}
-/// token : "1|0bLEBxNw8Lnl1t9LOkIyxj4N518yHJ1GJMR94xRv9dc7675f"
+/// user : {"id":1,"username":"admin","email":"admin@gmail.com","username_owner_name":"dsf","roll":"dsf","credite_limit":"23443435","credit_used":"43543","available_credit":"436434","cash_balance":"564454","outtanding_transaction":"435","status":"Admin","created_at":null,"updated_at":null}
+/// token : "1|46gQq7GMKED12LOhsIqXao5oCVxnWtuHXnoooQ5Z1b130ba8"
 
 UserProfile userProfileFromJson(String str) =>
     UserProfile.fromJson(json.decode(str));
@@ -44,11 +44,16 @@ class UserProfile {
 }
 
 /// id : 1
-/// full_name : "user"
-/// email : "user@gmail.com"
-/// phone_number : "3645+65465"
-/// balance : "6546541645"
-/// profile_image : "sgfds"
+/// username : "admin"
+/// email : "admin@gmail.com"
+/// username_owner_name : "dsf"
+/// roll : "dsf"
+/// credite_limit : "23443435"
+/// credit_used : "43543"
+/// available_credit : "436434"
+/// cash_balance : "564454"
+/// outtanding_transaction : "435"
+/// status : "Admin"
 /// created_at : null
 /// updated_at : null
 
@@ -58,79 +63,119 @@ String userToJson(User data) => json.encode(data.toJson());
 class User {
   User({
     num? id,
-    String? fullName,
+    String? username,
     String? email,
-    String? phoneNumber,
-    String? balance,
-    String? profileImage,
+    String? usernameOwnerName,
+    String? roll,
+    String? crediteLimit,
+    String? creditUsed,
+    String? availableCredit,
+    String? cashBalance,
+    String? outtandingTransaction,
+    String? status,
     dynamic createdAt,
     dynamic updatedAt,
   }) {
     _id = id;
-    _fullName = fullName;
+    _username = username;
     _email = email;
-    _phoneNumber = phoneNumber;
-    _balance = balance;
-    _profileImage = profileImage;
+    _usernameOwnerName = usernameOwnerName;
+    _roll = roll;
+    _crediteLimit = crediteLimit;
+    _creditUsed = creditUsed;
+    _availableCredit = availableCredit;
+    _cashBalance = cashBalance;
+    _outtandingTransaction = outtandingTransaction;
+    _status = status;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
   }
 
   User.fromJson(dynamic json) {
     _id = json['id'];
-    _fullName = json['full_name'];
+    _username = json['username'];
     _email = json['email'];
-    _phoneNumber = json['phone_number'];
-    _balance = json['balance'];
-    _profileImage = json['profile_image'];
+    _usernameOwnerName = json['username_owner_name'];
+    _roll = json['roll'];
+    _crediteLimit = json['credite_limit'];
+    _creditUsed = json['credit_used'];
+    _availableCredit = json['available_credit'];
+    _cashBalance = json['cash_balance'];
+    _outtandingTransaction = json['outtanding_transaction'];
+    _status = json['status'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
   num? _id;
-  String? _fullName;
+  String? _username;
   String? _email;
-  String? _phoneNumber;
-  String? _balance;
-  String? _profileImage;
+  String? _usernameOwnerName;
+  String? _roll;
+  String? _crediteLimit;
+  String? _creditUsed;
+  String? _availableCredit;
+  String? _cashBalance;
+  String? _outtandingTransaction;
+  String? _status;
   dynamic _createdAt;
   dynamic _updatedAt;
   User copyWith({
     num? id,
-    String? fullName,
+    String? username,
     String? email,
-    String? phoneNumber,
-    String? balance,
-    String? profileImage,
+    String? usernameOwnerName,
+    String? roll,
+    String? crediteLimit,
+    String? creditUsed,
+    String? availableCredit,
+    String? cashBalance,
+    String? outtandingTransaction,
+    String? status,
     dynamic createdAt,
     dynamic updatedAt,
   }) =>
       User(
         id: id ?? _id,
-        fullName: fullName ?? _fullName,
+        username: username ?? _username,
         email: email ?? _email,
-        phoneNumber: phoneNumber ?? _phoneNumber,
-        balance: balance ?? _balance,
-        profileImage: profileImage ?? _profileImage,
+        usernameOwnerName: usernameOwnerName ?? _usernameOwnerName,
+        roll: roll ?? _roll,
+        crediteLimit: crediteLimit ?? _crediteLimit,
+        creditUsed: creditUsed ?? _creditUsed,
+        availableCredit: availableCredit ?? _availableCredit,
+        cashBalance: cashBalance ?? _cashBalance,
+        outtandingTransaction: outtandingTransaction ?? _outtandingTransaction,
+        status: status ?? _status,
         createdAt: createdAt ?? _createdAt,
         updatedAt: updatedAt ?? _updatedAt,
       );
   num? get id => _id;
-  String? get fullName => _fullName;
+  String? get username => _username;
   String? get email => _email;
-  String? get phoneNumber => _phoneNumber;
-  String? get balance => _balance;
-  String? get profileImage => _profileImage;
+  String? get usernameOwnerName => _usernameOwnerName;
+  String? get roll => _roll;
+  String? get crediteLimit => _crediteLimit;
+  String? get creditUsed => _creditUsed;
+  String? get availableCredit => _availableCredit;
+  String? get cashBalance => _cashBalance;
+  String? get outtandingTransaction => _outtandingTransaction;
+  String? get status => _status;
   dynamic get createdAt => _createdAt;
   dynamic get updatedAt => _updatedAt;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = _id;
-    map['full_name'] = _fullName;
+    map['username'] = _username;
     map['email'] = _email;
-    map['phone_number'] = _phoneNumber;
-    map['balance'] = _balance;
-    map['profile_image'] = _profileImage;
+    map['username_owner_name'] = _usernameOwnerName;
+    map['roll'] = _roll;
+    map['credite_limit'] = _crediteLimit;
+    map['credit_used'] = _creditUsed;
+    map['available_credit'] = _availableCredit;
+    map['cash_balance'] = _cashBalance;
+    map['outtanding_transaction'] = _outtandingTransaction;
+    map['status'] = _status;
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
     return map;
