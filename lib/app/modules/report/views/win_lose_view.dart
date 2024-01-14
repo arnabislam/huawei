@@ -2,6 +2,7 @@ import 'package:date_picker_plus/date_picker_plus.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:huawei_new/app/modules/report/views/winlose_report_view.dart';
 import 'package:intl/intl.dart';
 
 import '../../auth/controllers/auth_controller.dart';
@@ -457,7 +458,11 @@ color: Color(0xff48486e),
 
               ],
             ),
-            const rsubmitButton(buttonName: "Submit")
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+              onPressed: (){
+            Get.to(WinloseReportView());
+          }, child: Center(child: Text("Submit",style: TextStyle(color: Colors.white),)))
           ],
         ),
       ),
