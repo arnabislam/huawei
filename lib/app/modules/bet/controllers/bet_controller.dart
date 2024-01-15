@@ -29,9 +29,7 @@ class BetController extends GetxController {
         'company_names': companyBetMobileMyrController.text,
         'lottery_code': lotteryBetMobileMyrController.text,
       };
-      print(data);
-      print(kMakeOrder);
-      print(authController.token.value);
+
       final response = await _dio.post(
         kMakeOrder,
         data: data,
@@ -45,7 +43,7 @@ class BetController extends GetxController {
       );
 
       isLoading.value = false;
-      print(response.data);
+
       if (response.statusCode == 201) {
         Get.snackbar(
           'Success',
@@ -65,7 +63,7 @@ class BetController extends GetxController {
       }
     } catch (e) {
       isLoading.value = false;
-      print(e);
+
       Get.snackbar(
         'Failed',
         "Something is wrong. Please try again.",
