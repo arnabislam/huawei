@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../auth/controllers/auth_controller.dart';
 import '../../report/views/draw_result_view.dart';
 
 class AccountView extends GetView {
-  const AccountView({Key? key}) : super(key: key);
+   AccountView({Key? key}) : super(key: key);
+  AuthController authController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,21 +47,21 @@ class AccountView extends GetView {
                   const SizedBox(
                     height: 15,
                   ),
-                  const accountRow(accountTitle: "Username", accountText: "MK cash 47%"),
+                   accountRow(accountTitle: "Username", accountText: authController.profile.value.user!.usernameOwnerName!.toString()),
                   const accountRow(accountTitle: "Role", accountText: "Agent"),
-                  const accountRow(accountTitle: "Credit Limit", accountText: "998.00"),
-                  const accountRow(accountTitle: "Credit Used", accountText: "979.79"),
-                  const accountRow(
-                      accountTitle: "Available Credit", accountText: "18.21"),
-                  const accountRow(accountTitle: "Cash Balance", accountText: "-84.97"),
-                  const accountRow(
-                      accountTitle: "Outstanding Transaction", accountText: "0.00"),
-                  const accountRow(accountTitle: "Status", accountText: "Active"),
+                   accountRow(accountTitle: "Credit Limit", accountText: authController.profile.value.user!.crediteLimit.toString()),
+                   accountRow(accountTitle: "Credit Used", accountText: authController.profile.value.user!.creditUsed.toString()),
+                   accountRow(
+                      accountTitle: "Available Credit", accountText: authController.profile.value.user!.availableCredit.toString()),
+                   accountRow(accountTitle: "Cash Balance", accountText: authController.profile.value.user!.cashBalance.toString()),
+                   accountRow(
+                      accountTitle: "Outstanding Transaction", accountText: authController.profile.value.user!.outtandingTransaction.toString()),
+                   accountRow(accountTitle: "Status", accountText: authController.profile.value.user!.status.toString()),
 
 
 
-                  const SizedBox(height: 20,),
-                  const Text("Package F",style: TextStyle(fontSize: 25,color: Colors.red,fontWeight: FontWeight.bold),),
+                   SizedBox(height: 20,),
+                   Text("Package F",style: TextStyle(fontSize: 25,color: Colors.red,fontWeight: FontWeight.bold),),
 
                   Padding(
                     padding: const EdgeInsets.only(left: 25.0, right: 25),

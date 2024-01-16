@@ -2,6 +2,7 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:huawei_new/app/modules/bet/views/bet_history_result_2_view.dart';
 
 import '../controllers/bet_controller.dart';
 
@@ -895,12 +896,16 @@ class _BetmobileViewState extends State<BetmobileView> {
                             ],
                           ),
                         ),
+                        SizedBox(height: 15,),
                         Padding(
                           padding: const EdgeInsets.only(
                               left: 28, right: 28, top: 5, bottom: 11),
                           child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.blue),
                             onPressed: () {
                               betController.tryToMakeOrder();
+                             // Get.to(BetHistoryResult2View());
                             },
                             child: const Center(
                               child: Padding(
