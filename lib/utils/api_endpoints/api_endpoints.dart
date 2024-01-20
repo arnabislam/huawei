@@ -6,4 +6,4 @@ const String kLoginUlr = "$basUrl/login";
 const String kLogoutUlr = "$basUrl/logout";
 
 const String kMakeOrder = "$basUrl/order-place";
-const String kGetAllOrders = "$basUrl/order-place";
+const String kGetAllOrders = "$basUrl/orders";

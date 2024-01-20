@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:huawei_new/app/modules/bet/views/bet_history_result_2_view.dart';
 
 class DrawResultView extends GetView {
   const DrawResultView({Key? key}) : super(key: key);
@@ -43,7 +44,15 @@ class DrawResultView extends GetView {
                 ),
               ],
             ),
-            rsubmitButton(buttonName: 'Submit',)
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue),
+                onPressed: (){
+
+            }, child: Center(child: Text("Submit"))),
+          )
           ],
         ),
       ),
@@ -61,7 +70,10 @@ class rsubmitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: ElevatedButton(onPressed: (){}, child: Center(child: Text(buttonName,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),))),
+      child: ElevatedButton(onPressed: (){
+
+
+      }, child: Center(child: Text(buttonName,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),))),
     );
   }
 }
