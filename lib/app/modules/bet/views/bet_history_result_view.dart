@@ -1,11 +1,63 @@
+import 'package:blue_thermal_printer/blue_thermal_printer.dart';
+import 'package:bluetooth_print/bluetooth_print.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:huawei_new/app/modules/bet/controllers/bet_controller.dart';
+import 'package:huawei_new/app/modules/bet/views/bet_view.dart';
 import 'package:huawei_new/app/modules/bet/views/cancel_bet_history_result_view.dart';
 
-class BetHistoryResultView extends GetView {
+class BetHistoryResultView extends StatefulWidget {
   BetHistoryResultView({Key? key}) : super(key: key);
+
+  @override
+  State<BetHistoryResultView> createState() => _BetHistoryResultViewState();
+}
+
+class _BetHistoryResultViewState extends State<BetHistoryResultView> {
   final betHistoryController = Get.put(BetController());
+
+  BluetoothPrint bluetoothPrint=BluetoothPrint.instance;
+  List<BluetoothDevice>_devices=[];
+  String _deviceMsg='';
+
+  // @override
+  // void initState(){
+  //   super.initState();
+  //   WidgetsBinding.instance.addPostFrameCallback((_) =>initPrinter());
+  //
+  // }
+  Future<void> initPrinter() async {
+    bluetoothPrint.startScan(timeout: Duration(seconds: 2));
+
+    if (!mounted) return;
+
+    bluetoothPrint.scanResults.listen(( val) {
+      if (!mounted) return;
+
+      setState(()=> {
+       print(val)
+      });
+      if(_devices.isEmpty)
+        setState(() {
+          _deviceMsg='No devices';
+        });
+    });
+  }
+  // Future<void> printItems(BluetoothDevice device) async {
+  //   if (device != null && device.address != null) {
+  //     try {
+  //       await bluetoothPrint.connect(device);
+  //       // Continue with the printing logic or any other actions after connecting
+  //     } catch (e) {
+  //       print('Error connecting to the Bluetooth printer: $e');
+  //       // Handle the error as needed
+  //     }
+  //   } else {
+  //     print('Invalid Bluetooth device or address');
+  //     // Handle the case where the device or address is null
+  //   }
+  // }
+
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +101,7 @@ class BetHistoryResultView extends GetView {
                     color: betHistoryController.orderList[index]['status']=='active'
                         ? Color(0xffd3f5f8) // Color when the condition is true
                         : Colors.red,
+
                     //Color(0xffd3f5f8),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,78 +116,69 @@ class BetHistoryResultView extends GetView {
 
 
                                   onTap: () {
-                                    showDialog(
+                                    showMenu(
                                       context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
+                                      // position: RelativeRect.fromLTRB(0, 0, 100, 0), // Adjust the position as needed
+                                      items: [
 
-                                          content:
-
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment
-                                                .center,
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              InkWell(
-
-
-                                                  onTap: () {
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (
-                                                          BuildContext context) {
-                                                        return Container(
-                                                          height: 120,
-                                                          width: 120,
-                                                          color: Colors.green,
-                                                          child: AlertDialog(
-                                                            title: const Text(
-                                                              'Cancel Number',
-                                                              style: TextStyle(
-                                                                  fontWeight: FontWeight
-                                                                      .bold),),
-                                                            content: const Text(
-                                                                "Confirm Cancel"),
-                                                            actions: [
-                                                              ElevatedButton(
-                                                                onPressed: () {
-                                                                  Navigator.of(
-                                                                      context)
-                                                                      .pop(); // Close the dialog
-                                                                },
-                                                                child: Text('No'),
-                                                              ), ElevatedButton(
-                                                                onPressed: () {
-                                                                  Get.offAll(
-                                                                      const CancelBetHistoryResultView())
-                                                                  ; // Close the dialog
-                                                                },
-                                                                child: Text(
-                                                                    'Yes'),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        );
+                                        PopupMenuItem<String>(
+                                          onTap: ( ){
+                                            showDialog(
+                                              context: context,
+                                              builder: (
+                                                  BuildContext context) {
+                                                return AlertDialog(
+                                                  title: const Text(
+                                                    'Cancel Number',
+                                                    style: TextStyle(
+                                                        fontWeight: FontWeight
+                                                            .bold,fontSize: 21),),
+                                                  content: Text(
+                                                      "Confirm Cancel"),
+                                                  actions: [
+                                                    ElevatedButton(
+                                                      onPressed: () {
+                                                        Navigator.of(
+                                                            context)
+                                                            .pop(); // Close the dialog
                                                       },
-                                                    );
-                                                  },
+                                                      child: Text('No'),
+                                                    ), ElevatedButton(
+                                                      onPressed: () {
+                                                        Get.to(
+                                                           CancelBetHistoryResultView());
+                                                        //Close the dialog
 
-                                                  child: Text('Cancel Page')),
-                                              SizedBox(height: 2,),
-                                              Text('Print Page'),
-                                              SizedBox(height: 2,),
-                                              Text('Smas Page'),
-                                              SizedBox(height: 2,),
-                                              Text('Share'),
-                                              SizedBox(height: 2,),
-                                              Text('Revert'),
-                                              SizedBox(height: 2,),
-                                            ],
-                                          ),
-                                          contentPadding: EdgeInsets.symmetric(horizontal: 50.0),
+                                                      },
+                                                      child: const Text(
+                                                          'Yes'),
+                                                    ),
 
-                                        );
-                                      },
+                                                  ],
+                                                  contentPadding: const EdgeInsets.symmetric(horizontal: 50.0),
+                                                );
+                                              },
+
+                                            );
+                                          },
+                                          child: Text('Cancel Page'),
+                                          value: 'option1',
+                                        ),
+                                        const PopupMenuItem(
+                                          child: Text("Print page"),
+                                          value: 'option2',
+                                        ),
+                                        const PopupMenuItem(
+                                          child: Text('Sms Page'),
+                                          value: 'option3',
+                                        ),const PopupMenuItem(
+                                          child: Text('Share '),
+                                          value: 'option3',
+                                        ),const PopupMenuItem(
+                                          child: Text('Revert'),
+                                          value: 'option3',
+                                        ),
+                                      ], position: RelativeRect.fill,
                                     );
                                   },
 
@@ -151,9 +195,9 @@ class BetHistoryResultView extends GetView {
                             .toString()), SizedBox(height: 3,),
                         Text(betHistoryController.orderList[index]['lotterycode']
                             .toString()), SizedBox(height: 3,),
-                        Text(betHistoryController.orderList[index]['totalamount']
-                            .toString()), SizedBox(height: 3,),
-
+                        Text("T(${betHistoryController.orderList[index]["totalamount"].toString()})"),
+                        // Text(betHistoryController.orderList[index]['totalamount']
+                        //     .toString()), SizedBox(height: 3,),
 
                       ],
                     ),
@@ -167,3 +211,5 @@ class BetHistoryResultView extends GetView {
     );
   }
 }
+
+

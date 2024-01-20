@@ -9,6 +9,7 @@ class BetController extends GetxController {
   //TODO: Implement BetController
 
   final isLottery = false.obs;
+
   AuthController authController = Get.find();
 
 
@@ -21,6 +22,8 @@ class BetController extends GetxController {
 
   final TextEditingController lotteryBetMobileMyrController =
       TextEditingController();
+  final TextEditingController lotteryBetMobileMyrController2 =
+  TextEditingController();
   final isLoading = false.obs;
   final _dio = Dio();
 
@@ -35,6 +38,7 @@ class BetController extends GetxController {
       final data = {
         'company_names': companyBetMobileMyrController.text,
         'lottery_code': lotteryBetMobileMyrController.text,
+
       };
 
 print(data);
@@ -100,9 +104,6 @@ void fetchOrderList() async {
   try {
     final response = await _dio.get(
       kGetAllOrders,
-
-
-
       options: Options(
         headers: {
           // Set any required headers
@@ -135,10 +136,12 @@ void fetchOrderList() async {
       );
     }
     print("BAngladesh");
-    print(response.data['order']);
+    print(response.data['order'][10]['status']);
      orderList.addAll(response.data['order']);
     print("fatra sagor");
     print(orderList);
+    print(response.data);
+
 
 
   } catch (e) {
@@ -155,8 +158,7 @@ void fetchOrderList() async {
 }
   @override
   void onReady() {
-    // TODO: implement onReady
-    tryToMakeOrder();
+
    fetchOrderList();
     super.onReady();
   }

@@ -17,10 +17,12 @@ class _BetmobileViewState extends State<BetmobileView> {
   final betController = Get.put(BetController());
   FocusNode _firstFocusNode = FocusNode();
   FocusNode _secondFocusNode = FocusNode();
+  FocusNode _thirdFocusNode = FocusNode();
   @override
   void dispose() {
     _firstFocusNode.dispose();
     _secondFocusNode.dispose();
+    _thirdFocusNode.dispose();
     super.dispose();
   }
 
@@ -70,6 +72,8 @@ class _BetmobileViewState extends State<BetmobileView> {
               controller: betController.companyBetMobileMyrController,
               onTap: () {
                 betController.isLottery.value = false;
+                print("Bangladesh");
+                print(betController.isLottery.value );
               },
               style: const TextStyle(
                 color: Colors.red, // You can set text color here
@@ -91,6 +95,7 @@ class _BetmobileViewState extends State<BetmobileView> {
               controller: betController.lotteryBetMobileMyrController,
               onTap: () {
                 betController.isLottery.value = true;
+                print("trtr");
                 print(betController.isLottery);
               },
               decoration: const InputDecoration(
@@ -99,6 +104,23 @@ class _BetmobileViewState extends State<BetmobileView> {
                 ),
               ),
             ),
+
+            // TextField(
+            //   focusNode: _thirdFocusNode,
+            //   keyboardType: TextInputType.none,
+            //   controller: betController.lotteryBetMobileMyrController2,
+            //   onTap: () {
+            //     betController.isLottery.value = true;
+            //
+            //     print("arnab");
+            //     print(betController.isLottery);
+            //   },
+            //   decoration: const InputDecoration(
+            //     border: OutlineInputBorder(
+            //       borderSide: BorderSide.none,
+            //     ),
+            //   ),
+            // ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.3,
             ),
@@ -876,7 +898,7 @@ class _BetmobileViewState extends State<BetmobileView> {
                                 onTap: () {
                                   betController.isLottery.value = true;
                                   FocusScope.of(context)
-                                      .requestFocus(_secondFocusNode);
+                                      .requestFocus(_thirdFocusNode);
                                 },
                                 child: Container(
                                   height: MediaQuery.of(context).size.height *

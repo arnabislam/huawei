@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:huawei_new/app/modules/bet/views/bet_view.dart';
+
 
 import '../controllers/bet_controller.dart';
 import 'bet_history_result_view.dart';
@@ -87,9 +89,10 @@ class BetHistoryResult2View extends GetView {
                                             child: Text('No'),
                                           ), ElevatedButton(
                                             onPressed: () {
-                                              Get.offAll(
-                                                   BetHistoryResultView());
-                                              // Close the dialog
+                                              Get.to(
+                                                   BetView());
+                                              //Close the dialog
+
                                             },
                                             child: const Text(
                                                 'Yes'),
@@ -106,6 +109,9 @@ class BetHistoryResult2View extends GetView {
                                 value: 'option1',
                               ),
                               PopupMenuItem(
+                                onTap: (){
+
+                                },
                                 child: Text("Print page"),
                                 value: 'option2',
                               ),
@@ -229,6 +235,7 @@ class BetHistoryResult2View extends GetView {
                 Text(betHistoryController2.makeOrder['order']["workingdate"].toString()), SizedBox(height: 3,),
                 Text(betHistoryController2.makeOrder['order']["companies"].toString()), SizedBox(height: 3,),
                 Text(betHistoryController2.makeOrder['order']["lotterycode"].toString()), SizedBox(height: 3,),
+
                 Text(betHistoryController2.makeOrder['order']["totalamount"].toString()), SizedBox(height: 3,),
 
               ],

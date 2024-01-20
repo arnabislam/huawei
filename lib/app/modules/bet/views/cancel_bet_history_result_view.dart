@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:huawei_new/app/modules/bet/views/bet_view.dart';
 
 class CancelBetHistoryResultView extends GetView {
   const CancelBetHistoryResultView({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class CancelBetHistoryResultView extends GetView {
         title: const Text('HUAWEI88'),
         leading: IconButton(
           onPressed: () {
-            Get.back();
+            Get.to(BetView());
           },
           icon: Icon(Icons.arrow_back_ios),
         ),

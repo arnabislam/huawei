@@ -14,12 +14,17 @@ dependencies:
   cached_network_image: ^3.3.0
   date_picker_plus: ^2.0.2
   date_format: ^2.0.7
-  intl: ^0.18.1
+  intl: ^0.19.0
   dio: ^5.4.0
   shared_preferences: ^2.2.2
   streaming_shared_preferences: ^2.0.0
   loading_overlay: ^0.3.0
   flutter_spinkit: ^5.2.0
+  printing: ^5.11.1
+  blue_thermal_printer: ^1.2.3
+  bluetooth_print: ^4.3.0
+
+
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
