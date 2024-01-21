@@ -98,13 +98,13 @@ class BetView extends GetView<BetController> {
                 ),
                 child: FloatingActionButton(
                   onPressed: () {
-                    Get.to(SelectTargetView());
+                    Get.to(const SelectTargetView());
                   },
-                  child: Icon(
+                  backgroundColor: Colors.white,
+                  child: const Icon(
                     Icons.person_add,
                     color: Colors.black,
                   ),
-                  backgroundColor: Colors.white,
                 ),
               ),
             ),

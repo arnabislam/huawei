@@ -297,42 +297,76 @@ class _BetHistoryResult2ViewState extends State<BetHistoryResult2View> {
                    PopupMenuItem<SampleItem>(
                     value: SampleItem.itemOne,
                     child: Text('Cancel Page'),
-                    onTap: (){ showDialog(
-                      context: context,
-                      builder: (
-                          BuildContext context) {
-                        return AlertDialog(
-                          title: const Text(
-                            'Cancel Number',
-                            style: TextStyle(
-                                fontWeight: FontWeight
-                                    .bold),),
-                          content: Text(
-                              "Confirm Cancel"),
-                          actions: [
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.of(
-                                    context)
-                                    .pop(); // Close the dialog
-                              },
-                              child: Text('No'),
-                            ), ElevatedButton(
-                              onPressed: () {
-                                Get.offAll(
-                                    const CancelBetHistoryResultView());
-                                // Close the dialog
-                              },
-                              child: const Text(
-                                  'Yes'),
+                    onTap: (){
+                      showDialog(
+
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+
+                            content: Column(
+                              crossAxisAlignment: CrossAxisAlignment
+                                  .center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                InkWell(
+
+
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (
+                                            BuildContext context) {
+                                          return AlertDialog(
+                                            title: const Text(
+                                              'Cancel Number',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight
+                                                      .bold),),
+                                            content: Text(
+                                                "Confirm Cancel"),
+                                            actions: [
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.of(
+                                                      context)
+                                                      .pop(); // Close the dialog
+                                                },
+                                                child: Text('No'),
+                                              ), ElevatedButton(
+                                                onPressed: () {
+                                                  Get.offAll(
+                                                      const CancelBetHistoryResultView());
+                                                  // Close the dialog
+                                                },
+                                                child: const Text(
+                                                    'Yes'),
+                                              ),
+
+                                            ],
+                                            contentPadding: const EdgeInsets.symmetric(horizontal: 50.0),
+                                          );
+                                        },
+
+                                      );
+                                    },
+
+                                    child: Text('Cancel Page')),
+                                SizedBox(height: 2,),
+                                Text('Print Page'),
+                                SizedBox(height: 2,),
+                                Text('Smas Page'),
+                                SizedBox(height: 2,),
+                                Text('Share'),
+                                SizedBox(height: 2,),
+                                Text('Revert'),
+                                SizedBox(height: 2,),
+                              ],
                             ),
 
-                          ],
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 50.0),
-                        );
-                      },
-
-                    );
+                          );
+                        },
+                      );
                     },
 
                   ),
