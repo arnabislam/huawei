@@ -163,9 +163,8 @@ class _BetHistoryResultViewState extends State<BetHistoryResultView> {
                                       PopupMenuItem(
                                         onTap: () {
                                           Share.share(
-                                              'check out my website https://example.com');
+                                              '${betHistoryController.orderList[index]["username"]} \n ${betHistoryController.orderList[index]["created_at"]} \n ${betHistoryController.orderList[index]["workingdate"]} \n ${betHistoryController.orderList[index]["companies"]} \n ${betHistoryController.orderList[index]["lotterycode"]}  \n T ${betHistoryController.orderList[index]["lotterycode"]}');
                                           // Share.share(
-                                          //     'check out my website https://example.com');
                                         },
                                         value: 'option3',
                                         child: const Text('Share'),
@@ -206,7 +205,7 @@ class _BetHistoryResultViewState extends State<BetHistoryResultView> {
                         height: 3,
                       ),
                       Text(
-                          "T(${betHistoryController.orderList[index]["totalamount"].toString()})"),
+                          "T (${betHistoryController.orderList[index]["totalamount"].toString()})"),
                       // Text(betHistoryController.orderList[index]['totalamount']
                       //     .toString()), SizedBox(height: 3,),
                     ],

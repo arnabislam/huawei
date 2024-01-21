@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share/share.dart';
 
 import '../controllers/bet_controller.dart';
 
@@ -143,9 +144,13 @@ class _BetHistoryResult2ViewState extends State<BetHistoryResult2View> {
                                     value: 'option3',
                                     child: Text('Sms Page'),
                                   ),
-                                  const PopupMenuItem(
+                                  PopupMenuItem(
+                                    onTap: () {
+                                      Share.share(
+                                          '${betHistoryController2.makeOrder['order']["username"]} \n ${betHistoryController2.makeOrder['order']["created_at"]} \n ${betHistoryController2.makeOrder['order']["workingdate"]} \n ${betHistoryController2.makeOrder['order']["companies"]} \n ${betHistoryController2.makeOrder['order']["lotterycode"]}  \n T ${betHistoryController2.makeOrder['order']["lotterycode"]}');
+                                    },
                                     value: 'option3',
-                                    child: Text('Share '),
+                                    child: const Text('Share '),
                                   ),
                                   const PopupMenuItem(
                                     value: 'option3',
