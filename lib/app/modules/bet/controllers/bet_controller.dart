@@ -102,13 +102,6 @@ class BetController extends GetxController {
       isLoading.value = false;
 
       if (response.statusCode == 201) {
-        Get.snackbar(
-          'Success',
-          "You are Logged In now.",
-          backgroundColor: Colors.green,
-          colorText: Colors.white,
-          snackPosition: SnackPosition.BOTTOM,
-        );
       } else {
         Get.snackbar(
           'Failed',
@@ -152,22 +145,11 @@ class BetController extends GetxController {
       );
 
       isLoading.value = false;
-      print(response.data);
-      print(response.statusCode);
 
       if (response.statusCode == 200) {
         makeOrder.value = response.data;
-        makeOrder.refresh();
-        print(response.data);
 
         Get.to(BetHistoryResult2View());
-        Get.snackbar(
-          'Success',
-          "You are Logged In now.",
-          backgroundColor: Colors.green,
-          colorText: Colors.white,
-          snackPosition: SnackPosition.BOTTOM,
-        );
       } else {
         Get.snackbar(
           'Failed',
