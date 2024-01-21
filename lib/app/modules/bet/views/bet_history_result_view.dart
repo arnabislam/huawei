@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:huawei_new/app/modules/bet/controllers/bet_controller.dart';
 import 'package:huawei_new/app/modules/bet/views/cancel_bet_history_result_view.dart';
-import 'package:share_plus/share_plus.dart';
+import 'package:share/share.dart';
 
 class BetHistoryResultView extends StatefulWidget {
   BetHistoryResultView({Key? key}) : super(key: key);
@@ -164,6 +164,8 @@ class _BetHistoryResultViewState extends State<BetHistoryResultView> {
                                         onTap: () {
                                           Share.share(
                                               'check out my website https://example.com');
+                                          // Share.share(
+                                          //     'check out my website https://example.com');
                                         },
                                         value: 'option3',
                                         child: const Text('Share'),
