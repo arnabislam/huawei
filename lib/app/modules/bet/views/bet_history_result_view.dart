@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:huawei_new/app/modules/bet/controllers/bet_controller.dart';
 import 'package:huawei_new/app/modules/bet/views/cancel_bet_history_result_view.dart';
+import 'package:share_plus/share_plus.dart';
 
 class BetHistoryResultView extends StatefulWidget {
   BetHistoryResultView({Key? key}) : super(key: key);
@@ -159,9 +160,13 @@ class _BetHistoryResultViewState extends State<BetHistoryResultView> {
                                         value: 'option3',
                                         child: Text('Sms Page'),
                                       ),
-                                      const PopupMenuItem(
+                                      PopupMenuItem(
+                                        onTap: () {
+                                          Share.share(
+                                              'check out my website https://example.com');
+                                        },
                                         value: 'option3',
-                                        child: Text('Share '),
+                                        child: const Text('Share'),
                                       ),
                                       const PopupMenuItem(
                                         value: 'option3',
