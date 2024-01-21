@@ -1,248 +1,207 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:huawei_new/app/modules/bet/views/bet_view.dart';
-
 
 import '../controllers/bet_controller.dart';
-import 'bet_history_result_view.dart';
-import 'cancel_bet_history_result_view.dart';
 
-class BetHistoryResult2View extends GetView {
-   BetHistoryResult2View({Key? key}) : super(key: key);
+class BetHistoryResult2View extends StatefulWidget {
+  BetHistoryResult2View({Key? key}) : super(key: key);
+
+  @override
+  State<BetHistoryResult2View> createState() => _BetHistoryResult2ViewState();
+}
+
+class _BetHistoryResult2ViewState extends State<BetHistoryResult2View> {
   final betHistoryController2 = Get.put(BetController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.black,
-        title: const Text('HUAWEI88'),
-        leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: Icon(Icons.arrow_back_ios),
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.black,
+          title: const Text('HUAWEI88'),
+          leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios,
+            ),
+          ),
         ),
-      ),
-      body:Column(
-        children: [
-          Container(
-            height: 45,
-            color: Colors.red,
-            child: const Center(
-              child: Text(
-                "Bet History",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 21,
+        body: Column(
+          children: [
+            Container(
+              height: 45,
+              color: Colors.red,
+              child: const Center(
+                child: Text(
+                  "Bet History",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 21,
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 25),
-          Container(
-            padding: EdgeInsets.only(left: 10),
-            margin: EdgeInsets.only(bottom: 5, left: 20, right: 20),
-            color: const Color(0xffd3f5f8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-
-                Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 8.0, right: 8, top: 15),
-                      child:
-                      InkWell(
-                        onTap: () {
-                          // Show the popup menu
-                          showMenu(
-                            context: context,
-                            // position: RelativeRect.fromLTRB(0, 0, 100, 0), // Adjust the position as needed
-                            items: [
-
-                              PopupMenuItem<String>(
-                                onTap: ( ){
-                                  showDialog(
-                                    context: context,
-                                    builder: (
-                                        BuildContext context) {
-                                      return AlertDialog(
-                                        title: const Text(
-                                          'Cancel Number',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight
-                                                  .bold,fontSize: 21),),
-                                        content: Text(
-                                            "Confirm Cancel"),
-                                        actions: [
-                                          ElevatedButton(
-                                            onPressed: () {
-                                              Navigator.of(
-                                                  context)
-                                                  .pop(); // Close the dialog
-                                            },
-                                            child: Text('No'),
-                                          ), ElevatedButton(
-                                            onPressed: () {
-                                              Get.to(
-                                                   BetView());
-                                              //Close the dialog
-
-                                            },
-                                            child: const Text(
-                                                'Yes'),
-                                          ),
-
-                                        ],
-                                        contentPadding: const EdgeInsets.symmetric(horizontal: 50.0),
+            Obx(
+              () =>
+                  betHistoryController2.makeOrder['order']["status"] == 'active'
+                      ? Container()
+                      : Column(
+                          children: [
+                            const SizedBox(height: 20),
+                            Text(
+                              'Total Accepted  : -${betHistoryController2.makeOrder['order']["totalamount"]}',
+                              style: const TextStyle(fontSize: 20),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              'Total Cancelled  : ${betHistoryController2.makeOrder['order']["totalamount"]}',
+                              style: const TextStyle(fontSize: 20),
+                            ),
+                            const SizedBox(height: 5),
+                          ],
+                        ),
+            ),
+            Obx(() {
+              return Container(
+                padding: const EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.only(bottom: 5, left: 20, right: 20),
+                color: betHistoryController2.makeOrder['order']["status"] ==
+                        'active'
+                    ? const Color(0xffd3f5f8)
+                    : Colors.red.withOpacity(0.5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8.0, right: 8, top: 15),
+                          child: InkWell(
+                            onTap: () {
+                              // Show the popup menu
+                              showMenu(
+                                context: context,
+                                items: [
+                                  PopupMenuItem<String>(
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: const Text(
+                                              'Cancel Number',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 21),
+                                            ),
+                                            content:
+                                                const Text("Confirm Cancel"),
+                                            actions: [
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.of(context)
+                                                      .pop(); // Close the dialog
+                                                },
+                                                child: const Text('No'),
+                                              ),
+                                              ElevatedButton(
+                                                onPressed: () {
+                                                  betHistoryController2
+                                                      .tryToCancelOrder(
+                                                          orderID:
+                                                              betHistoryController2
+                                                                      .makeOrder[
+                                                                  'order']["id"]);
+                                                  Get.back();
+                                                  //Close the dialog
+                                                  setState(() {});
+                                                },
+                                                child: const Text('Yes'),
+                                              ),
+                                            ],
+                                            contentPadding:
+                                                const EdgeInsets.symmetric(
+                                                    horizontal: 50.0),
+                                          );
+                                        },
                                       );
                                     },
-
-                                  );
-                                },
-                                child: Text('Cancel Page'),
-                                value: 'option1',
-                              ),
-                              PopupMenuItem(
-                                onTap: (){
-
-                                },
-                                child: Text("Print page"),
-                                value: 'option2',
-                              ),
-                              PopupMenuItem(
-                                child: Text('Sms Page'),
-                                value: 'option3',
-                              ),PopupMenuItem(
-                                child: Text('Share '),
-                                value: 'option3',
-                              ),PopupMenuItem(
-                                child: Text('Revert'),
-                                value: 'option3',
-                              ),
-                            ], position: RelativeRect.fill,
-                          );
-                        },
-                        child: Text("More>"),
-                      ),
-
-                      // InkWell(
-                      //
-                      //
-                      //     onTap: () {
-                      //       print("gfty");
-                      //       showDialog(
-                      //
-                      //         context: context,
-                      //         builder: (BuildContext context) {
-                      //           return AlertDialog(
-                      //
-                      //             content: Column(
-                      //               crossAxisAlignment: CrossAxisAlignment
-                      //                   .center,
-                      //               mainAxisSize: MainAxisSize.min,
-                      //               children: [
-                      //                 InkWell(
-                      //
-                      //
-                      //                     onTap: () {
-                      //                       showDialog(
-                      //                         context: context,
-                      //                         builder: (
-                      //                             BuildContext context) {
-                      //                           return AlertDialog(
-                      //                             title: const Text(
-                      //                               'Cancel Number',
-                      //                               style: TextStyle(
-                      //                                   fontWeight: FontWeight
-                      //                                       .bold),),
-                      //                             content: Text(
-                      //                                 "Confirm Cancel"),
-                      //                             actions: [
-                      //                               ElevatedButton(
-                      //                                 onPressed: () {
-                      //                                   Navigator.of(
-                      //                                       context)
-                      //                                       .pop(); // Close the dialog
-                      //                                 },
-                      //                                 child: Text('No'),
-                      //                               ), ElevatedButton(
-                      //                                 onPressed: () {
-                      //                                   Get.offAll(
-                      //                                       const CancelBetHistoryResultView());
-                      //                                   // Close the dialog
-                      //                                 },
-                      //                                 child: const Text(
-                      //                                     'Yes'),
-                      //                               ),
-                      //
-                      //                             ],
-                      //                                                                     contentPadding: const EdgeInsets.symmetric(horizontal: 50.0),
-                      //                           );
-                      //                         },
-                      //
-                      //                       );
-                      //                     },
-                      //
-                      //                     child: Text('Cancel Page')),
-                      //                 SizedBox(height: 2,),
-                      //                 Text('Print Page'),
-                      //                 SizedBox(height: 2,),
-                      //                 Text('Smas Page'),
-                      //                 SizedBox(height: 2,),
-                      //                 Text('Share'),
-                      //                 SizedBox(height: 2,),
-                      //                 Text('Revert'),
-                      //                 SizedBox(height: 2,),
-                      //               ],
-                      //             ),
-                      //
-                      //           );
-                      //         },
-                      //       );
-                      //
-                      //      PopupMenuButton(itemBuilder: (context)=>[
-                      //        PopupMenuItem(
-                      //
-                      //          child: Text('Option 1'),
-                      //        ), const PopupMenuItem(
-                      //
-                      //          child: Text('Option 1'),
-                      //        ), PopupMenuItem(
-                      //
-                      //          child: Text('Option 1'),
-                      //        ),
-                      //      ]);
-                      //
-                      //     },
-                      //     child: Text("More>")),
-                    )),
-                Row(
-                  children: [
-                    Text(betHistoryController2.makeOrder['order']["username"].toString()),
-                    Text("(${betHistoryController2.makeOrder['order']["order_count"].toString()})"),
-
-
+                                    value: 'option1',
+                                    child: const Text('Cancel Page'),
+                                  ),
+                                  PopupMenuItem(
+                                    onTap: () {},
+                                    value: 'option2',
+                                    child: const Text("Print page"),
+                                  ),
+                                  const PopupMenuItem(
+                                    value: 'option3',
+                                    child: Text('Sms Page'),
+                                  ),
+                                  const PopupMenuItem(
+                                    value: 'option3',
+                                    child: Text('Share '),
+                                  ),
+                                  const PopupMenuItem(
+                                    value: 'option3',
+                                    child: Text('Revert'),
+                                  ),
+                                ],
+                                position: RelativeRect.fill,
+                              );
+                            },
+                            child: const Text("More >"),
+                          ),
+                        )),
+                    Row(
+                      children: [
+                        Text(betHistoryController2.makeOrder['order']
+                                ["username"]
+                            .toString()),
+                        Text(
+                            "(${betHistoryController2.makeOrder['order']["order_count"].toString()})"),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    Text(
+                      "${betHistoryController2.makeOrder['order']["created_at"].toString().split('T')[0]} ${betHistoryController2.makeOrder['order']["created_at"].toString().split('T')[1].substring(0, 8)}",
+                    ),
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    Text(betHistoryController2.makeOrder['order']["workingdate"]
+                        .toString()),
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    Text(betHistoryController2.makeOrder['order']["companies"]
+                        .toString()),
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    Text(betHistoryController2.makeOrder['order']["lotterycode"]
+                        .toString()),
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    Text(
+                        'T (${betHistoryController2.makeOrder['order']["totalamount"]})'
+                            .toString()),
+                    const SizedBox(
+                      height: 3,
+                    ),
                   ],
                 ),
-                SizedBox(height: 3,),
-                Text(betHistoryController2.makeOrder['order']["created_at"].toString()) ,SizedBox(height: 3,),
-                Text(betHistoryController2.makeOrder['order']["workingdate"].toString()), SizedBox(height: 3,),
-                Text(betHistoryController2.makeOrder['order']["companies"].toString()), SizedBox(height: 3,),
-                Text(betHistoryController2.makeOrder['order']["lotterycode"].toString()), SizedBox(height: 3,),
-
-                Text(betHistoryController2.makeOrder['order']["totalamount"].toString()), SizedBox(height: 3,),
-
-              ],
-            ),
-          )
-        ],
-      )
-    );
+              );
+            })
+          ],
+        ));
   }
 }
