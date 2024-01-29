@@ -76,34 +76,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                   ),
                 ),
                 TextField(
-                  focusNode: _firstFocusNode,
-                  keyboardType: TextInputType.none,
-                  controller: betController.companyBetMobileMyrController,
-                  onTap: () {
-                    betController.isLottery.value = false;
-                  },
-                  style: const TextStyle(
-                    color: Colors.red, // You can set text color here
-                    fontSize: 16.0, // You can set font size here
-                    fontWeight: FontWeight.bold, // You can set font weight here
-                  ),
-                  decoration: const InputDecoration(
-                    labelStyle: TextStyle(
-                      color: Colors.red, // You can set label text color here
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                    ),
-                  ),
-                ),
-                TextField(
                   maxLines: null,
                   focusNode: _secondFocusNode,
                   keyboardType: TextInputType.none,
                   controller: betController.lotteryBetMobileMyrController,
-                  onTap: () {
-                    betController.isLottery.value = true;
-                  },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                       borderSide: BorderSide.none,
@@ -127,18 +103,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                     onTap: () {
                                       if (betController
-                                          .companyBetMobileMyrController.text
+                                          .lotteryBetMobileMyrController.text
                                           .contains('1')) {
                                         betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text =
                                             betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text
                                                 .replaceAll('1', '');
                                       } else {
                                         betController
-                                            .companyBetMobileMyrController
+                                            .lotteryBetMobileMyrController
                                             .text += '1';
                                       }
                                       setState(() {});
@@ -148,7 +124,7 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       child: buttonContainer(
                                         button: 'M',
                                         isSelected: betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('1'),
                                       ),
                                     ),
@@ -156,18 +132,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                     onTap: () {
                                       if (betController
-                                          .companyBetMobileMyrController.text
+                                          .lotteryBetMobileMyrController.text
                                           .contains('2')) {
                                         betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text =
                                             betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text
                                                 .replaceAll('2', '');
                                       } else {
                                         betController
-                                            .companyBetMobileMyrController
+                                            .lotteryBetMobileMyrController
                                             .text += '2';
                                       }
                                       setState(() {});
@@ -176,7 +152,7 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       padding: const EdgeInsets.all(2.0),
                                       child: buttonContainer(
                                         isSelected: betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('2'),
                                         button: 'P',
                                       ),
@@ -185,18 +161,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                     onTap: () {
                                       if (betController
-                                          .companyBetMobileMyrController.text
+                                          .lotteryBetMobileMyrController.text
                                           .contains('3')) {
                                         betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text =
                                             betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text
                                                 .replaceAll('3', '');
                                       } else {
                                         betController
-                                            .companyBetMobileMyrController
+                                            .lotteryBetMobileMyrController
                                             .text += '3';
                                       }
                                       setState(() {});
@@ -206,7 +182,7 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       child: buttonContainer(
                                         button: 'T',
                                         isSelected: betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('3'),
                                       ),
                                     ),
@@ -214,18 +190,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                     onTap: () {
                                       if (betController
-                                          .companyBetMobileMyrController.text
+                                          .lotteryBetMobileMyrController.text
                                           .contains('4')) {
                                         betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text =
                                             betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text
                                                 .replaceAll('4', '');
                                       } else {
                                         betController
-                                            .companyBetMobileMyrController
+                                            .lotteryBetMobileMyrController
                                             .text += '4';
                                       }
                                       setState(() {});
@@ -235,7 +211,7 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       child: buttonContainer(
                                         button: 'S',
                                         isSelected: betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('4'),
                                       ),
                                     ),
@@ -243,18 +219,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                     onTap: () {
                                       if (betController
-                                          .companyBetMobileMyrController.text
+                                          .lotteryBetMobileMyrController.text
                                           .contains('5')) {
                                         betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text =
                                             betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text
                                                 .replaceAll('5', '');
                                       } else {
                                         betController
-                                            .companyBetMobileMyrController
+                                            .lotteryBetMobileMyrController
                                             .text += '5';
                                       }
                                       setState(() {});
@@ -263,7 +239,7 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       padding: const EdgeInsets.all(2.0),
                                       child: buttonContainer(
                                         isSelected: betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('5'),
                                         button: 'B',
                                       ),
@@ -272,18 +248,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                     onTap: () {
                                       if (betController
-                                          .companyBetMobileMyrController.text
+                                          .lotteryBetMobileMyrController.text
                                           .contains('6')) {
                                         betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text =
                                             betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text
                                                 .replaceAll('6', '');
                                       } else {
                                         betController
-                                            .companyBetMobileMyrController
+                                            .lotteryBetMobileMyrController
                                             .text += '6';
                                       }
                                       setState(() {});
@@ -293,7 +269,7 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       child: buttonContainer(
                                         button: 'K',
                                         isSelected: betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('6'),
                                       ),
                                     ),
@@ -301,18 +277,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                     onTap: () {
                                       if (betController
-                                          .companyBetMobileMyrController.text
+                                          .lotteryBetMobileMyrController.text
                                           .contains('7')) {
                                         betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text =
                                             betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text
                                                 .replaceAll('7', '');
                                       } else {
                                         betController
-                                            .companyBetMobileMyrController
+                                            .lotteryBetMobileMyrController
                                             .text += '7';
                                       }
                                       setState(() {});
@@ -322,7 +298,7 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       child: buttonContainer(
                                         button: 'W',
                                         isSelected: betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('7'),
                                       ),
                                     ),
@@ -330,18 +306,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                     onTap: () {
                                       if (betController
-                                          .companyBetMobileMyrController.text
+                                          .lotteryBetMobileMyrController.text
                                           .contains('8')) {
                                         betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text =
                                             betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text
                                                 .replaceAll('8', '');
                                       } else {
                                         betController
-                                            .companyBetMobileMyrController
+                                            .lotteryBetMobileMyrController
                                             .text += '8';
                                       }
                                       setState(() {});
@@ -351,7 +327,7 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       child: buttonContainer(
                                         button: 'G',
                                         isSelected: betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('8'),
                                       ),
                                     ),
@@ -359,18 +335,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                     onTap: () {
                                       if (betController
-                                          .companyBetMobileMyrController.text
+                                          .lotteryBetMobileMyrController.text
                                           .contains('9')) {
                                         betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text =
                                             betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text
                                                 .replaceAll('9', '');
                                       } else {
                                         betController
-                                            .companyBetMobileMyrController
+                                            .lotteryBetMobileMyrController
                                             .text += '9';
                                       }
                                       setState(() {});
@@ -380,7 +356,7 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       child: buttonContainer(
                                         button: 'E',
                                         isSelected: betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('9'),
                                       ),
                                     ),
@@ -402,18 +378,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                       onTap: () {
                                         if (betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('1')) {
                                           betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text =
                                               betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text
                                                   .replaceAll('1', '');
                                         } else {
                                           betController
-                                              .companyBetMobileMyrController
+                                              .lotteryBetMobileMyrController
                                               .text += '1';
                                         }
                                         setState(() {});
@@ -424,18 +400,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                       onTap: () {
                                         if (betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('2')) {
                                           betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text =
                                               betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text
                                                   .replaceAll('2', '');
                                         } else {
                                           betController
-                                              .companyBetMobileMyrController
+                                              .lotteryBetMobileMyrController
                                               .text += '2';
                                         }
                                         setState(() {});
@@ -446,18 +422,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                       onTap: () {
                                         if (betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('3')) {
                                           betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text =
                                               betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text
                                                   .replaceAll('3', '');
                                         } else {
                                           betController
-                                              .companyBetMobileMyrController
+                                              .lotteryBetMobileMyrController
                                               .text += '3';
                                         }
                                         setState(() {});
@@ -488,18 +464,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                       onTap: () {
                                         if (betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('4')) {
                                           betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text =
                                               betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text
                                                   .replaceAll('4', '');
                                         } else {
                                           betController
-                                              .companyBetMobileMyrController
+                                              .lotteryBetMobileMyrController
                                               .text += '4';
                                         }
                                         setState(() {});
@@ -510,18 +486,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                       onTap: () {
                                         if (betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('5')) {
                                           betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text =
                                               betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text
                                                   .replaceAll('5', '');
                                         } else {
                                           betController
-                                              .companyBetMobileMyrController
+                                              .lotteryBetMobileMyrController
                                               .text += '5';
                                         }
                                         setState(() {});
@@ -532,18 +508,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                     onTap: () {
                                       if (betController
-                                          .companyBetMobileMyrController.text
+                                          .lotteryBetMobileMyrController.text
                                           .contains('6')) {
                                         betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text =
                                             betController
-                                                .companyBetMobileMyrController
+                                                .lotteryBetMobileMyrController
                                                 .text
                                                 .replaceAll('6', '');
                                       } else {
                                         betController
-                                            .companyBetMobileMyrController
+                                            .lotteryBetMobileMyrController
                                             .text += '6';
                                       }
                                       setState(() {});
@@ -558,20 +534,20 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                     onTap: () {
                                       if (betController
-                                          .companyBetMobileMyrController
+                                          .lotteryBetMobileMyrController
                                           .text
                                           .isNotEmpty) {
                                         setState(() {
                                           betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text =
                                               betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text
                                                   .substring(
                                             0,
                                             betController
-                                                    .companyBetMobileMyrController
+                                                    .lotteryBetMobileMyrController
                                                     .text
                                                     .length -
                                                 1,
@@ -600,18 +576,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                       onTap: () {
                                         if (betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('7')) {
                                           betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text =
                                               betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text
                                                   .replaceAll('7', '');
                                         } else {
                                           betController
-                                              .companyBetMobileMyrController
+                                              .lotteryBetMobileMyrController
                                               .text += '7';
                                         }
                                         setState(() {});
@@ -622,18 +598,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                       onTap: () {
                                         if (betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('8')) {
                                           betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text =
                                               betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text
                                                   .replaceAll('8', '');
                                         } else {
                                           betController
-                                              .companyBetMobileMyrController
+                                              .lotteryBetMobileMyrController
                                               .text += '8';
                                         }
                                         setState(() {});
@@ -644,18 +620,18 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   InkWell(
                                       onTap: () {
                                         if (betController
-                                            .companyBetMobileMyrController.text
+                                            .lotteryBetMobileMyrController.text
                                             .contains('9')) {
                                           betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text =
                                               betController
-                                                  .companyBetMobileMyrController
+                                                  .lotteryBetMobileMyrController
                                                   .text
                                                   .replaceAll('9', '');
                                         } else {
                                           betController
-                                              .companyBetMobileMyrController
+                                              .lotteryBetMobileMyrController
                                               .text += '9';
                                         }
                                         setState(() {});
@@ -699,8 +675,8 @@ class _BetmobileViewState extends State<BetmobileView> {
                                     onTap: () {
                                       print('second');
                                       betController.isLottery.value = true;
-                                      FocusScope.of(context)
-                                          .requestFocus(_secondFocusNode);
+                                      // FocusScope.of(context)
+                                      //     .requestFocus(_secondFocusNode);
                                     },
                                     child: Container(
                                       height:
