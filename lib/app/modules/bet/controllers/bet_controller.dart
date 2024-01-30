@@ -32,12 +32,11 @@ class BetController extends GetxController {
     isLoading.value = true;
     try {
       final data = {
-        'company_names': companyBetMobileMyrController.text,
-        'lottery_code': lotteryBetMobileMyrController.text,
+        'data': lotteryBetMobileMyrController.text,
       };
       print(data);
       final response = await _dio.post(
-        kMakeOrder,
+        kMakeOrder2,
         data: data,
         options: Options(
           headers: {
@@ -52,7 +51,6 @@ class BetController extends GetxController {
 
       if (response.statusCode == 201) {
         makeOrder.value = response.data;
-        print(response.data);
 
         Get.to(BetHistoryResult2View());
         Get.snackbar(
