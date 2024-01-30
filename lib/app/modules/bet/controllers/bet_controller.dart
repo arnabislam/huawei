@@ -36,7 +36,7 @@ class BetController extends GetxController {
       };
       print(data);
       final response = await _dio.post(
-        kMakeOrder2,
+        kMakeOrder,
         data: data,
         options: Options(
           headers: {
