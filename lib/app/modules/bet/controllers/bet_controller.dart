@@ -20,12 +20,12 @@ class BetController extends GetxController {
       TextEditingController(text: '#');
 
   final TextEditingController lotteryBetMobileMyrController =
-      TextEditingController();
+      TextEditingController(text: '#');
   final TextEditingController lotteryBetMobileMyrController2 =
       TextEditingController();
   final isLoading = false.obs;
   final _dio = Dio();
-
+  RxList<TextSpan> textSpans = <TextSpan>[].obs;
   final makeOrder = {}.obs;
 
   void tryToMakeOrder() async {
@@ -221,6 +221,32 @@ class BetController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     }
+  }
+
+  //on change the textfield text
+  RxBool isCurrentLineStartingWithHash = true.obs;
+  RxBool isCurrentLineStartingWithStar = false.obs;
+  RxBool isCurrentLineStartingWithDoubleStar = false.obs;
+
+  void onChangedText(String text) {
+    isCurrentLineStartingWithHash.value = false;
+    isCurrentLineStartingWithStar.value = false;
+    isCurrentLineStartingWithDoubleStar.value = false;
+    List<String> lines = text.split('\n');
+    String currentLine = lines.last;
+
+    if (currentLine.startsWith('*')) {
+      if (currentLine.startsWith('**')) {
+        isCurrentLineStartingWithDoubleStar.value = true;
+      } else {
+        isCurrentLineStartingWithStar.value = currentLine.startsWith('*');
+      }
+    } else {
+      isCurrentLineStartingWithHash.value = currentLine.startsWith('#');
+    }
+    print(isCurrentLineStartingWithHash);
+    print(isCurrentLineStartingWithStar);
+    print(isCurrentLineStartingWithDoubleStar);
   }
 
   @override

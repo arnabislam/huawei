@@ -16,15 +16,15 @@ class BetmobileView extends StatefulWidget {
 
 class _BetmobileViewState extends State<BetmobileView> {
   final betController = Get.put(BetController());
+
   FocusNode _firstFocusNode = FocusNode();
   FocusNode _secondFocusNode = FocusNode();
-  FocusNode _thirdFocusNode = FocusNode();
 
   @override
   void dispose() {
     _firstFocusNode.dispose();
     _secondFocusNode.dispose();
-    _thirdFocusNode.dispose();
+
     super.dispose();
   }
 
@@ -68,7 +68,6 @@ class _BetmobileViewState extends State<BetmobileView> {
                 TextField(
                   keyboardType: TextInputType.none,
                   controller: betController.dController,
-                  onTap: () {},
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                       borderSide: BorderSide.none,
@@ -90,7 +89,8 @@ class _BetmobileViewState extends State<BetmobileView> {
                   height: MediaQuery.of(context).size.height * 0.3,
                 ),
                 Obx(
-                  () => betController.isLottery.value == false
+                  () => betController.isCurrentLineStartingWithHash.value ==
+                          true
                       ? Column(
                           children: [
                             Padding(
@@ -554,6 +554,8 @@ class _BetmobileViewState extends State<BetmobileView> {
                                           );
                                         });
                                       }
+                                      betController.onChangedText(betController
+                                          .lotteryBetMobileMyrController.text);
                                     },
                                     child: const numberContainer(
                                       number: 'C',
@@ -668,15 +670,26 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       number: '0',
                                     ),
                                   ),
-                                  const numberContainer(
-                                    number: '#',
+                                  InkWell(
+                                    onTap: () {
+                                      betController.onChangedText(betController
+                                          .lotteryBetMobileMyrController.text);
+                                    },
+                                    child: const numberContainer(
+                                      number: '#',
+                                    ),
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      print('second');
                                       betController.isLottery.value = true;
-                                      // FocusScope.of(context)
-                                      //     .requestFocus(_secondFocusNode);
+                                      betController
+                                          .lotteryBetMobileMyrController
+                                          .text += '\n';
+                                      betController
+                                          .isCurrentLineStartingWithHash
+                                          .value = false;
+
+                                      setState(() {});
                                     },
                                     child: Container(
                                       height:
@@ -686,12 +699,13 @@ class _BetmobileViewState extends State<BetmobileView> {
                                           0.368,
                                       color: Colors.grey,
                                       child: const Center(
-                                          child: Text(
-                                        "Enter",
-                                        style: TextStyle(
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.w500),
-                                      )),
+                                        child: Text(
+                                          "Enter",
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -701,6 +715,8 @@ class _BetmobileViewState extends State<BetmobileView> {
                               padding: const EdgeInsets.only(
                                   left: 28, right: 28, top: 5, bottom: 11),
                               child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.blue),
                                 onPressed: () {},
                                 child: const Center(
                                   child: Padding(
@@ -721,8 +737,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                       : Column(
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 12.0, right: 12),
+                              padding: const EdgeInsets.only(
+                                left: 12.0,
+                                right: 12,
+                              ),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
@@ -757,9 +775,27 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       child: const numberContainer(
                                         number: '3',
                                       )),
-                                  const numberContainer(
-                                    number: 'BOX',
-                                  ),
+                                  Obx(() {
+                                    return Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.044,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.179,
+                                      color: betController
+                                              .isCurrentLineStartingWithStar
+                                              .value
+                                          ? Colors.red
+                                          : Colors.grey,
+                                      child: const Center(
+                                          child: Text(
+                                        'Box',
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.w500),
+                                      )),
+                                    );
+                                  }),
                                   const numberContainer(
                                     number: 'D',
                                   ),
@@ -808,9 +844,27 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       number: '6',
                                     ),
                                   ),
-                                  const numberContainer(
-                                    number: 'iBOX',
-                                  ),
+                                  Obx(() {
+                                    return Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.044,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.179,
+                                      color: betController
+                                              .isCurrentLineStartingWithDoubleStar
+                                              .value
+                                          ? Colors.red
+                                          : Colors.grey,
+                                      child: const Center(
+                                          child: Text(
+                                        'iBox',
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.w500),
+                                      )),
+                                    );
+                                  }),
                                   InkWell(
                                     onTap: () {
                                       if (betController
@@ -834,6 +888,8 @@ class _BetmobileViewState extends State<BetmobileView> {
                                           );
                                         });
                                       }
+                                      betController.onChangedText(betController
+                                          .lotteryBetMobileMyrController.text);
                                     },
                                     child: const numberContainer(
                                       number: 'C',
@@ -903,8 +959,17 @@ class _BetmobileViewState extends State<BetmobileView> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  const numberContainer(
-                                    number: '*',
+                                  InkWell(
+                                    onTap: () {
+                                      betController
+                                          .lotteryBetMobileMyrController
+                                          .text += '*';
+                                      betController.onChangedText(betController
+                                          .lotteryBetMobileMyrController.text);
+                                    },
+                                    child: const numberContainer(
+                                      number: '*',
+                                    ),
                                   ),
                                   InkWell(
                                     onTap: () {
@@ -922,6 +987,8 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       betController
                                           .lotteryBetMobileMyrController
                                           .text += '#';
+                                      betController.onChangedText(betController
+                                          .lotteryBetMobileMyrController.text);
                                       setState(() {});
                                     },
                                     child: const numberContainer(
@@ -934,6 +1001,9 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       betController
                                           .lotteryBetMobileMyrController
                                           .text += '\n';
+                                      betController
+                                          .isCurrentLineStartingWithHash
+                                          .value = false;
                                     },
                                     child: Container(
                                       height:
