@@ -1,8 +1,5 @@
 import 'dart:convert';
 
-/// user : {"id":1,"username":"admin","email":"admin@gmail.com","username_owner_name":"dsf","roll":"dsf","credite_limit":"23443435","credit_used":"43543","available_credit":"436434","cash_balance":"564454","outtanding_transaction":"435","status":"Admin","created_at":null,"updated_at":null}
-/// token : "1|46gQq7GMKED12LOhsIqXao5oCVxnWtuHXnoooQ5Z1b130ba8"
-
 UserProfile userProfileFromJson(String str) =>
     UserProfile.fromJson(json.decode(str));
 String userProfileToJson(UserProfile data) => json.encode(data.toJson());

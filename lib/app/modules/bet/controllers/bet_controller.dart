@@ -50,6 +50,7 @@ class BetController extends GetxController {
       isLoading.value = false;
 
       if (response.statusCode == 201) {
+        authController.tryToRefresh();
         makeOrder.value = response.data;
 
         Get.to(BetHistoryResult2View());
@@ -121,9 +122,6 @@ class BetController extends GetxController {
   void tryToCancelOrder({required int orderID}) async {
     isLoading.value = true;
     try {
-      print(
-        kCancelOrder(orderId: orderID),
-      );
       final response = await _dio.get(
         kCancelOrder(orderId: orderID),
         options: Options(
@@ -138,6 +136,7 @@ class BetController extends GetxController {
       isLoading.value = false;
 
       if (response.statusCode == 200) {
+        authController.tryToRefresh();
         makeOrder.value = response.data;
 
         Get.to(BetHistoryResult2View());
@@ -152,7 +151,7 @@ class BetController extends GetxController {
       }
     } catch (e) {
       isLoading.value = false;
-      print(e);
+
       Get.snackbar(
         'Failed',
         "Something is wrong. Please try again.",

@@ -157,7 +157,7 @@ class _BetHistoryResult2ViewState extends State<BetHistoryResult2View> {
                                       PopupMenuItem(
                                         onTap: () {
                                           Share.share(
-                                              '${betHistoryController2.makeOrder['order']["username"]}(${betHistoryController2.makeOrder['order']["order_count"]}) \n${betHistoryController2.makeOrder['order']["created_at"].toString().split('T')[0]} ${betHistoryController2.makeOrder['order']["created_at"].toString().split('T')[1].substring(0, 8)} \n${betHistoryController2.makeOrder['order']["workingdate"]} \n*${betHistoryController2.makeOrder['order']["companies"]} \n${betHistoryController2.makeOrder['order']["lotterycode"]}  \nT (${betHistoryController2.makeOrder['order']["totalamount"]})');
+                                              '${betHistoryController2.makeOrder['order']["username"]}(${betHistoryController2.makeOrder['order']["order_count"]}) \n${betHistoryController2.makeOrder['order']["created_at"].toString().split('T')[0]} ${betHistoryController2.makeOrder['order']["created_at"].toString().split('T')[1].substring(0, 8)} \n${betHistoryController2.makeOrder['order']["workingdate"]}\n${betHistoryController2.makeOrder['order']["lotterycode"]}  \nT (${betHistoryController2.makeOrder['order']["totalamount"]})');
                                         },
                                         value: 'option3',
                                         child: const Text('Share '),

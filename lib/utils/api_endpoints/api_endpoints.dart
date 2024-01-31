@@ -2,6 +2,7 @@ const String kDomain = "https://lottery.sheikhit.net";
 const String basUrl = "$kDomain/api";
 //Authentication EndPoints
 const String kLoginUlr = "$basUrl/login";
+String kUserDataUlr({required int userId}) => "$basUrl/user-data/$userId";
 
 const String kLogoutUlr = "$basUrl/logout";
 

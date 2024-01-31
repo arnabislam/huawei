@@ -16,7 +16,7 @@ class AuthController extends GetxController {
   void tryToSignIn({required String userName, required String password}) async {
     authLoading.value = true;
     var data = {
-      'email': userName,
+      'username': userName,
       'password': password,
     };
     var dio = Dio();
@@ -31,8 +31,7 @@ class AuthController extends GetxController {
       if (statusCode == 200) {
         profile.value = UserProfile.fromJson(response.data);
         token.value = profile.value.token!;
-        print(profile.value.user!.username);
-        print(token);
+
         Get.snackbar(
           'Success',
           "You are Logged In now.",
@@ -102,9 +101,49 @@ class AuthController extends GetxController {
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
-
       Get.offAll(LoginView());
       token.value = '';
+    }
+  }
+
+  void tryToRefresh() async {
+    authLoading.value = true;
+
+    var dio = Dio();
+
+    try {
+      final response = await dio.get(
+        kUserDataUlr(userId: profile.value.user!.id!.toInt()),
+        options: Options(
+          headers: {
+            // Set any required headers
+            'accept': '*/*',
+            'Authorization': 'Bearer ${token.value}',
+          },
+        ),
+      );
+      int? statusCode = response.statusCode;
+      authLoading.value = false;
+      if (statusCode == 200) {
+        profile.value = UserProfile.fromJson(response.data);
+      } else {
+        Get.snackbar(
+          'Failed',
+          "Something is wrong. Please try again.",
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      }
+    } catch (e) {
+      authLoading.value = false;
+      Get.snackbar(
+        'Failed',
+        "Something is wrong. Please try again.",
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 }
