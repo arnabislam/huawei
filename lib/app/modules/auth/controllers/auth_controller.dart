@@ -51,7 +51,6 @@ class AuthController extends GetxController {
         );
       }
     } catch (e) {
-      print(e);
       authLoading.value = false;
       Get.snackbar(
         'Failed',
