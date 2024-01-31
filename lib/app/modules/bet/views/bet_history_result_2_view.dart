@@ -198,12 +198,6 @@ class _BetHistoryResult2ViewState extends State<BetHistoryResult2View> {
                           height: 3,
                         ),
                         Text(betHistoryController2.makeOrder['order']
-                                ["companies"]
-                            .toString()),
-                        const SizedBox(
-                          height: 3,
-                        ),
-                        Text(betHistoryController2.makeOrder['order']
                                 ["lotterycode"]
                             .toString()),
                         const SizedBox(

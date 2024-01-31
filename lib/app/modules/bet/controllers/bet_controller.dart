@@ -34,7 +34,7 @@ class BetController extends GetxController {
       final data = {
         'data': lotteryBetMobileMyrController.text,
       };
-      print(data);
+
       final response = await _dio.post(
         kMakeOrder,
         data: data,
@@ -53,13 +53,6 @@ class BetController extends GetxController {
         makeOrder.value = response.data;
 
         Get.to(BetHistoryResult2View());
-        Get.snackbar(
-          'Success',
-          "You are Logged In now.",
-          backgroundColor: Colors.green,
-          colorText: Colors.white,
-          snackPosition: SnackPosition.BOTTOM,
-        );
       } else {
         Get.snackbar(
           'Failed',
@@ -191,14 +184,6 @@ class BetController extends GetxController {
 
       if (response.statusCode == 200) {
         allAcceptedOrder.value = response.data;
-
-        Get.snackbar(
-          'Success',
-          "You are Logged In now.",
-          backgroundColor: Colors.green,
-          colorText: Colors.white,
-          snackPosition: SnackPosition.BOTTOM,
-        );
       } else {
         Get.snackbar(
           'Failed',
@@ -242,9 +227,6 @@ class BetController extends GetxController {
     } else {
       isCurrentLineStartingWithHash.value = currentLine.startsWith('#');
     }
-    print(isCurrentLineStartingWithHash);
-    print(isCurrentLineStartingWithStar);
-    print(isCurrentLineStartingWithDoubleStar);
   }
 
   @override

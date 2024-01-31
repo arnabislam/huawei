@@ -178,7 +178,7 @@ class _BetHistoryResultViewState extends State<BetHistoryResultView> {
                                           PopupMenuItem(
                                             onTap: () {
                                               Share.share(
-                                                  '${betHistoryController.orderList[index]["username"]}(${betHistoryController.orderList[index]["order_count"]}) \n${betHistoryController.orderList[index]["created_at"].toString().split('T')[0]} ${betHistoryController.orderList[index]["created_at"].toString().split('T')[1].substring(0, 8)} \n${betHistoryController.orderList[index]["workingdate"]} \n*${betHistoryController.orderList[index]["companies"]} \n${betHistoryController.orderList[index]["lotterycode"]}  \nT (${betHistoryController.orderList[index]["totalamount"]})');
+                                                  '${betHistoryController.orderList[index]["username"]}(${betHistoryController.orderList[index]["order_count"]}) \n${betHistoryController.orderList[index]["created_at"].toString().split('T')[0]} ${betHistoryController.orderList[index]["created_at"].toString().split('T')[1].substring(0, 8)} \n${betHistoryController.orderList[index]["workingdate"]} \n${betHistoryController.orderList[index]["lotterycode"]}  \nT (${betHistoryController.orderList[index]["totalamount"]})');
                                             },
                                             value: 'option3',
                                             child: const Text('Share'),
@@ -205,18 +205,11 @@ class _BetHistoryResultViewState extends State<BetHistoryResultView> {
                           Text(
                             "${betHistoryController.orderList[index]["created_at"].toString().split('T')[0]} ${betHistoryController.orderList[index]["created_at"].toString().split('T')[1].substring(0, 8)}",
                           ),
-                          // Text(betHistoryController.orderList[index]betHistoryController.orderList[index]
                           const SizedBox(
                             height: 3,
                           ),
                           Text(betHistoryController.orderList[index]
                                   ['workingdate']
-                              .toString()),
-                          const SizedBox(
-                            height: 3,
-                          ),
-                          Text(betHistoryController.orderList[index]
-                                  ['companies']
                               .toString()),
                           const SizedBox(
                             height: 3,
@@ -229,8 +222,6 @@ class _BetHistoryResultViewState extends State<BetHistoryResultView> {
                           ),
                           Text(
                               "T (${betHistoryController.orderList[index]["totalamount"].toString()})"),
-                          // Text(betHistoryController.orderList[index]['totalamount']
-                          //     .toString()), SizedBox(height: 3,),
                         ],
                       ),
                     );
