@@ -102,21 +102,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                 children: [
                                   InkWell(
                                     onTap: () {
-                                      if (betController
-                                          .lotteryBetMobileMyrController.text
-                                          .contains('1')) {
-                                        betController
-                                                .lotteryBetMobileMyrController
-                                                .text =
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text
-                                                .replaceAll('1', '');
-                                      } else {
-                                        betController
-                                            .lotteryBetMobileMyrController
-                                            .text += '1';
-                                      }
+                                      betController
+                                          .lotteryBetMobileMyrController
+                                          .text += '1';
+
                                       setState(() {});
                                     },
                                     child: Padding(
@@ -131,21 +120,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      if (betController
-                                          .lotteryBetMobileMyrController.text
-                                          .contains('2')) {
-                                        betController
-                                                .lotteryBetMobileMyrController
-                                                .text =
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text
-                                                .replaceAll('2', '');
-                                      } else {
-                                        betController
-                                            .lotteryBetMobileMyrController
-                                            .text += '2';
-                                      }
+                                      betController
+                                          .lotteryBetMobileMyrController
+                                          .text += '2';
+
                                       setState(() {});
                                     },
                                     child: Padding(
@@ -160,21 +138,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      if (betController
-                                          .lotteryBetMobileMyrController.text
-                                          .contains('3')) {
-                                        betController
-                                                .lotteryBetMobileMyrController
-                                                .text =
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text
-                                                .replaceAll('3', '');
-                                      } else {
-                                        betController
-                                            .lotteryBetMobileMyrController
-                                            .text += '3';
-                                      }
+                                      betController
+                                          .lotteryBetMobileMyrController
+                                          .text += '3';
+
                                       setState(() {});
                                     },
                                     child: Padding(
@@ -189,21 +156,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      if (betController
-                                          .lotteryBetMobileMyrController.text
-                                          .contains('4')) {
-                                        betController
-                                                .lotteryBetMobileMyrController
-                                                .text =
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text
-                                                .replaceAll('4', '');
-                                      } else {
-                                        betController
-                                            .lotteryBetMobileMyrController
-                                            .text += '4';
-                                      }
+                                      betController
+                                          .lotteryBetMobileMyrController
+                                          .text += '4';
+
                                       setState(() {});
                                     },
                                     child: Padding(
@@ -218,21 +174,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      if (betController
-                                          .lotteryBetMobileMyrController.text
-                                          .contains('5')) {
-                                        betController
-                                                .lotteryBetMobileMyrController
-                                                .text =
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text
-                                                .replaceAll('5', '');
-                                      } else {
-                                        betController
-                                            .lotteryBetMobileMyrController
-                                            .text += '5';
-                                      }
+                                      betController
+                                          .lotteryBetMobileMyrController
+                                          .text += '5';
+
                                       setState(() {});
                                     },
                                     child: Padding(
@@ -247,21 +192,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      if (betController
-                                          .lotteryBetMobileMyrController.text
-                                          .contains('6')) {
-                                        betController
-                                                .lotteryBetMobileMyrController
-                                                .text =
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text
-                                                .replaceAll('6', '');
-                                      } else {
-                                        betController
-                                            .lotteryBetMobileMyrController
-                                            .text += '6';
-                                      }
+                                      betController
+                                          .lotteryBetMobileMyrController
+                                          .text += '6';
+
                                       setState(() {});
                                     },
                                     child: Padding(
@@ -276,21 +210,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      if (betController
-                                          .lotteryBetMobileMyrController.text
-                                          .contains('7')) {
-                                        betController
-                                                .lotteryBetMobileMyrController
-                                                .text =
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text
-                                                .replaceAll('7', '');
-                                      } else {
-                                        betController
-                                            .lotteryBetMobileMyrController
-                                            .text += '7';
-                                      }
+                                      betController
+                                          .lotteryBetMobileMyrController
+                                          .text += '7';
+
                                       setState(() {});
                                     },
                                     child: Padding(
@@ -305,21 +228,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      if (betController
-                                          .lotteryBetMobileMyrController.text
-                                          .contains('8')) {
-                                        betController
-                                                .lotteryBetMobileMyrController
-                                                .text =
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text
-                                                .replaceAll('8', '');
-                                      } else {
-                                        betController
-                                            .lotteryBetMobileMyrController
-                                            .text += '8';
-                                      }
+                                      betController
+                                          .lotteryBetMobileMyrController
+                                          .text += '8';
+
                                       setState(() {});
                                     },
                                     child: Padding(
@@ -334,21 +246,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      if (betController
-                                          .lotteryBetMobileMyrController.text
-                                          .contains('9')) {
-                                        betController
-                                                .lotteryBetMobileMyrController
-                                                .text =
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text
-                                                .replaceAll('9', '');
-                                      } else {
-                                        betController
-                                            .lotteryBetMobileMyrController
-                                            .text += '9';
-                                      }
+                                      betController
+                                          .lotteryBetMobileMyrController
+                                          .text += '9';
+
                                       setState(() {});
                                     },
                                     child: Padding(
@@ -377,21 +278,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                 children: [
                                   InkWell(
                                       onTap: () {
-                                        if (betController
-                                            .lotteryBetMobileMyrController.text
-                                            .contains('1')) {
-                                          betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text =
-                                              betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text
-                                                  .replaceAll('1', '');
-                                        } else {
-                                          betController
-                                              .lotteryBetMobileMyrController
-                                              .text += '1';
-                                        }
+                                        betController
+                                            .lotteryBetMobileMyrController
+                                            .text += '1';
+
                                         setState(() {});
                                       },
                                       child: const numberContainer(
@@ -399,21 +289,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       )),
                                   InkWell(
                                       onTap: () {
-                                        if (betController
-                                            .lotteryBetMobileMyrController.text
-                                            .contains('2')) {
-                                          betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text =
-                                              betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text
-                                                  .replaceAll('2', '');
-                                        } else {
-                                          betController
-                                              .lotteryBetMobileMyrController
-                                              .text += '2';
-                                        }
+                                        betController
+                                            .lotteryBetMobileMyrController
+                                            .text += '2';
+
                                         setState(() {});
                                       },
                                       child: const numberContainer(
@@ -421,21 +300,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       )),
                                   InkWell(
                                       onTap: () {
-                                        if (betController
-                                            .lotteryBetMobileMyrController.text
-                                            .contains('3')) {
-                                          betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text =
-                                              betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text
-                                                  .replaceAll('3', '');
-                                        } else {
-                                          betController
-                                              .lotteryBetMobileMyrController
-                                              .text += '3';
-                                        }
+                                        betController
+                                            .lotteryBetMobileMyrController
+                                            .text += '3';
+
                                         setState(() {});
                                       },
                                       child: const numberContainer(
@@ -463,21 +331,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                 children: [
                                   InkWell(
                                       onTap: () {
-                                        if (betController
-                                            .lotteryBetMobileMyrController.text
-                                            .contains('4')) {
-                                          betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text =
-                                              betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text
-                                                  .replaceAll('4', '');
-                                        } else {
-                                          betController
-                                              .lotteryBetMobileMyrController
-                                              .text += '4';
-                                        }
+                                        betController
+                                            .lotteryBetMobileMyrController
+                                            .text += '4';
+
                                         setState(() {});
                                       },
                                       child: const numberContainer(
@@ -485,21 +342,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       )),
                                   InkWell(
                                       onTap: () {
-                                        if (betController
-                                            .lotteryBetMobileMyrController.text
-                                            .contains('5')) {
-                                          betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text =
-                                              betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text
-                                                  .replaceAll('5', '');
-                                        } else {
-                                          betController
-                                              .lotteryBetMobileMyrController
-                                              .text += '5';
-                                        }
+                                        betController
+                                            .lotteryBetMobileMyrController
+                                            .text += '5';
+
                                         setState(() {});
                                       },
                                       child: const numberContainer(
@@ -507,21 +353,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       )),
                                   InkWell(
                                     onTap: () {
-                                      if (betController
-                                          .lotteryBetMobileMyrController.text
-                                          .contains('6')) {
-                                        betController
-                                                .lotteryBetMobileMyrController
-                                                .text =
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text
-                                                .replaceAll('6', '');
-                                      } else {
-                                        betController
-                                            .lotteryBetMobileMyrController
-                                            .text += '6';
-                                      }
+                                      betController
+                                          .lotteryBetMobileMyrController
+                                          .text += '6';
+
                                       setState(() {});
                                     },
                                     child: const numberContainer(
@@ -577,21 +412,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                 children: [
                                   InkWell(
                                       onTap: () {
-                                        if (betController
-                                            .lotteryBetMobileMyrController.text
-                                            .contains('7')) {
-                                          betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text =
-                                              betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text
-                                                  .replaceAll('7', '');
-                                        } else {
-                                          betController
-                                              .lotteryBetMobileMyrController
-                                              .text += '7';
-                                        }
+                                        betController
+                                            .lotteryBetMobileMyrController
+                                            .text += '7';
+
                                         setState(() {});
                                       },
                                       child: const numberContainer(
@@ -599,21 +423,10 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       )),
                                   InkWell(
                                       onTap: () {
-                                        if (betController
-                                            .lotteryBetMobileMyrController.text
-                                            .contains('8')) {
-                                          betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text =
-                                              betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text
-                                                  .replaceAll('8', '');
-                                        } else {
-                                          betController
-                                              .lotteryBetMobileMyrController
-                                              .text += '8';
-                                        }
+                                        betController
+                                            .lotteryBetMobileMyrController
+                                            .text += '8';
+
                                         setState(() {});
                                       },
                                       child: const numberContainer(
@@ -621,22 +434,9 @@ class _BetmobileViewState extends State<BetmobileView> {
                                       )),
                                   InkWell(
                                       onTap: () {
-                                        if (betController
-                                            .lotteryBetMobileMyrController.text
-                                            .contains('9')) {
-                                          betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text =
-                                              betController
-                                                  .lotteryBetMobileMyrController
-                                                  .text
-                                                  .replaceAll('9', '');
-                                        } else {
-                                          betController
-                                              .lotteryBetMobileMyrController
-                                              .text += '9';
-                                        }
-                                        setState(() {});
+                                        betController
+                                            .lotteryBetMobileMyrController
+                                            .text += '9';
                                       },
                                       child: const numberContainer(
                                         number: '9',
