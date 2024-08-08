@@ -16,9 +16,13 @@ class BetView extends GetView<BetController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.black,
-        title: const Text('HUAWEI88'),
+        title: const Text(
+          'HUAWEI88',
+          style: TextStyle(color: Colors.white),
+        ),
         leading: IconButton(
             onPressed: () {
               showDialog(
@@ -43,7 +47,10 @@ class BetView extends GetView<BetController> {
                 },
               );
             },
-            icon: const Icon(Icons.arrow_back_ios)),
+            icon: const Icon(
+              Icons.power_settings_new_outlined,
+              color: Colors.white,
+            )),
       ),
       body: Container(
           decoration: const BoxDecoration(

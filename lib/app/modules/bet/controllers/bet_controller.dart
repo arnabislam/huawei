@@ -234,4 +234,38 @@ class BetController extends GetxController {
     tryToFetchAllAceept();
     super.onReady();
   }
+
+  //auto scroll logic
+
+  final ScrollController scrollController = ScrollController();
+
+  @override
+  void onInit() {
+    super.onInit();
+    lotteryBetMobileMyrController.addListener(_scrollToBottom);
+  }
+
+  @override
+  void onClose() {
+    lotteryBetMobileMyrController.removeListener(_scrollToBottom);
+    lotteryBetMobileMyrController.dispose();
+    scrollController.dispose();
+    super.onClose();
+  }
+
+  void _scrollToBottom() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (scrollController.hasClients) {
+        scrollController.jumpTo(scrollController.position.maxScrollExtent);
+      }
+    });
+  }
+
+  void addNewLine() {
+    final currentText = lotteryBetMobileMyrController.text;
+    lotteryBetMobileMyrController.text = '$currentText\n';
+    lotteryBetMobileMyrController.selection = TextSelection.fromPosition(
+      TextPosition(offset: lotteryBetMobileMyrController.text.length),
+    );
+  }
 }

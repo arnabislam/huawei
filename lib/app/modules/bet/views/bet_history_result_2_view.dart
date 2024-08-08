@@ -22,7 +22,10 @@ class _BetHistoryResult2ViewState extends State<BetHistoryResult2View> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.black,
-          title: const Text('HUAWEI88'),
+          title: const Text(
+            'HUAWEI88',
+            style: TextStyle(color: Colors.white),
+          ),
           leading: IconButton(
             onPressed: () {
               Get.back();

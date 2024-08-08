@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:huawei_new/app/modules/bet/views/bet_history_view.dart';
-import 'package:huawei_new/app/modules/bet/views/bet_mobile_sgd_view.dart';
 import 'package:huawei_new/app/modules/bet/views/betmobile_view.dart';
 import 'package:huawei_new/app/modules/member/views/account_view.dart';
-import 'package:huawei_new/app/modules/member/views/announcement_view.dart';
-import 'package:huawei_new/app/modules/member/views/multi_transfer_view.dart';
 import 'package:huawei_new/app/modules/member/views/password_view.dart';
-import 'package:huawei_new/app/modules/member/views/topup_view.dart';
 import 'package:huawei_new/app/modules/report/views/draw_result_view.dart';
-import 'package:huawei_new/app/modules/report/views/jackpot_view.dart';
 import 'package:huawei_new/app/modules/report/views/win_lose_view.dart';
 import 'package:huawei_new/app/modules/report/views/win_number_view.dart';
-import 'package:huawei_new/app/modules/settings/views/printer_view.dart';
 import 'package:huawei_new/app/modules/settings/views/settings_view.dart';
 
 class AllView extends GetView {
@@ -39,34 +33,12 @@ class AllView extends GetView {
                 child: reRow(
                   betImage: Image.asset(
                     "images/default/add.png",
-                    color: Color(0xffffac33),
+                    color: const Color(0xffffac33),
                     height: 35,
                     width: 35,
                   ),
                   betText: "Bet in Mobile format MYR Curency",
                   betTitleText: "Bet Mobile MYR",
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Get.to(BetMobileSgdView());
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(7)),
-                margin: const EdgeInsets.only(left: 5, top: 8, right: 5),
-                height: 65,
-                child: reRow(
-                  betImage: Image.asset(
-                    "images/default/add.png",
-                    color: Color(0xffffac33),
-                    height: 35,
-                    width: 35,
-                  ),
-                  betText: "Bet in Mobile format SGD Curency",
-                  betTitleText: "Bet Mobile SGD-3.48",
                 ),
               ),
             ),
@@ -117,7 +89,7 @@ class AllView extends GetView {
                 child: reRow(
                   betImage: Image.asset(
                     "images/default/document.png",
-                    color: Color(0xffffac33),
+                    color: const Color(0xffffac33),
                     height: 35,
                     width: 35,
                   ),
@@ -128,7 +100,7 @@ class AllView extends GetView {
             ),
             InkWell(
               onTap: () {
-                Get.to(WinLoseView());
+                Get.to(const WinLoseView());
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -139,7 +111,7 @@ class AllView extends GetView {
                 child: reRow(
                   betImage: Image.asset(
                     "images/default/dollar-sign.png",
-                    color: Color(0xffffac33),
+                    color: const Color(0xffffac33),
                     height: 35,
                     width: 35,
                   ),
@@ -150,7 +122,7 @@ class AllView extends GetView {
             ),
             InkWell(
               onTap: () {
-                Get.to(WinNumberView());
+                Get.to(const WinNumberView());
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -162,66 +134,6 @@ class AllView extends GetView {
                   betImage: Image.asset("images/default/dollar.png"),
                   betText: "Win Number Review",
                   betTitleText: "Win Number ",
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Get.to(JackpotView());
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(7)),
-                margin: const EdgeInsets.only(left: 5, top: 8, right: 5),
-                height: 65,
-                child: reRow(
-                  betImage: Image.asset(
-                    "images/default/jackpot.png",
-                    height: 45,
-                    width: 45,
-                  ),
-                  betText: "Jackpot Report Review",
-                  betTitleText: "Jackpot",
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Get.to(TopupView());
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(7)),
-                margin: const EdgeInsets.only(left: 5, top: 8, right: 5),
-                height: 65,
-                child: reRow(
-                  betImage: Image.asset("images/default/dollar.png"),
-                  betText: "Help Down;ine Topup Credit",
-                  betTitleText: "Topup",
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Get.to(MultiTransferView());
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(7)),
-                margin: const EdgeInsets.only(left: 5, top: 8, right: 5),
-                height: 65,
-                child: reRow(
-                  betImage: Image.asset(
-                    "images/default/double-arrow.png",
-                    color: Color(0xffffac33),
-                    height: 35,
-                    width: 35,
-                  ),
-                  betText: "Manage Multi Transfer",
-                  betTitleText: "Multi Transfer",
                 ),
               ),
             ),
@@ -248,7 +160,7 @@ class AllView extends GetView {
             ),
             InkWell(
               onTap: () {
-                Get.to(SettingsView());
+                Get.to(const SettingsView());
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -259,56 +171,12 @@ class AllView extends GetView {
                 child: reRow(
                   betImage: Image.asset(
                     "images/default/content-management.png",
-                    color: Color(0xffffac33),
+                    color: const Color(0xffffac33),
                     height: 35,
                     width: 35,
                   ),
                   betText: "Settings Change",
                   betTitleText: "Setting",
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Get.to(PrinterView());
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(7)),
-                margin: const EdgeInsets.only(left: 5, top: 8, right: 5),
-                height: 65,
-                child: reRow(
-                  betImage: Image.asset(
-                    "images/default/printer.png",
-                    color: Color(0xffffac33),
-                    height: 35,
-                    width: 35,
-                  ),
-                  betText: "Printer Setup",
-                  betTitleText: "Printer",
-                ),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                Get.to(AnnouncementView());
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(7)),
-                margin: const EdgeInsets.only(left: 5, top: 8, right: 5),
-                height: 65,
-                child: reRow(
-                  betImage: Image.asset(
-                    "images/default/marketing.png",
-                    color: Color(0xffffac33),
-                    height: 35,
-                    width: 35,
-                  ),
-                  betText: "Check Announcement",
-                  betTitleText: "Announcement",
                 ),
               ),
             ),
@@ -340,7 +208,7 @@ class reRow extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: Color(0xffffac33), // Set your desired border color
+                color: const Color(0xffffac33), // Set your desired border color
                 width: 2.0, // Set your desired border width
               ),
             ),
@@ -357,10 +225,11 @@ class reRow extends StatelessWidget {
           children: [
             Text(
               betTitleText,
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
+              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
             ),
             Text(betText,
-                style: TextStyle(fontSize: 11, fontWeight: FontWeight.w400)),
+                style:
+                    const TextStyle(fontSize: 11, fontWeight: FontWeight.w400)),
           ],
         )
       ],
