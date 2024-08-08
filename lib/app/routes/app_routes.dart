@@ -12,6 +12,7 @@ abstract class Routes {
   static const SELECT_TARGET = _Paths.SELECT_TARGET;
   static const UTILS = _Paths.UTILS;
   static const MODEL = _Paths.MODEL;
+  static const SPLASH = _Paths.SPLASH;
 }
 
 abstract class _Paths {
@@ -25,4 +26,5 @@ abstract class _Paths {
   static const SELECT_TARGET = '/select-target';
   static const UTILS = '/utils';
   static const MODEL = '/model';
+  static const SPLASH = '/splash';
 }

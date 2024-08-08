@@ -6,7 +6,6 @@ import '../modules/auth/views/login_view.dart';
 import '../modules/bet/bindings/bet_binding.dart';
 import '../modules/bet/views/bet_view.dart';
 import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
 import '../modules/member/bindings/member_binding.dart';
 import '../modules/member/views/member_view.dart';
 import '../modules/model/bindings/model_binding.dart';
@@ -17,13 +16,15 @@ import '../modules/select_target/bindings/select_target_binding.dart';
 import '../modules/select_target/views/select_target_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/settings/views/settings_view.dart';
+import '../modules/splash/bindings/splash_binding.dart';
+import '../modules/splash/views/splash_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(
@@ -65,6 +66,11 @@ class AppPages {
       name: _Paths.MODEL,
       page: () => const ModelView(),
       binding: ModelBinding(),
+    ),
+    GetPage(
+      name: _Paths.SPLASH,
+      page: () => const SplashView(),
+      binding: SplashBinding(),
     ),
   ];
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,6 +7,7 @@ import 'package:huawei_new/app/modules/auth/UserProfile.dart';
 import 'package:huawei_new/app/modules/auth/views/login_view.dart';
 import 'package:huawei_new/app/modules/bet/views/bet_view.dart';
 import 'package:huawei_new/utils/api_endpoints/api_endpoints.dart';
+import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 
 class AuthController extends GetxController {
   final authLoading = false.obs;
@@ -12,6 +15,26 @@ class AuthController extends GetxController {
   final loadingResetPassword = false.obs;
   final profile = UserProfile().obs;
   final token = ''.obs;
+
+  late StreamingSharedPreferences preferences;
+  //INITIALIZE THE APPLICATION
+  @override
+  void onInit() {
+    super.onInit();
+    initialize();
+  }
+
+  void initialize() async {
+    preferences = await StreamingSharedPreferences.instance;
+    preferences.getString('token', defaultValue: '').listen((value) {
+      token.value = value;
+    });
+    preferences.getString('profile', defaultValue: '').listen((value) {
+      if (value.isNotEmpty) {
+        profile.value = UserProfile.fromJson(jsonDecode(value));
+      }
+    });
+  }
 
   void tryToSignIn({required String userName, required String password}) async {
     authLoading.value = true;
@@ -31,6 +54,9 @@ class AuthController extends GetxController {
       if (statusCode == 200) {
         profile.value = UserProfile.fromJson(response.data);
         token.value = profile.value.token!;
+        //SET TO LOCAL
+        preferences.setString('token', response.data['token']);
+        preferences.setString('profile', jsonEncode(response.data));
 
         Get.snackbar(
           'Success',
@@ -51,6 +77,7 @@ class AuthController extends GetxController {
         );
       }
     } catch (e) {
+      print(e);
       authLoading.value = false;
       Get.snackbar(
         'Failed',
@@ -80,6 +107,7 @@ class AuthController extends GetxController {
       authLoading.value = false;
 
       if (statusCode == 200) {
+        preferences.clear();
         Get.offAll(LoginView());
         token.value = '';
       } else {
@@ -93,6 +121,7 @@ class AuthController extends GetxController {
       }
     } catch (e) {
       authLoading.value = false;
+      preferences.clear();
       Get.snackbar(
         'Failed',
         "Something is wrong. Please check your internet connection.",

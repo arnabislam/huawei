@@ -22,6 +22,7 @@ class _BetHistoryResult2ViewState extends State<BetHistoryResult2View> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.black,
+          centerTitle: true,
           title: const Text(
             'HUAWEI88',
             style: TextStyle(color: Colors.white),
@@ -32,6 +33,7 @@ class _BetHistoryResult2ViewState extends State<BetHistoryResult2View> {
             },
             icon: const Icon(
               Icons.arrow_back_ios,
+              color: Colors.white,
             ),
           ),
         ),
