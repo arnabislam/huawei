@@ -1,4 +1,4 @@
-const String kDomain = "https://lottery.sheikhit.net";
+const String kDomain = "https://wlottery.sheikhit.net";
 const String basUrl = "$kDomain/api";
 //Authentication EndPoints
 const String kLoginUlr = "$basUrl/login";
@@ -11,3 +11,7 @@ String kCancelOrder({required int orderId}) => "$basUrl/order-cancel/$orderId";
 const String kGetAllOrders = "$basUrl/orders";
 const String kGetAllAcceptedOder = "$basUrl/totalaccept";
 const String kMakeOrder2 = "$basUrl/convert-data";
+
+//winloss
+
+const String kWinLoss = "$basUrl/get-history";

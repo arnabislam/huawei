@@ -37,9 +37,11 @@ class _BetmobileViewState extends State<BetmobileView> {
           ),
           actions: [
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                betController.pasteText();
+              },
               child: const Text(
-                'Past',
+                'Paste',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
@@ -47,7 +49,12 @@ class _BetmobileViewState extends State<BetmobileView> {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                betController.reset();
+                betController.isLottery.value = false;
+
+                betController.isCurrentLineStartingWithHash.value = true;
+              },
               child: const Text(
                 'Reset',
                 style: TextStyle(

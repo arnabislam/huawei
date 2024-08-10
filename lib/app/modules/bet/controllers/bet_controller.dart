@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:huawei_new/app/modules/auth/controllers/auth_controller.dart';
 import 'package:huawei_new/app/modules/bet/views/bet_history_result_2_view.dart';
@@ -64,6 +65,7 @@ class BetController extends GetxController {
         );
       }
     } catch (e) {
+      print(e);
       isLoading.value = false;
 
       Get.snackbar(
@@ -267,5 +269,18 @@ class BetController extends GetxController {
     lotteryBetMobileMyrController.selection = TextSelection.fromPosition(
       TextPosition(offset: lotteryBetMobileMyrController.text.length),
     );
+  }
+
+  //paste logic
+  void pasteText() async {
+    ClipboardData? data = await Clipboard.getData('text/plain');
+    if (data != null) {
+      lotteryBetMobileMyrController.text += data.text ?? '';
+    }
+  }
+
+  //reset logic
+  void reset() {
+    lotteryBetMobileMyrController.text = '#';
   }
 }
