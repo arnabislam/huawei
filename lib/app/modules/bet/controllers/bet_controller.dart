@@ -265,9 +265,22 @@ class BetController extends GetxController {
 
   void addNewLine() {
     final currentText = lotteryBetMobileMyrController.text;
-    lotteryBetMobileMyrController.text = '$currentText\n';
-    lotteryBetMobileMyrController.selection = TextSelection.fromPosition(
-      TextPosition(offset: lotteryBetMobileMyrController.text.length),
+    final currentPosition = lotteryBetMobileMyrController.selection.start;
+
+    // Insert a new line at the current cursor position
+    final newText = currentText.replaceRange(
+      currentPosition,
+      currentPosition,
+      '\n',
+    );
+
+    // Update the controller's text and cursor position
+    lotteryBetMobileMyrController.value = TextEditingValue(
+      text: newText,
+      selection: TextSelection.fromPosition(
+        TextPosition(
+            offset: currentPosition + 1), // Move cursor to after the new line
+      ),
     );
   }
 
@@ -275,12 +288,36 @@ class BetController extends GetxController {
   void pasteText() async {
     ClipboardData? data = await Clipboard.getData('text/plain');
     if (data != null) {
-      lotteryBetMobileMyrController.text += data.text ?? '';
+      final currentText = lotteryBetMobileMyrController.text;
+      final currentPosition = lotteryBetMobileMyrController.selection.start;
+
+      // Insert the pasted text at the current cursor position
+      final newText = currentText.replaceRange(
+        currentPosition,
+        currentPosition,
+        data.text ?? '',
+      );
+
+      // Update the controller's text and set the cursor position after the pasted text
+      lotteryBetMobileMyrController.value = TextEditingValue(
+        text: newText,
+        selection: TextSelection.fromPosition(
+          TextPosition(offset: currentPosition + (data.text?.length ?? 0)),
+        ),
+      );
     }
   }
 
   //reset logic
   void reset() {
-    lotteryBetMobileMyrController.text = '#';
+    final currentPosition = lotteryBetMobileMyrController.selection.start;
+
+    // Replace the entire text with `#`
+    lotteryBetMobileMyrController.value = TextEditingValue(
+      text: '#',
+      selection: TextSelection.fromPosition(
+        TextPosition(offset: currentPosition > 0 ? 1 : 0),
+      ),
+    );
   }
 }

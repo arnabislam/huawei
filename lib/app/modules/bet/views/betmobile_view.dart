@@ -92,6 +92,7 @@ class _BetmobileViewState extends State<BetmobileView> {
                             child: SizedBox(
                               height: 400,
                               child: TextField(
+                                autofocus: true,
                                 maxLines: null,
                                 scrollController:
                                     betController.scrollController,
@@ -123,30 +124,79 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: [
+                                    //for 1 1
                                     InkWell(
                                       onTap: () {
+                                        print('I am from here');
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert '1' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '1',
+                                        );
+
+                                        // Update the controller's text and cursor position
                                         betController
                                             .lotteryBetMobileMyrController
-                                            .text += '1';
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition +
+                                                    1), // Move cursor to after the inserted '1'
+                                          ),
+                                        );
 
                                         setState(() {});
                                       },
                                       child: Padding(
                                         padding: const EdgeInsets.all(2.0),
                                         child: buttonContainer(
-                                          button: 'M',
                                           isSelected: betController
                                               .lotteryBetMobileMyrController
                                               .text
                                               .contains('1'),
+                                          button: 'M',
                                         ),
                                       ),
                                     ),
+
                                     InkWell(
                                       onTap: () {
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert '1' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '2',
+                                        );
+
+                                        // Update the controller's text and cursor position
                                         betController
                                             .lotteryBetMobileMyrController
-                                            .text += '2';
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition +
+                                                    1), // Move cursor to after the inserted '1'
+                                          ),
+                                        );
 
                                         setState(() {});
                                       },
@@ -163,9 +213,32 @@ class _BetmobileViewState extends State<BetmobileView> {
                                     ),
                                     InkWell(
                                       onTap: () {
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert '1' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '3',
+                                        );
+
+                                        // Update the controller's text and cursor position
                                         betController
                                             .lotteryBetMobileMyrController
-                                            .text += '3';
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition +
+                                                    1), // Move cursor to after the inserted '1'
+                                          ),
+                                        );
 
                                         setState(() {});
                                       },
@@ -182,9 +255,32 @@ class _BetmobileViewState extends State<BetmobileView> {
                                     ),
                                     InkWell(
                                       onTap: () {
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert '1' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '4',
+                                        );
+
+                                        // Update the controller's text and cursor position
                                         betController
                                             .lotteryBetMobileMyrController
-                                            .text += '4';
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition +
+                                                    1), // Move cursor to after the inserted '1'
+                                          ),
+                                        );
 
                                         setState(() {});
                                       },
@@ -201,9 +297,32 @@ class _BetmobileViewState extends State<BetmobileView> {
                                     ),
                                     InkWell(
                                       onTap: () {
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert '1' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '5',
+                                        );
+
+                                        // Update the controller's text and cursor position
                                         betController
                                             .lotteryBetMobileMyrController
-                                            .text += '5';
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition +
+                                                    1), // Move cursor to after the inserted '1'
+                                          ),
+                                        );
 
                                         setState(() {});
                                       },
@@ -220,9 +339,32 @@ class _BetmobileViewState extends State<BetmobileView> {
                                     ),
                                     InkWell(
                                       onTap: () {
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert '1' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '6',
+                                        );
+
+                                        // Update the controller's text and cursor position
                                         betController
                                             .lotteryBetMobileMyrController
-                                            .text += '6';
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition +
+                                                    1), // Move cursor to after the inserted '1'
+                                          ),
+                                        );
 
                                         setState(() {});
                                       },
@@ -239,9 +381,32 @@ class _BetmobileViewState extends State<BetmobileView> {
                                     ),
                                     InkWell(
                                       onTap: () {
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert '1' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '7',
+                                        );
+
+                                        // Update the controller's text and cursor position
                                         betController
                                             .lotteryBetMobileMyrController
-                                            .text += '7';
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition +
+                                                    1), // Move cursor to after the inserted '1'
+                                          ),
+                                        );
 
                                         setState(() {});
                                       },
@@ -258,9 +423,32 @@ class _BetmobileViewState extends State<BetmobileView> {
                                     ),
                                     InkWell(
                                       onTap: () {
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert '1' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '8',
+                                        );
+
+                                        // Update the controller's text and cursor position
                                         betController
                                             .lotteryBetMobileMyrController
-                                            .text += '8';
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition +
+                                                    1), // Move cursor to after the inserted '1'
+                                          ),
+                                        );
 
                                         setState(() {});
                                       },
@@ -277,9 +465,32 @@ class _BetmobileViewState extends State<BetmobileView> {
                                     ),
                                     InkWell(
                                       onTap: () {
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert '1' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '9',
+                                        );
+
+                                        // Update the controller's text and cursor position
                                         betController
                                             .lotteryBetMobileMyrController
-                                            .text += '9';
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition +
+                                                    1), // Move cursor to after the inserted '1'
+                                          ),
+                                        );
 
                                         setState(() {});
                                       },
@@ -308,22 +519,74 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: [
+                                    // for 1 2
                                     InkWell(
-                                        onTap: () {
-                                          betController
-                                              .lotteryBetMobileMyrController
-                                              .text += '1';
+                                      onTap: () {
+                                        print('from here');
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
 
-                                          setState(() {});
-                                        },
-                                        child: const numberContainer(
-                                          number: '1',
-                                        )),
+                                        // Insert '1' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '1',
+                                        );
+
+                                        // Update the controller's text and cursor position
+                                        betController
+                                            .lotteryBetMobileMyrController
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition +
+                                                    1), // Move cursor to after the inserted '1'
+                                          ),
+                                        );
+
+                                        setState(() {});
+                                      },
+                                      child: const numberContainer(
+                                        number: '1',
+                                      ),
+                                    ),
                                     InkWell(
                                         onTap: () {
+                                          print('from here');
+                                          final currentText = betController
+                                              .lotteryBetMobileMyrController
+                                              .text;
+                                          final currentPosition = betController
+                                              .lotteryBetMobileMyrController
+                                              .selection
+                                              .start;
+
+                                          // Insert '1' at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition,
+                                            currentPosition,
+                                            '2',
+                                          );
+
+                                          // Update the controller's text and cursor position
                                           betController
                                               .lotteryBetMobileMyrController
-                                              .text += '2';
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition +
+                                                      1), // Move cursor to after the inserted '1'
+                                            ),
+                                          );
 
                                           setState(() {});
                                         },
@@ -332,9 +595,34 @@ class _BetmobileViewState extends State<BetmobileView> {
                                         )),
                                     InkWell(
                                         onTap: () {
+                                          final currentText = betController
+                                              .lotteryBetMobileMyrController
+                                              .text;
+                                          final currentPosition = betController
+                                              .lotteryBetMobileMyrController
+                                              .selection
+                                              .start;
+
+                                          // Insert '1' at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition,
+                                            currentPosition,
+                                            '3',
+                                          );
+
+                                          // Update the controller's text and cursor position
                                           betController
                                               .lotteryBetMobileMyrController
-                                              .text += '3';
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition +
+                                                      1), // Move cursor to after the inserted '1'
+                                            ),
+                                          );
 
                                           setState(() {});
                                         },
@@ -363,9 +651,34 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   children: [
                                     InkWell(
                                         onTap: () {
+                                          final currentText = betController
+                                              .lotteryBetMobileMyrController
+                                              .text;
+                                          final currentPosition = betController
+                                              .lotteryBetMobileMyrController
+                                              .selection
+                                              .start;
+
+                                          // Insert '1' at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition,
+                                            currentPosition,
+                                            '4',
+                                          );
+
+                                          // Update the controller's text and cursor position
                                           betController
                                               .lotteryBetMobileMyrController
-                                              .text += '4';
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition +
+                                                      1), // Move cursor to after the inserted '1'
+                                            ),
+                                          );
 
                                           setState(() {});
                                         },
@@ -374,9 +687,34 @@ class _BetmobileViewState extends State<BetmobileView> {
                                         )),
                                     InkWell(
                                         onTap: () {
+                                          final currentText = betController
+                                              .lotteryBetMobileMyrController
+                                              .text;
+                                          final currentPosition = betController
+                                              .lotteryBetMobileMyrController
+                                              .selection
+                                              .start;
+
+                                          // Insert '1' at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition,
+                                            currentPosition,
+                                            '5',
+                                          );
+
+                                          // Update the controller's text and cursor position
                                           betController
                                               .lotteryBetMobileMyrController
-                                              .text += '5';
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition +
+                                                      1), // Move cursor to after the inserted '1'
+                                            ),
+                                          );
 
                                           setState(() {});
                                         },
@@ -385,9 +723,32 @@ class _BetmobileViewState extends State<BetmobileView> {
                                         )),
                                     InkWell(
                                       onTap: () {
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert '1' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '6',
+                                        );
+
+                                        // Update the controller's text and cursor position
                                         betController
                                             .lotteryBetMobileMyrController
-                                            .text += '6';
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition +
+                                                    1), // Move cursor to after the inserted '1'
+                                          ),
+                                        );
 
                                         setState(() {});
                                       },
@@ -400,31 +761,39 @@ class _BetmobileViewState extends State<BetmobileView> {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        if (betController
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
                                             .lotteryBetMobileMyrController
-                                            .text
-                                            .isNotEmpty) {
-                                          setState(() {
-                                            betController
-                                                    .lotteryBetMobileMyrController
-                                                    .text =
-                                                betController
-                                                    .lotteryBetMobileMyrController
-                                                    .text
-                                                    .substring(
-                                              0,
-                                              betController
-                                                      .lotteryBetMobileMyrController
-                                                      .text
-                                                      .length -
-                                                  1,
-                                            );
-                                          });
+                                            .selection
+                                            .start;
+
+                                        if (currentText.isNotEmpty &&
+                                            currentPosition > 0) {
+                                          // Remove the character at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition - 1,
+                                            currentPosition,
+                                            '',
+                                          );
+
+                                          betController
+                                              .lotteryBetMobileMyrController
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition - 1),
+                                            ),
+                                          );
+
+                                          // Optionally call onChangedText if needed
+                                          betController.onChangedText(newText);
                                         }
-                                        betController.onChangedText(
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text);
+
+                                        setState(() {});
                                       },
                                       child: const numberContainer(
                                         number: 'C',
@@ -446,9 +815,34 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   children: [
                                     InkWell(
                                         onTap: () {
+                                          final currentText = betController
+                                              .lotteryBetMobileMyrController
+                                              .text;
+                                          final currentPosition = betController
+                                              .lotteryBetMobileMyrController
+                                              .selection
+                                              .start;
+
+                                          // Insert '1' at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition,
+                                            currentPosition,
+                                            '7',
+                                          );
+
+                                          // Update the controller's text and cursor position
                                           betController
                                               .lotteryBetMobileMyrController
-                                              .text += '7';
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition +
+                                                      1), // Move cursor to after the inserted '1'
+                                            ),
+                                          );
 
                                           setState(() {});
                                         },
@@ -457,9 +851,34 @@ class _BetmobileViewState extends State<BetmobileView> {
                                         )),
                                     InkWell(
                                         onTap: () {
+                                          final currentText = betController
+                                              .lotteryBetMobileMyrController
+                                              .text;
+                                          final currentPosition = betController
+                                              .lotteryBetMobileMyrController
+                                              .selection
+                                              .start;
+
+                                          // Insert '1' at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition,
+                                            currentPosition,
+                                            '8',
+                                          );
+
+                                          // Update the controller's text and cursor position
                                           betController
                                               .lotteryBetMobileMyrController
-                                              .text += '8';
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition +
+                                                      1), // Move cursor to after the inserted '1'
+                                            ),
+                                          );
 
                                           setState(() {});
                                         },
@@ -468,9 +887,34 @@ class _BetmobileViewState extends State<BetmobileView> {
                                         )),
                                     InkWell(
                                         onTap: () {
+                                          final currentText = betController
+                                              .lotteryBetMobileMyrController
+                                              .text;
+                                          final currentPosition = betController
+                                              .lotteryBetMobileMyrController
+                                              .selection
+                                              .start;
+
+                                          // Insert '1' at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition,
+                                            currentPosition,
+                                            '9',
+                                          );
+
+                                          // Update the controller's text and cursor position
                                           betController
                                               .lotteryBetMobileMyrController
-                                              .text += '9';
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition +
+                                                      1), // Move cursor to after the inserted '1'
+                                            ),
+                                          );
                                         },
                                         child: const numberContainer(
                                           number: '9',
@@ -495,8 +939,42 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: [
-                                    const numberContainer(
-                                      number: '*',
+                                    InkWell(
+                                      onTap: () {
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert the '*' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '*',
+                                        );
+
+                                        // Update the controller's text and set the cursor position after the inserted text
+                                        betController
+                                            .lotteryBetMobileMyrController
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition + 1),
+                                          ),
+                                        );
+
+                                        // Optionally call onChangedText if needed
+                                        betController.onChangedText(newText);
+
+                                        setState(() {});
+                                      },
+                                      child: const numberContainer(
+                                        number: '*',
+                                      ),
                                     ),
                                     InkWell(
                                       onTap: () {},
@@ -506,10 +984,36 @@ class _BetmobileViewState extends State<BetmobileView> {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        betController.onChangedText(
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text);
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert the '#' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '#',
+                                        );
+
+                                        // Update the controller's text and set the cursor position after the inserted text
+                                        betController
+                                            .lotteryBetMobileMyrController
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition + 1),
+                                          ),
+                                        );
+
+                                        // Optionally call onChangedText if needed
+                                        betController.onChangedText(newText);
+
+                                        setState(() {});
                                       },
                                       child: const numberContainer(
                                         number: '#',
@@ -518,8 +1022,11 @@ class _BetmobileViewState extends State<BetmobileView> {
                                     InkWell(
                                       onTap: () {
                                         betController.isLottery.value = true;
-                                        //new line
+
+                                        // Call the addNewLine method to insert a new line
                                         betController.addNewLine();
+
+                                        // Reset the flag for hash check (optional, based on your logic)
                                         betController
                                             .isCurrentLineStartingWithHash
                                             .value = false;
@@ -538,8 +1045,9 @@ class _BetmobileViewState extends State<BetmobileView> {
                                           child: Text(
                                             "Enter",
                                             style: TextStyle(
-                                                fontSize: 17,
-                                                fontWeight: FontWeight.w500),
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -581,21 +1089,76 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: [
+                                    // for 1
+                                    InkWell(
+                                      onTap: () {
+                                        print('from here');
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert '1' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '1',
+                                        );
+
+                                        // Update the controller's text and cursor position
+                                        betController
+                                            .lotteryBetMobileMyrController
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition +
+                                                    1), // Move cursor to after the inserted '1'
+                                          ),
+                                        );
+
+                                        setState(() {});
+                                      },
+                                      child: const numberContainer(
+                                        number: '1',
+                                      ),
+                                    ),
+
                                     InkWell(
                                         onTap: () {
+                                          print('from here');
+                                          final currentText = betController
+                                              .lotteryBetMobileMyrController
+                                              .text;
+                                          final currentPosition = betController
+                                              .lotteryBetMobileMyrController
+                                              .selection
+                                              .start;
+
+                                          // Insert '1' at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition,
+                                            currentPosition,
+                                            '2',
+                                          );
+
+                                          // Update the controller's text and cursor position
                                           betController
                                               .lotteryBetMobileMyrController
-                                              .text += '1';
-                                          setState(() {});
-                                        },
-                                        child: const numberContainer(
-                                          number: '1',
-                                        )),
-                                    InkWell(
-                                        onTap: () {
-                                          betController
-                                              .lotteryBetMobileMyrController
-                                              .text += '2';
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition +
+                                                      1), // Move cursor to after the inserted '1'
+                                            ),
+                                          );
+
                                           setState(() {});
                                         },
                                         child: const numberContainer(
@@ -603,9 +1166,36 @@ class _BetmobileViewState extends State<BetmobileView> {
                                         )),
                                     InkWell(
                                         onTap: () {
+                                          print('from here');
+                                          final currentText = betController
+                                              .lotteryBetMobileMyrController
+                                              .text;
+                                          final currentPosition = betController
+                                              .lotteryBetMobileMyrController
+                                              .selection
+                                              .start;
+
+                                          // Insert '1' at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition,
+                                            currentPosition,
+                                            '3',
+                                          );
+
+                                          // Update the controller's text and cursor position
                                           betController
                                               .lotteryBetMobileMyrController
-                                              .text += '3';
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition +
+                                                      1), // Move cursor to after the inserted '1'
+                                            ),
+                                          );
+
                                           setState(() {});
                                         },
                                         child: const numberContainer(
@@ -655,9 +1245,36 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   children: [
                                     InkWell(
                                         onTap: () {
+                                          print('from here');
+                                          final currentText = betController
+                                              .lotteryBetMobileMyrController
+                                              .text;
+                                          final currentPosition = betController
+                                              .lotteryBetMobileMyrController
+                                              .selection
+                                              .start;
+
+                                          // Insert '1' at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition,
+                                            currentPosition,
+                                            '4',
+                                          );
+
+                                          // Update the controller's text and cursor position
                                           betController
                                               .lotteryBetMobileMyrController
-                                              .text += '4';
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition +
+                                                      1), // Move cursor to after the inserted '1'
+                                            ),
+                                          );
+
                                           setState(() {});
                                         },
                                         child: const numberContainer(
@@ -665,9 +1282,36 @@ class _BetmobileViewState extends State<BetmobileView> {
                                         )),
                                     InkWell(
                                         onTap: () {
+                                          print('from here');
+                                          final currentText = betController
+                                              .lotteryBetMobileMyrController
+                                              .text;
+                                          final currentPosition = betController
+                                              .lotteryBetMobileMyrController
+                                              .selection
+                                              .start;
+
+                                          // Insert '1' at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition,
+                                            currentPosition,
+                                            '5',
+                                          );
+
+                                          // Update the controller's text and cursor position
                                           betController
                                               .lotteryBetMobileMyrController
-                                              .text += '5';
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition +
+                                                      1), // Move cursor to after the inserted '1'
+                                            ),
+                                          );
+
                                           setState(() {});
                                         },
                                         child: const numberContainer(
@@ -675,9 +1319,34 @@ class _BetmobileViewState extends State<BetmobileView> {
                                         )),
                                     InkWell(
                                       onTap: () {
+                                        print('from here');
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert '1' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '6',
+                                        );
+
+                                        // Update the controller's text and cursor position
                                         betController
                                             .lotteryBetMobileMyrController
-                                            .text += '6';
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition +
+                                                    1), // Move cursor to after the inserted '1'
+                                          ),
+                                        );
+
                                         setState(() {});
                                       },
                                       child: const numberContainer(
@@ -711,31 +1380,39 @@ class _BetmobileViewState extends State<BetmobileView> {
                                     }),
                                     InkWell(
                                       onTap: () {
-                                        if (betController
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
                                             .lotteryBetMobileMyrController
-                                            .text
-                                            .isNotEmpty) {
-                                          setState(() {
-                                            betController
-                                                    .lotteryBetMobileMyrController
-                                                    .text =
-                                                betController
-                                                    .lotteryBetMobileMyrController
-                                                    .text
-                                                    .substring(
-                                              0,
-                                              betController
-                                                      .lotteryBetMobileMyrController
-                                                      .text
-                                                      .length -
-                                                  1,
-                                            );
-                                          });
+                                            .selection
+                                            .start;
+
+                                        if (currentText.isNotEmpty &&
+                                            currentPosition > 0) {
+                                          // Remove the character at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition - 1,
+                                            currentPosition,
+                                            '',
+                                          );
+
+                                          betController
+                                              .lotteryBetMobileMyrController
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition - 1),
+                                            ),
+                                          );
+
+                                          // Optionally call onChangedText if needed
+                                          betController.onChangedText(newText);
                                         }
-                                        betController.onChangedText(
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text);
+
+                                        setState(() {});
                                       },
                                       child: const numberContainer(
                                         number: 'C',
@@ -757,9 +1434,36 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   children: [
                                     InkWell(
                                         onTap: () {
+                                          print('from here');
+                                          final currentText = betController
+                                              .lotteryBetMobileMyrController
+                                              .text;
+                                          final currentPosition = betController
+                                              .lotteryBetMobileMyrController
+                                              .selection
+                                              .start;
+
+                                          // Insert '1' at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition,
+                                            currentPosition,
+                                            '7',
+                                          );
+
+                                          // Update the controller's text and cursor position
                                           betController
                                               .lotteryBetMobileMyrController
-                                              .text += '7';
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition +
+                                                      1), // Move cursor to after the inserted '1'
+                                            ),
+                                          );
+
                                           setState(() {});
                                         },
                                         child: const numberContainer(
@@ -767,9 +1471,36 @@ class _BetmobileViewState extends State<BetmobileView> {
                                         )),
                                     InkWell(
                                         onTap: () {
+                                          print('from here');
+                                          final currentText = betController
+                                              .lotteryBetMobileMyrController
+                                              .text;
+                                          final currentPosition = betController
+                                              .lotteryBetMobileMyrController
+                                              .selection
+                                              .start;
+
+                                          // Insert '1' at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition,
+                                            currentPosition,
+                                            '8',
+                                          );
+
+                                          // Update the controller's text and cursor position
                                           betController
                                               .lotteryBetMobileMyrController
-                                              .text += '8';
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition +
+                                                      1), // Move cursor to after the inserted '1'
+                                            ),
+                                          );
+
                                           setState(() {});
                                         },
                                         child: const numberContainer(
@@ -777,9 +1508,36 @@ class _BetmobileViewState extends State<BetmobileView> {
                                         )),
                                     InkWell(
                                         onTap: () {
+                                          print('from here');
+                                          final currentText = betController
+                                              .lotteryBetMobileMyrController
+                                              .text;
+                                          final currentPosition = betController
+                                              .lotteryBetMobileMyrController
+                                              .selection
+                                              .start;
+
+                                          // Insert '1' at the current cursor position
+                                          final newText =
+                                              currentText.replaceRange(
+                                            currentPosition,
+                                            currentPosition,
+                                            '9',
+                                          );
+
+                                          // Update the controller's text and cursor position
                                           betController
                                               .lotteryBetMobileMyrController
-                                              .text += '9';
+                                              .value = TextEditingValue(
+                                            text: newText,
+                                            selection:
+                                                TextSelection.fromPosition(
+                                              TextPosition(
+                                                  offset: currentPosition +
+                                                      1), // Move cursor to after the inserted '1'
+                                            ),
+                                          );
+
                                           setState(() {});
                                         },
                                         child: const numberContainer(
@@ -807,13 +1565,36 @@ class _BetmobileViewState extends State<BetmobileView> {
                                   children: [
                                     InkWell(
                                       onTap: () {
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert the '*' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '*',
+                                        );
+
+                                        // Update the controller's text and set the cursor position after the inserted text
                                         betController
                                             .lotteryBetMobileMyrController
-                                            .text += '*';
-                                        betController.onChangedText(
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text);
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition + 1),
+                                          ),
+                                        );
+
+                                        // Optionally call onChangedText if needed
+                                        betController.onChangedText(newText);
+
+                                        setState(() {});
                                       },
                                       child: const numberContainer(
                                         number: '*',
@@ -832,13 +1613,35 @@ class _BetmobileViewState extends State<BetmobileView> {
                                     ),
                                     InkWell(
                                       onTap: () {
+                                        final currentText = betController
+                                            .lotteryBetMobileMyrController.text;
+                                        final currentPosition = betController
+                                            .lotteryBetMobileMyrController
+                                            .selection
+                                            .start;
+
+                                        // Insert the '#' at the current cursor position
+                                        final newText =
+                                            currentText.replaceRange(
+                                          currentPosition,
+                                          currentPosition,
+                                          '#',
+                                        );
+
+                                        // Update the controller's text and set the cursor position after the inserted text
                                         betController
                                             .lotteryBetMobileMyrController
-                                            .text += '#';
-                                        betController.onChangedText(
-                                            betController
-                                                .lotteryBetMobileMyrController
-                                                .text);
+                                            .value = TextEditingValue(
+                                          text: newText,
+                                          selection: TextSelection.fromPosition(
+                                            TextPosition(
+                                                offset: currentPosition + 1),
+                                          ),
+                                        );
+
+                                        // Optionally call onChangedText if needed
+                                        betController.onChangedText(newText);
+
                                         setState(() {});
                                       },
                                       child: const numberContainer(
@@ -848,12 +1651,16 @@ class _BetmobileViewState extends State<BetmobileView> {
                                     InkWell(
                                       onTap: () {
                                         betController.isLottery.value = true;
-                                        betController
-                                            .lotteryBetMobileMyrController
-                                            .text += '\n';
+
+                                        // Call the addNewLine method to insert a new line
+                                        betController.addNewLine();
+
+                                        // Reset the flag for hash check (optional, based on your logic)
                                         betController
                                             .isCurrentLineStartingWithHash
                                             .value = false;
+
+                                        setState(() {});
                                       },
                                       child: Container(
                                         height:
@@ -862,17 +1669,16 @@ class _BetmobileViewState extends State<BetmobileView> {
                                         width:
                                             MediaQuery.of(context).size.width *
                                                 0.368,
-                                        decoration: BoxDecoration(
-                                            color: Colors.grey,
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
+                                        color: Colors.grey,
                                         child: const Center(
-                                            child: Text(
-                                          "Enter",
-                                          style: TextStyle(
+                                          child: Text(
+                                            "Enter",
+                                            style: TextStyle(
                                               fontSize: 17,
-                                              fontWeight: FontWeight.w500),
-                                        )),
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ],
