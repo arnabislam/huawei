@@ -7,7 +7,7 @@ import 'package:share/share.dart';
 import '../controllers/bet_controller.dart';
 
 class BetHistoryResult2View extends StatefulWidget {
-  BetHistoryResult2View({Key? key}) : super(key: key);
+  const BetHistoryResult2View({Key? key}) : super(key: key);
 
   @override
   State<BetHistoryResult2View> createState() => _BetHistoryResult2ViewState();

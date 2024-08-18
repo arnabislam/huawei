@@ -8,7 +8,7 @@ import 'package:loading_overlay/loading_overlay.dart';
 import 'package:share/share.dart';
 
 class BetHistoryResultView extends StatefulWidget {
-  BetHistoryResultView({Key? key}) : super(key: key);
+  const BetHistoryResultView({Key? key}) : super(key: key);
 
   @override
   State<BetHistoryResultView> createState() => _BetHistoryResultViewState();
@@ -29,7 +29,9 @@ class _BetHistoryResultViewState extends State<BetHistoryResultView> {
     bluetoothPrint.scanResults.listen((val) {
       if (!mounted) return;
 
-      setState(() => {print(val)});
+      setState(() {
+        print(val);
+      });
       if (_devices.isEmpty) {
         setState(() {
           _deviceMsg = 'No devices';
