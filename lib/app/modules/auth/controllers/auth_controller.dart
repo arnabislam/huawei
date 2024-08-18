@@ -15,6 +15,7 @@ class AuthController extends GetxController {
   final loadingResetPassword = false.obs;
   final profile = UserProfile().obs;
   final token = ''.obs;
+  final useNameStore = ''.obs;
 
   late StreamingSharedPreferences preferences;
   //INITIALIZE THE APPLICATION
@@ -55,8 +56,11 @@ class AuthController extends GetxController {
         profile.value = UserProfile.fromJson(response.data);
         token.value = profile.value.token!;
         //SET TO LOCAL
+        print(token.value);
+
         preferences.setString('token', response.data['token']);
         preferences.setString('profile', jsonEncode(response.data));
+        preferences.setString('username', profile.value.token!);
 
         Get.snackbar(
           'Success',
@@ -90,48 +94,8 @@ class AuthController extends GetxController {
   }
 
   void tryToSignOut() async {
-    authLoading.value = true;
-
-    var dio = Dio();
-    try {
-      final response = await dio.post(
-        kLogoutUlr,
-        options: Options(
-          headers: {
-            'accept': '*/*',
-            'Authorization': 'Token ${token.value}',
-          },
-        ),
-      );
-      int? statusCode = response.statusCode;
-      authLoading.value = false;
-
-      if (statusCode == 200) {
-        preferences.clear();
-        Get.offAll(LoginView());
-        token.value = '';
-      } else {
-        Get.snackbar(
-          'Failed',
-          "Something is wrong. Please check your internet connection.",
-          backgroundColor: Colors.red,
-          colorText: Colors.white,
-          snackPosition: SnackPosition.BOTTOM,
-        );
-      }
-    } catch (e) {
-      authLoading.value = false;
-      preferences.clear();
-      Get.snackbar(
-        'Failed',
-        "Something is wrong. Please check your internet connection.",
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );
-      Get.offAll(LoginView());
-      token.value = '';
-    }
+    Get.offAll(LoginView());
+    token.value = '';
   }
 
   void tryToRefresh() async {

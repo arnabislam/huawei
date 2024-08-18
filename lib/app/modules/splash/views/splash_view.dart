@@ -18,10 +18,11 @@ class SplashView extends GetView<SplashController> {
       } catch (e) {
         authController = Get.put(AuthController());
       }
-
-      if (authController.token.value.isEmpty) {
+      print(authController.token);
+      if (authController.profile.value.token!.isEmpty) {
         Get.off(LoginView());
       } else {
+        authController.token.value = authController.profile.value.token!;
         Get.offAll(const BetView());
       }
     });

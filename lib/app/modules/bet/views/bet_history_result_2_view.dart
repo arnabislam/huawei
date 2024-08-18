@@ -29,6 +29,7 @@ class _BetHistoryResult2ViewState extends State<BetHistoryResult2View> {
           ),
           leading: IconButton(
             onPressed: () {
+              betHistoryController2.lotteryBetMobileMyrController.text = '#';
               Get.back();
             },
             icon: const Icon(

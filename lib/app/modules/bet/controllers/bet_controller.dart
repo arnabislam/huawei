@@ -30,6 +30,7 @@ class BetController extends GetxController {
   final makeOrder = {}.obs;
 
   void tryToMakeOrder() async {
+    formatLotteryBetText();
     isLoading.value = true;
     try {
       final data = {
@@ -65,7 +66,6 @@ class BetController extends GetxController {
         );
       }
     } catch (e) {
-      print(e);
       isLoading.value = false;
 
       Get.snackbar(
@@ -76,6 +76,29 @@ class BetController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     }
+  }
+
+  void formatLotteryBetText() {
+    String currentText = lotteryBetMobileMyrController.text;
+
+    List<String> lines = currentText.split('\n');
+
+    String lastSuffix = '';
+
+    for (int i = 0; i < lines.length; i++) {
+      String line = lines[i];
+
+      if (line.contains('#')) {
+        lastSuffix = line.substring(line.indexOf('#'));
+        continue;
+      }
+
+      if (lastSuffix.isNotEmpty) {
+        lines[i] = line + lastSuffix;
+      }
+    }
+
+    lotteryBetMobileMyrController.text = lines.join('\n');
   }
 
   final orderList = [].obs;
