@@ -83,8 +83,8 @@ class WinloseReportView extends GetView {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Expanded(flex: 2, child: Text("Turn Over")),
-                          Expanded(flex: 1, child: Text(":")),
+                          const Expanded(flex: 2, child: Text("Turn Over")),
+                          const Expanded(flex: 1, child: Text(":")),
                           Expanded(
                               flex: 1,
                               child: Text(
@@ -94,14 +94,20 @@ class WinloseReportView extends GetView {
                               )),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Expanded(flex: 2, child: Text("Strike Win")),
-                          Expanded(flex: 1, child: Text(":")),
+                          const Expanded(
+                            flex: 2,
+                            child: Text("Strike Win"),
+                          ),
+                          const Expanded(
+                            flex: 1,
+                            child: Text(":"),
+                          ),
                           Expanded(
                               flex: 1,
                               child: Text(reportController.winLossList[index]

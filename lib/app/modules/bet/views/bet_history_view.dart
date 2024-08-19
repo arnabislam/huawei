@@ -9,10 +9,6 @@ import 'package:loading_overlay/loading_overlay.dart';
 class BetHistoryView extends GetView {
   BetHistoryView({Key? key}) : super(key: key);
 
-  final TextEditingController _betHistoryPageIdController =
-      TextEditingController();
-  final TextEditingController _betHistoryNumberController =
-      TextEditingController();
   final controller = Get.put(BetController());
 
   @override
@@ -59,11 +55,11 @@ class BetHistoryView extends GetView {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       const Expanded(
-                        flex: 4,
+                        flex: 2,
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
-                            "Betting Date from",
+                            "Date From",
                             style: TextStyle(
                               fontSize: 17,
                             ),
@@ -75,25 +71,13 @@ class BetHistoryView extends GetView {
                         flex: 3,
                         child: Column(
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                MyDatePicker(),
-                                Container(
-                                    height: 16,
-                                    width: 16,
-                                    decoration: const BoxDecoration(
-                                        color: Colors.black,
-                                        shape: BoxShape.circle),
-                                    child: const Icon(
-                                      Icons.close,
-                                      color: Colors.white,
-                                      size: 14,
-                                    )),
-                              ],
+                            MyDatePicker(
+                              onDateSelected: (date) {
+                                controller.startDate.value = date;
+                              },
                             ),
                             const Padding(
-                              padding: EdgeInsets.only(right: 6.0),
+                              padding: EdgeInsets.only(right: 10.0),
                               child: Divider(
                                 height: 25,
                                 color: Colors.blue,
@@ -108,11 +92,11 @@ class BetHistoryView extends GetView {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       const Expanded(
-                        flex: 4,
+                        flex: 2,
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
-                            "Betting Date to",
+                            "Date To",
                             style: TextStyle(
                               fontSize: 17,
                             ),
@@ -124,193 +108,19 @@ class BetHistoryView extends GetView {
                         flex: 3,
                         child: Column(
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                MyDatePicker(),
-                                Container(
-                                  height: 16,
-                                  width: 16,
-                                  decoration: const BoxDecoration(
-                                      color: Colors.black,
-                                      shape: BoxShape.circle),
-                                  child: const Icon(
-                                    Icons.close,
-                                    color: Colors.white,
-                                    size: 14,
-                                  ),
-                                ),
-                              ],
+                            MyDatePicker(
+                              onDateSelected: (date) {
+                                controller.endDate.value = date;
+                              },
                             ),
                             const Padding(
-                              padding: EdgeInsets.only(right: 6.0),
+                              padding: EdgeInsets.only(right: 10.0),
                               child: Divider(
                                 height: 25,
                                 color: Colors.blue,
                               ),
                             )
                           ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const Expanded(
-                        flex: 4,
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            "Result Date from",
-                            style: TextStyle(
-                              fontSize: 17,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const Expanded(flex: 1, child: Text(":")),
-                      Expanded(
-                        flex: 3,
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                MyDatePicker(),
-                                Container(
-                                    height: 16,
-                                    width: 16,
-                                    decoration: const BoxDecoration(
-                                        color: Colors.black,
-                                        shape: BoxShape.circle),
-                                    child: const Icon(
-                                      Icons.close,
-                                      color: Colors.white,
-                                      size: 14,
-                                    )),
-                              ],
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(right: 6.0),
-                              child: Divider(
-                                height: 25,
-                                color: Colors.blue,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const Expanded(
-                        flex: 4,
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            "Result Date to",
-                            style: TextStyle(
-                              fontSize: 17,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const Expanded(flex: 1, child: Text(":")),
-                      Expanded(
-                        flex: 3,
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                MyDatePicker(),
-                                Container(
-                                    height: 16,
-                                    width: 16,
-                                    decoration: const BoxDecoration(
-                                        color: Colors.black,
-                                        shape: BoxShape.circle),
-                                    child: const Icon(
-                                      Icons.close,
-                                      color: Colors.white,
-                                      size: 14,
-                                    )),
-                              ],
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(right: 6.0),
-                              child: Divider(
-                                height: 25,
-                                color: Colors.blue,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Expanded(
-                        flex: 4,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              left: 8.0, right: 8, top: 8, bottom: 14),
-                          child: Text(
-                            "Page ID ",
-                            style: TextStyle(
-                              fontSize: 17,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const Expanded(flex: 1, child: Text(":")),
-                      Expanded(
-                        flex: 3,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              right: 24.0, left: 8, bottom: 24),
-                          child: TextField(
-                            controller: _betHistoryPageIdController,
-                            decoration: const InputDecoration(
-                              hintStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 19),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Expanded(
-                        flex: 4,
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            "Number",
-                            style: TextStyle(
-                              fontSize: 17,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const Expanded(flex: 1, child: Text(":")),
-                      Expanded(
-                        flex: 3,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              right: 24.0, left: 8, bottom: 34),
-                          child: TextField(
-                            controller: _betHistoryNumberController,
-                            decoration: const InputDecoration(
-                              hintStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 19),
-                            ),
-                          ),
                         ),
                       ),
                     ],
@@ -340,8 +150,12 @@ class BetHistoryView extends GetView {
   }
 }
 
-//Date Picker
+//Date Picker widget that receives a callback
 class MyDatePicker extends StatefulWidget {
+  final Function(DateTime) onDateSelected;
+
+  MyDatePicker({required this.onDateSelected});
+
   @override
   _MyDatePickerState createState() => _MyDatePickerState();
 }
@@ -360,6 +174,7 @@ class _MyDatePickerState extends State<MyDatePicker> {
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
+        widget.onDateSelected(picked); // Callback to update the selected date
       });
     }
   }

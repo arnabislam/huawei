@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:huawei_new/app/modules/auth/controllers/auth_controller.dart';
 import 'package:huawei_new/app/modules/bet/views/bet_history_result_2_view.dart';
 import 'package:huawei_new/utils/api_endpoints/api_endpoints.dart';
+import 'package:intl/intl.dart';
 
 class BetController extends GetxController {
   //TODO: Implement BetController
@@ -27,6 +28,11 @@ class BetController extends GetxController {
   final isLoading = false.obs;
   final _dio = Dio();
   RxList<TextSpan> textSpans = <TextSpan>[].obs;
+//bet history list fetch
+  final startDate = DateTime.now().obs;
+  final endDate = DateTime.now().obs;
+
+  //make order
   final makeOrder = {}.obs;
 
   void tryToMakeOrder() async {
@@ -193,6 +199,16 @@ class BetController extends GetxController {
   void tryToFetchAllAceept() async {
     isLoading.value = true;
     try {
+      final DateFormat formatter = DateFormat('yyyy-MM-dd');
+
+      String formattedStartDate = formatter.format(startDate.value);
+      String formattedEndDate = formatter.format(endDate.value);
+
+      var data = {
+        'bettingdatefrom': formattedStartDate,
+        'bettingdateto': formattedEndDate
+      };
+
       final response = await _dio.get(
         kGetAllAcceptedOder,
         options: Options(
