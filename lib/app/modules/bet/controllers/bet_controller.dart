@@ -111,8 +111,18 @@ class BetController extends GetxController {
   void fetchOrderList() async {
     isLoading.value = true;
     try {
-      final response = await _dio.get(
+      final DateFormat formatter = DateFormat('yyyy-MM-dd');
+
+      String formattedStartDate = formatter.format(startDate.value);
+      String formattedEndDate = formatter.format(endDate.value);
+
+      var data = {
+        'bettingdatefrom': formattedStartDate,
+        'bettingdateto': formattedEndDate
+      };
+      final response = await _dio.post(
         kGetAllOrders,
+        data: data,
         options: Options(
           headers: {
             // Set any required headers
@@ -199,16 +209,6 @@ class BetController extends GetxController {
   void tryToFetchAllAceept() async {
     isLoading.value = true;
     try {
-      final DateFormat formatter = DateFormat('yyyy-MM-dd');
-
-      String formattedStartDate = formatter.format(startDate.value);
-      String formattedEndDate = formatter.format(endDate.value);
-
-      var data = {
-        'bettingdatefrom': formattedStartDate,
-        'bettingdateto': formattedEndDate
-      };
-
       final response = await _dio.get(
         kGetAllAcceptedOder,
         options: Options(

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:huawei_new/app/modules/report/controllers/report_controller.dart';
 import 'package:intl/intl.dart';
-
-import '../../auth/controllers/auth_controller.dart';
-import 'draw_result_view.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 class WinNumberView extends StatefulWidget {
   const WinNumberView({Key? key}) : super(key: key);
@@ -14,516 +13,162 @@ class WinNumberView extends StatefulWidget {
 }
 
 class _WinNumberViewState extends State<WinNumberView> {
-  bool? _isChecked=false;
-  bool? isMagnum=false;
-  bool? isPmp=false;
-  bool? isToto=false;
-  bool? isSingapore=false;
-  bool? isSabah=false;
-  bool? isSandakan=false;
-  bool? isSarwak=false;
-  bool? isGdLotto=false;
-  bool? isNineLotto=false;
-  String _selectedBet = '';
+  bool? isMagnum = false;
+  bool? isPmp = false;
+  bool? isToto = false;
+  bool? isSingapore = false;
+  bool? isSabah = false;
+  bool? isSandakan = false;
+  bool? isSarwak = false;
+  bool? isGdLotto = false;
+  bool? isNineLotto = false;
 
   @override
   Widget build(BuildContext context) {
-
-
- //   final authctrl = Get.put(AuthController());
-
-
+    ReportController reportController = Get.put(ReportController());
 
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.black,
-        title: const Text('HUAWEI88'),
-        leading: IconButton(onPressed: (){
-          Get.back();
-        }, icon: Icon(Icons.arrow_back_ios)),
-
-
+        centerTitle: true,
+        title: const Text(
+          'HUAWEI88',
+          style: TextStyle(color: Colors.white),
+        ),
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+            )),
       ),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-
-              children: [
-                Container(
-                  height: 45,
-                  color: Colors.red,
-                  child: const Center(child: Text("Win Lose",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 21),)),
-                ),
-                const SizedBox(height: 18,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const Expanded(
-                      flex: 2,
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text("Date From",style: TextStyle(fontSize: 17,),),
-                      ),
-                    ),
-                    const Expanded(
-                        flex: 1,
-                        child: Text(":")),
-                    Expanded(
-                      flex: 3,
-                      child: Column(
-                        children: [
-                          MyDatePicker(),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10.0),
-                            child: Divider(height: 25,color: Colors.blue,),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const Expanded(
-                      flex: 2,
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text("Date To",style: TextStyle(fontSize: 17,),),
-                      ),
-                    ),
-                    const Expanded(
-                        flex: 1,
-                        child: Text(":")),
-                    Expanded(
-                      flex: 3,
-                      child: Column(
-                        children: [
-                          MyDatePicker(),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10.0),
-                            child: Divider(height: 25,color: Colors.blue,),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-
-                Row(
-                  children: [
-                    const Expanded(
-                      flex: 2,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 8.0,right: 8,top:8,bottom: 14),
-                        child: Text("Currency",style: TextStyle(fontSize: 17,),),
-                      ),
-                    ),
-                    const Expanded(
-                        flex: 1,
-                        child: Text(":")),
-                    Expanded(
-                      flex: 3,
-                      child: InkWell(
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-
-                                content: StatefulBuilder(
-                                  builder: (BuildContext context, StateSetter setState) {
-                                    return Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        RadioListTile<String>(
-                                          title: const Text('Show All'),
-                                          value: 'Show All',
-                                          groupValue: _selectedBet,
-                                          onChanged: (value) {
-                                            setState(() {
-                                              _selectedBet = value!;
-                                              print(_selectedBet);
-                                            });
-                                          },
-                                        ),
-                                        RadioListTile<String>(
-                                          title: const Text('MYR'),
-                                          value: 'MYR',
-                                          groupValue: _selectedBet,
-                                          onChanged: (value) {
-                                            setState(() {
-                                              _selectedBet = value!;
-                                              print(_selectedBet);
-                                            });
-                                          },
-                                        ),
-                                        RadioListTile<String>(
-                                          title: const Text('SGD- 3.48'),
-                                          value: 'SGD- 3.48',
-                                          groupValue: _selectedBet,
-                                          onChanged: (value) {
-                                            setState(() {
-                                              _selectedBet = value!;
-                                              print(_selectedBet);
-                                            });
-                                          },
-                                        ),
-
-
-                                        // You can add more RadioListTile widgets for additional genders
-                                      ],
-                                    );
-                                  },
-                                ),
-                                actions: [
-                                  ElevatedButton(
-                                    child: const Text('Cancel'),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
+      body: FutureBuilder(
+          future: reportController.winNoticeListTest(),
+          builder: (context, index) {
+            return Obx(() {
+              return LoadingOverlay(
+                  isLoading: reportController.isLoading.value,
+                  progressIndicator: const SpinKitDualRing(
+                    color: Colors.redAccent,
+                    size: 40,
+                  ),
+                  child: reportController.winNoticeList.isEmpty
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 16.0),
+                          child: Card(
+                            elevation: 4,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'Winner Number',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blueAccent,
+                                    ),
                                   ),
-                                  ElevatedButton(
-                                    child: const Text('Save'),
-                                    onPressed: () {
-
-                                      Navigator.of(context).pop();
-                                    },
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    'No win number today',
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 12),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Date: N/A',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.grey[600],
+                                        ),
+                                      ),
+                                      const Icon(
+                                        Icons.cancel,
+                                        color: Colors.redAccent,
+                                      ),
+                                    ],
                                   ),
                                 ],
-
-                              );
-                            },
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            Text('$_selectedBet'),
-                            const Padding(
-                              padding: EdgeInsets.only(right: 10.0),
-                              child: Divider(height: 25,color: Colors.blue,),
-                            )
-                          ],
-                        ), // Fixed the typo here
-                      ),
-
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20,),
-                Container(
-                  height: MediaQuery.sizeOf(context).height*.35,
-                  width:  MediaQuery.sizeOf(context).width*.9,
-                  color: Color(0xfffffae7),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: MediaQuery.sizeOf(context).height*.04,
-                        width:  MediaQuery.sizeOf(context).width*.9,
-
-                        color: Color(0xff48486e),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text("Draw Type ",style: TextStyle(color: Colors.white,fontSize: 17,fontWeight: FontWeight.w500),),
-                            Checkbox(
-                              value: _isChecked,
-
-                              activeColor: Colors.red,
-                              checkColor: Colors.green,
-                              onChanged: (newBool) {
-                                setState(() {
-                                  _isChecked = newBool;
-                                  print(_isChecked);
-                                  ;                                });
-                              },
+                              ),
                             ),
-                            Text("Select/Deselect All",style: TextStyle(color: Colors.white,fontSize: 17,fontWeight: FontWeight.w500),),
-                          ],
-                        ),
-                      ),
-                      Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Row(
-                                  children: [
-                                    Checkbox(
-                                      value: isMagnum,
-
-                                      activeColor: Colors.red,
-                                      checkColor: Colors.green,
-                                      onChanged: (newBool) {
-                                        setState(() {
-                                          isMagnum = newBool; // Set to false if newBool is null
-
-                                        });
-                                      },
-                                    ),
-                                    Text("Magnum"),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Row(
-                                  children: [
-                                    Checkbox(
-                                      value: isPmp,
-
-                                      activeColor: Colors.red,
-                                      checkColor: Colors.green,
-                                      onChanged: (newBool) {
-                                        setState(() {
-                                          isPmp = newBool ; // Set to false if newBool is null
-                                          print(isPmp);
-                                        });
-                                      },
-                                    ),
-                                    Text("PMP"),
-                                  ],
-                                ),
-                              ),
-
-
-                            ],
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Row(
-                                  children: [
-                                    Checkbox(
-                                      value: isToto,
-
-                                      activeColor: Colors.red,
-                                      checkColor: Colors.green,
-                                      onChanged: (newBool) {
-                                        setState(() {
-                                          isToto = newBool ; // Set to false if newBool is null
-                                          print(isToto);
-                                        });
-                                      },
-                                    ),
-                                    Text("Toto"),
-                                  ],
+                        )
+                      : ListView.builder(
+                          itemCount: reportController.winNoticeList.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 8.0, horizontal: 16.0),
+                              child: Card(
+                                elevation: 4,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'Winner Number',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.blueAccent,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        reportController.winNoticeList[index]
+                                            ['note'],
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.black87,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 12),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'Date: ${DateFormat('yyyy-MM-dd').format(DateTime.parse(reportController.winNoticeList[index]['created_at']))}',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.grey[600],
+                                            ),
+                                          ),
+                                          const Icon(
+                                            Icons.check_circle,
+                                            color: Colors.green,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                              Expanded(
-                                flex: 1,
-                                child: Row(
-                                  children: [
-                                    Checkbox(
-                                      value: isSingapore,
-
-                                      activeColor: Colors.red,
-                                      checkColor: Colors.green,
-                                      onChanged: (newBool) {
-                                        setState(() {
-                                          isSingapore = newBool ; // Set to false if newBool is null
-                                          print(isSingapore);
-                                        });
-                                      },
-                                    ),
-                                    Text("Singapore"),
-                                  ],
-                                ),
-                              ),
-
-
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Row(
-                                  children: [
-                                    Checkbox(
-                                      value: isSabah,
-
-                                      activeColor: Colors.red,
-                                      checkColor: Colors.green,
-                                      onChanged: (newBool) {
-                                        setState(() {
-                                          isSabah = newBool ; // Set to false if newBool is null
-                                          print(isSabah);
-                                        });
-                                      },
-                                    ),
-                                    Text("Sabah"),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Row(
-                                  children: [
-                                    Checkbox(
-                                      value: isSandakan,
-
-                                      activeColor: Colors.red,
-                                      checkColor: Colors.green,
-                                      onChanged: (newBool) {
-                                        setState(() {
-                                          isSandakan = newBool ; // Set to false if newBool is null
-                                          print(isSandakan);
-                                        });
-                                      },
-                                    ),
-                                    Text("Sandakan"),
-                                  ],
-                                ),
-                              ),
-
-
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Row(
-                                  children: [
-                                    Checkbox(
-                                      value: isSarwak,
-
-                                      activeColor: Colors.red,
-                                      checkColor: Colors.green,
-                                      onChanged: (newBool) {
-                                        setState(() {
-                                          isSarwak = newBool ; // Set to false if newBool is null
-                                          print(isSarwak);
-                                        });
-                                      },
-                                    ),
-                                    Text("Sarawak"),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Row(
-                                  children: [
-                                    Checkbox(
-                                      value: isGdLotto,
-
-                                      activeColor: Colors.red,
-                                      checkColor: Colors.green,
-                                      onChanged: (newBool) {
-                                        setState(() {
-                                          isGdLotto = newBool ; // Set to false if newBool is null
-                                          print(isGdLotto);
-                                        });
-                                      },
-                                    ),
-                                    Text("GD Lotto"),
-                                  ],
-                                ),
-                              ),
-
-
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Row(
-                                  children: [
-                                    Checkbox(
-                                      value: isNineLotto,
-
-                                      activeColor: Colors.red,
-                                      checkColor: Colors.green,
-                                      onChanged: (newBool) {
-                                        setState(() {
-                                          isNineLotto = newBool ; // Set to false if newBool is null
-                                          print(isNineLotto);
-                                        });
-                                      },
-                                    ),
-                                    Text("Nine Lotto"),
-                                  ],
-                                ),
-                              ),
-
-
-
-                            ],
-                          ),
-
-
-                        ],
-                      ),
-                    ],
-                  ),
-                )
-
-              ],
-            ),
-            const rsubmitButton(buttonName: "Submit")
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-//Date Picker
-class MyDatePicker extends StatefulWidget {
-  @override
-  _MyDatePickerState createState() => _MyDatePickerState();
-}
-
-class _MyDatePickerState extends State<MyDatePicker> {
-  DateTime? selectedDate;
-
-  Future<void> _selectDate() async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: selectedDate ?? DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
-    );
-
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _selectDate,
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-
-
-            Text(
-              selectedDate != null
-                  ? DateFormat("dd-MM-yyyy").format(selectedDate!).toString()
-                  : '2-05-2024',
-              style: const TextStyle(color: Colors.black, fontSize: 17),
-            ),
-          ],
-        ),
-      ),
+                            );
+                          },
+                        ));
+            });
+          }),
     );
   }
 }

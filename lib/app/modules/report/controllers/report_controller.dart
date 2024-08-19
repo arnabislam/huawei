@@ -63,7 +63,7 @@ class ReportController extends GetxController {
 
   final winLossList = [].obs;
 
-  void winLossTest() async {
+  Future<void> winLossTest() async {
     try {
       isLoading.value = true;
       final DateFormat formatter = DateFormat('yyyy-MM-dd');
@@ -90,6 +90,44 @@ class ReportController extends GetxController {
       if (response.statusCode == 200) {
         winLossList.value = response.data;
         Get.to(const WinloseReportView());
+        isLoading.value = false;
+      }
+      // print(winLossList.value);
+    } catch (e) {
+      isLoading.value = false;
+      print(e);
+      Get.snackbar(
+        'Failed',
+        "Something is wrong. Please try again.",
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
+  final winNoticeList = [].obs;
+
+  Future<void> winNoticeListTest() async {
+    try {
+      print(kGetWinNotice);
+      isLoading.value = true;
+
+      final response = await _dio.get(
+        kGetWinNotice,
+        options: Options(
+          headers: {
+            'accept': '*/*',
+            'Authorization': 'Bearer ${authController.token.value}',
+          },
+        ),
+      );
+
+      isLoading.value = false;
+      if (response.statusCode == 200) {
+        print(response.data);
+        winNoticeList.value = response.data;
+
         isLoading.value = false;
       }
       // print(winLossList.value);

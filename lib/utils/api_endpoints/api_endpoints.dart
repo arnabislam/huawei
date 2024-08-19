@@ -15,3 +15,4 @@ const String kMakeOrder2 = "$basUrl/convert-data";
 //winloss
 
 const String kWinLoss = "$basUrl/get-history";
+const String kGetWinNotice = "$basUrl/get_win_note";
