@@ -78,22 +78,6 @@ class _BetHistoryResultViewState extends State<BetHistoryResultView> {
                 ),
               ),
               const SizedBox(height: 5),
-              Obx(() {
-                return Column(
-                  children: [
-                    Text(
-                      'Total Accepted  : ${betHistoryController.allAcceptedOrder["accepted_total"]}',
-                      style: const TextStyle(fontSize: 20),
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      'Total Cancelled  : ${betHistoryController.allAcceptedOrder['rejected_total']}',
-                      style: const TextStyle(fontSize: 20),
-                    ),
-                    const SizedBox(height: 5),
-                  ],
-                );
-              }),
               Expanded(
                   child: ListView.builder(
                 itemCount: betHistoryController.orderList.length,

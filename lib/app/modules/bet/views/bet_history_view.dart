@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:huawei_new/app/modules/bet/controllers/bet_controller.dart';
-import 'package:huawei_new/app/modules/bet/views/bet_history_result_view.dart';
 import 'package:intl/intl.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
 class BetHistoryView extends GetView {
   BetHistoryView({Key? key}) : super(key: key);
 
-  final controller = Get.put(BetController());
+  BetController controller = Get.put(BetController());
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +130,7 @@ class BetHistoryView extends GetView {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Get.to(BetHistoryResultView());
+                    controller.fetchOrderList();
                   },
                   child: const Center(
                     child: Text(

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:huawei_new/app/modules/auth/controllers/auth_controller.dart';
 import 'package:huawei_new/app/modules/bet/views/bet_history_result_2_view.dart';
+import 'package:huawei_new/app/modules/bet/views/bet_history_result_view.dart';
 import 'package:huawei_new/utils/api_endpoints/api_endpoints.dart';
 import 'package:intl/intl.dart';
 
@@ -108,7 +109,8 @@ class BetController extends GetxController {
   }
 
   final orderList = [].obs;
-  void fetchOrderList() async {
+  Future<void> fetchOrderList() async {
+    print('called');
     isLoading.value = true;
     try {
       final DateFormat formatter = DateFormat('yyyy-MM-dd');
@@ -133,29 +135,16 @@ class BetController extends GetxController {
       );
 
       isLoading.value = false;
-
-      if (response.statusCode == 201) {
-      } else {
-        Get.snackbar(
-          'Failed',
-          "Something is wrong. Please try again.",
-          backgroundColor: Colors.red,
-          colorText: Colors.white,
-          snackPosition: SnackPosition.BOTTOM,
-        );
-      }
-
+      print(response.data);
       orderList.addAll(response.data['order']);
+      Get.to(BetHistoryResultView());
+
+      if (response.statusCode == 200) {
+      } else {}
+
+      ;
     } catch (e) {
       isLoading.value = false;
-
-      Get.snackbar(
-        'Failed',
-        "Something is wrong. Please try again.",
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );
     }
   }
 
@@ -271,7 +260,6 @@ class BetController extends GetxController {
 
   @override
   void onReady() {
-    fetchOrderList();
     tryToFetchAllAceept();
     super.onReady();
   }
