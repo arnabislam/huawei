@@ -132,8 +132,9 @@ class _BetHistoryResult2ViewState extends State<BetHistoryResult2View> {
                                                       betHistoryController2
                                                           .tryToCancelOrder(
                                                               orderID: betHistoryController2
-                                                                      .makeOrder[
-                                                                  'order']["id"]);
+                                                                          .makeOrder[
+                                                                      'order'][
+                                                                  "recept_id"]);
                                                       Get.back();
                                                       //Close the dialog
                                                       setState(() {});
