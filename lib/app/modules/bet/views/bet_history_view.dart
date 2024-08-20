@@ -14,14 +14,21 @@ class BetHistoryView extends GetView {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.black,
-        title: const Text('HUAWEI88'),
+        title: const Text(
+          'HUAWEI88',
+          style: TextStyle(color: Colors.white),
+        ),
         leading: IconButton(
             onPressed: () {
               Get.back();
             },
-            icon: const Icon(Icons.arrow_back_ios)),
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+            )),
       ),
       body: Obx(() {
         return LoadingOverlay(

@@ -46,12 +46,19 @@ class _BetHistoryResultViewState extends State<BetHistoryResultView> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.black,
-        title: const Text('HUAWEI88'),
+        centerTitle: true,
+        title: const Text(
+          'HUAWEI88',
+          style: TextStyle(color: Colors.white),
+        ),
         leading: IconButton(
           onPressed: () {
             Get.back();
           },
-          icon: const Icon(Icons.arrow_back_ios),
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
         ),
       ),
       body: Obx(() {
@@ -134,8 +141,10 @@ class _BetHistoryResultViewState extends State<BetHistoryResultView> {
                                                           betHistoryController
                                                               .tryToCancelOrder(
                                                                   orderID: betHistoryController
-                                                                          .orderList[
-                                                                      index]["id"]);
+                                                                              .orderList[
+                                                                          index]
+                                                                      [
+                                                                      "recept_id"]);
                                                           //Close the dialog
                                                         },
                                                         child:

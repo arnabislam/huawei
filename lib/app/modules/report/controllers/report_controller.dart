@@ -87,6 +87,7 @@ class ReportController extends GetxController {
         ),
       );
       isLoading.value = false;
+      print(response.data);
       if (response.statusCode == 200) {
         winLossList.value = response.data;
         Get.to(const WinloseReportView());

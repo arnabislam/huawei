@@ -75,7 +75,7 @@ class WinloseReportView extends GetView {
                       ),
                       Text(
                         reportController.winLossList[index]['date'],
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.red,
                             fontWeight: FontWeight.bold,
                             fontSize: 21),
@@ -121,8 +121,8 @@ class WinloseReportView extends GetView {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Expanded(flex: 2, child: Text("Commission")),
-                          Expanded(flex: 1, child: Text(":")),
+                          const Expanded(flex: 2, child: Text("Commission")),
+                          const Expanded(flex: 1, child: Text(":")),
                           Expanded(
                               flex: 1,
                               child: Text(reportController.winLossList[index]

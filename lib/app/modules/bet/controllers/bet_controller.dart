@@ -62,7 +62,7 @@ class BetController extends GetxController {
         authController.tryToRefresh();
         makeOrder.value = response.data;
 
-        Get.to(BetHistoryResult2View());
+        Get.to(const BetHistoryResult2View());
       } else {
         Get.snackbar(
           'Failed',
@@ -113,6 +113,7 @@ class BetController extends GetxController {
     print('called');
     isLoading.value = true;
     try {
+      orderList.clear();
       final DateFormat formatter = DateFormat('yyyy-MM-dd');
 
       String formattedStartDate = formatter.format(startDate.value);
@@ -122,6 +123,7 @@ class BetController extends GetxController {
         'bettingdatefrom': formattedStartDate,
         'bettingdateto': formattedEndDate
       };
+
       final response = await _dio.post(
         kGetAllOrders,
         data: data,
@@ -136,8 +138,10 @@ class BetController extends GetxController {
 
       isLoading.value = false;
       print(response.data);
-      orderList.addAll(response.data['order']);
-      Get.to(BetHistoryResultView());
+
+      Get.to(const BetHistoryResultView());
+      orderList.addAll(response.data['orders']);
+      print(orderList);
 
       if (response.statusCode == 200) {
       } else {}
@@ -151,6 +155,9 @@ class BetController extends GetxController {
 //cancel order
   void tryToCancelOrder({required int orderID}) async {
     isLoading.value = true;
+    print(
+      kCancelOrder(orderId: orderID),
+    );
     try {
       final response = await _dio.get(
         kCancelOrder(orderId: orderID),
@@ -169,7 +176,7 @@ class BetController extends GetxController {
         authController.tryToRefresh();
         makeOrder.value = response.data;
 
-        Get.to(BetHistoryResult2View());
+        Get.to(const BetHistoryResult2View());
       } else {
         Get.snackbar(
           'Failed',
@@ -181,6 +188,7 @@ class BetController extends GetxController {
       }
     } catch (e) {
       isLoading.value = false;
+      print(e);
 
       Get.snackbar(
         'Failed',
