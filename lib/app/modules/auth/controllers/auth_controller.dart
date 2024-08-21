@@ -55,8 +55,9 @@ class AuthController extends GetxController {
       if (statusCode == 200) {
         profile.value = UserProfile.fromJson(response.data);
         token.value = profile.value.token!;
-        //SET TO LOCAL
         print(token.value);
+        print(response.data['token']);
+        //SET TO LOCAL
 
         preferences.setString('token', response.data['token']);
         preferences.setString('profile', jsonEncode(response.data));

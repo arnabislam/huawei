@@ -13,7 +13,12 @@ class LoginView extends GetView {
 
   @override
   Widget build(BuildContext context) {
-    _userNameController.text = authController.profile.value.user!.username!;
+    if (authController.profile.value.user?.username == null ||
+        authController.profile.value.user?.username == '') {
+    } else {
+      _userNameController.text = authController.profile.value.user!.username!;
+    }
+
     return Scaffold(
       body: Obx(() {
         return LoadingOverlay(
