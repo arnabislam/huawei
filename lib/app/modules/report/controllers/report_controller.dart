@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:huawei_new/app/modules/auth/controllers/auth_controller.dart';
+import 'package:huawei_new/app/modules/report/views/win_number_view.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../utils/api_endpoints/api_endpoints.dart';
@@ -61,7 +62,7 @@ class ReportController extends GetxController {
   final _dio = Dio();
   AuthController authController = Get.find();
 
-  final winLossList = [].obs;
+  final winLossList = {}.obs;
 
   Future<void> winLossTest() async {
     try {
@@ -90,6 +91,8 @@ class ReportController extends GetxController {
       print(response.data);
       if (response.statusCode == 200) {
         winLossList.value = response.data;
+        print(winLossList.value);
+
         Get.to(const WinloseReportView());
         isLoading.value = false;
       }
@@ -111,11 +114,20 @@ class ReportController extends GetxController {
 
   Future<void> winNoticeListTest() async {
     try {
-      print(kGetWinNotice);
       isLoading.value = true;
+      final DateFormat formatter = DateFormat('yyyy-MM-dd');
 
-      final response = await _dio.get(
+      String formattedStartDate = formatter.format(startDate.value);
+      String formattedEndDate = formatter.format(endDate.value);
+
+      var data = {
+        'bettingdatefrom': formattedStartDate,
+        'bettingdateto': formattedEndDate
+      };
+
+      final response = await _dio.post(
         kGetWinNotice,
+        data: data,
         options: Options(
           headers: {
             'accept': '*/*',
@@ -123,15 +135,13 @@ class ReportController extends GetxController {
           },
         ),
       );
-
       isLoading.value = false;
-      if (response.statusCode == 200) {
-        print(response.data);
-        winNoticeList.value = response.data;
 
+      if (response.statusCode == 200) {
+        winNoticeList.value = response.data;
+        Get.to(const WinNumberView());
         isLoading.value = false;
       }
-      // print(winLossList.value);
     } catch (e) {
       isLoading.value = false;
       print(e);

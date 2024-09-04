@@ -93,7 +93,12 @@ class BetController extends GetxController {
     String lastSuffix = '';
 
     for (int i = 0; i < lines.length; i++) {
-      String line = lines[i];
+      String line = lines[i].trim();
+
+      // Deny lines that are only a new line or empty
+      if (line.isEmpty) {
+        continue;
+      }
 
       if (line.contains('#')) {
         lastSuffix = line.substring(line.indexOf('#'));
