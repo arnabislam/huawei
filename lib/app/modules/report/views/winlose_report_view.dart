@@ -99,12 +99,17 @@ class WinloseReportView extends GetView {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Expanded(flex: 2, child: Text("Commission")),
+                    const Expanded(
+                      flex: 2,
+                      child: Text("Commission"),
+                    ),
                     const Expanded(flex: 1, child: Text(":")),
                     Expanded(
-                        flex: 1,
-                        child: Text(reportController.winLossList['allcomission']
-                            .toString())),
+                      flex: 1,
+                      child: Text(
+                        reportController.winLossList['allcomission'].toString(),
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(
