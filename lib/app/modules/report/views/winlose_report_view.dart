@@ -103,8 +103,7 @@ class WinloseReportView extends GetView {
                     const Expanded(flex: 1, child: Text(":")),
                     Expanded(
                         flex: 1,
-                        child: Text(reportController
-                            .winLossList['allcommission']
+                        child: Text(reportController.winLossList['allcomission']
                             .toString())),
                   ],
                 ),
