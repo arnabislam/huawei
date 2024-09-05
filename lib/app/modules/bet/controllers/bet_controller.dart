@@ -57,7 +57,7 @@ class BetController extends GetxController {
       );
 
       isLoading.value = false;
-
+      print(response.data);
       if (response.statusCode == 201) {
         authController.tryToRefresh();
         makeOrder.value = response.data;

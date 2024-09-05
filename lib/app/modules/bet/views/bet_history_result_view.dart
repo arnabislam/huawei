@@ -194,7 +194,7 @@ class _BetHistoryResultViewState extends State<BetHistoryResultView> {
                                       ["username"]
                                   .toString()),
                               Text(
-                                  "(${betHistoryController.orderList[index]["order_count"].toString()})"),
+                                  "(${betHistoryController.orderList[index]["id"].toString()})"),
                             ],
                           ),
                           Text(

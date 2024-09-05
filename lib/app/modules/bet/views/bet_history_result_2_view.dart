@@ -195,7 +195,7 @@ class _BetHistoryResult2ViewState extends State<BetHistoryResult2View> {
                                       ["username"]
                                   .toString()),
                               Text(
-                                  "(${betHistoryController2.makeOrder['order']["order_count"].toString()})"),
+                                  "(${betHistoryController2.makeOrder['order']["id"].toString()})"),
                             ],
                           ),
                           const SizedBox(
